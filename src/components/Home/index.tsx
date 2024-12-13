@@ -61,7 +61,7 @@ const HomeComponent = () => {
           </div>
         </div>
 
-        <div className='absolute bottom-0 w-11/12 mb-6'>
+        <div className='absolute bottom-5 w-11/12 mb-6'>
           <div className="flex items-center justify-between mb-4">
             <div className='rounded-lg overflow-hidden'>
               <Image 
