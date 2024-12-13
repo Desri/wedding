@@ -1,8 +1,17 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import {Button} from "@nextui-org/react";
+import GalleryComponent from './gallery';
 const HomeComponent = () => {
+
+  const bottomRef = useRef(null);
+
+  // Fungsi untuk scroll ke elemen tujuan
+  const scrollToBottom = () => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
@@ -22,7 +31,7 @@ const HomeComponent = () => {
                 height={50}
                 priority
               />
-              <p className='text-black py-1.5 px-2 text-sm'>
+              <p className='text-black p-2 text-sm'>
                 Wedding Day
               </p>
             </div>
@@ -34,7 +43,7 @@ const HomeComponent = () => {
                 height={50}
                 priority
               />
-              <p className='text-black py-1.5 px-2 text-sm'>
+              <p className='text-black p-2 text-sm'>
                 Beach Club Party
               </p>
             </div>
@@ -46,7 +55,7 @@ const HomeComponent = () => {
                 height={50}
                 priority
               />
-              <p className='text-black py-1.5 px-2 text-sm'>
+              <p className='text-black p-2 text-sm'>
                 Beach Club Party
               </p>
             </div>
@@ -70,7 +79,7 @@ const HomeComponent = () => {
               </Button>
             </div>
           </div>
-          <div className='mb-4 pb-4 border-b border-solid border-white'>
+          <div className='mb-4 pb-4 border-b border-solid border-[#999999]'>
             <h1 className='text-2xl font-bold mb-1'>
               Beach Club Party
             </h1>
@@ -78,10 +87,26 @@ const HomeComponent = () => {
               13 Aug 2024
             </span>
           </div>
-          <p className='text-center'>
+          <p className='text-center' onClick={scrollToBottom}>
             230 Photos & Videos
+            <svg 
+              className='mx-auto'
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </p>
         </div>
+      </div>
+      <div ref={bottomRef} className='bg-[#f8fafd]'>
+        <GalleryComponent />
       </div>
     </>
   );
