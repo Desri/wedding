@@ -5,9 +5,8 @@ import {Button} from "@nextui-org/react";
 import GalleryComponent from './gallery';
 const HomeComponent = () => {
 
-  const bottomRef = useRef(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Fungsi untuk scroll ke elemen tujuan
   const scrollToBottom = () => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
