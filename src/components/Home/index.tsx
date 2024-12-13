@@ -8,7 +8,7 @@ const HomeComponent = () => {
       <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
         <div className="bg-cover h-screen bg-no-repeat bg-[url('/bg-1.jpg')]"></div>
       </div>
-      <div className='relative h-screen z-10 px-4'>
+      <div className='relative h-screen z-10 px-4 text-white'>
         <div className='pt-4'>
           <p className='mb-2'>
             Select an album to upload to
