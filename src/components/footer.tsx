@@ -20,6 +20,26 @@ const FooterComponent = () => {
                 <p className='text-[#8c8c8c] text-xs sm:ml-4'>
                   Snap, Scan, Share Instanly
                 </p>
+                <ul className='flex gap-2 ml-4 mt-4'>
+                  <li>
+                    <Image 
+                      src="/instagram.png"
+                      alt="instagram"
+                      className="!relative !w-[12px] !h-[12px]"
+                      fill
+                      priority
+                    />
+                  </li>
+                  <li>
+                    <Image 
+                      src="/tik-tok.png"
+                      alt="tiktok"
+                      className="!relative !w-[12px] !h-[12px]"
+                      fill
+                      priority
+                    />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className='mr-5 pl-6'>

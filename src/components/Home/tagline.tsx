@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 
 const TaglineComponent = () => {
@@ -19,7 +20,13 @@ const TaglineComponent = () => {
           Create Your Event
         </Button>
         <Button variant="bordered" className='!text-black rounded-lg h-10 text-white border-green-500'>
-          Watch How it works
+          <Image 
+            src="/play.png"
+            alt="Hands"
+            className="!relative !top-[0px] !w-[18px] !h-[18px]"
+            fill
+            priority
+          /> Watch How it works
         </Button>
       </div>
     </>

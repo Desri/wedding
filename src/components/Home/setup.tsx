@@ -33,7 +33,14 @@ const SetupComponent = () => {
               Get Started
             </Button>
             <Button variant="bordered" className='!text-black mx-2 w-36 rounded-lg h-10 text-white border-green-500'>
-              Try Demo
+              Try Demo 
+              <Image 
+                src="/right-arrow.png"
+                alt="Hands"
+                className="!relative !top-[0px] !w-[25px] !h-[12px] ml-3"
+                fill
+                priority
+              />
             </Button>
           </div>
         </div>
