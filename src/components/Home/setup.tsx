@@ -6,7 +6,7 @@ const SetupComponent = () => {
     <>
       <div className="bg-[#0bb90b] py-4 text-center">
         <h3>
-          It's free and takes 2 minutes to setup!
+          It is free and takes 2 minutes to setup!
         </h3>
       </div>
       <div className="px-16 py-32 bg-[#f8fafd]">

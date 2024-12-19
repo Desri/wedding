@@ -10,7 +10,7 @@ const IncludeComponent = () => {
               Whats included?
             </h2>
             <p>
-              From digital albums to QR code templates - we've got it all covered
+              From digital albums to QR code templates - we have got it all covered
             </p>
           </div>
           <div className="grid grid-cols-4 gap-5 mt-8">
