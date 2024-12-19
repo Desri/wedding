@@ -1,112 +1,91 @@
 'use client';
-import React, { useRef } from 'react';
 import Image from 'next/image';
-import {Button} from "@nextui-org/react";
-import GalleryComponent from './gallery';
+import { Link, Button } from '@nextui-org/react';
+import TaglineComponent from './tagline';
+import SetupComponent from './setup';
+import HowItWorkComponent from './howitworks';
+import PricingComponent from './pricing';
+import IncludeComponent from './include';
+import QuestionsComponent from './questions';
+
 const HomeComponent = () => {
-
-  const bottomRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <>
-      <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
-        <div className="bg-cover h-screen bg-no-repeat bg-[url('/bg-1.jpg')]"></div>
-      </div>
-      <div className='relative h-screen z-10 px-4 text-white'>
-        <div className='pt-4'>
-          <p className='mb-2'>
-            Select an album to upload to
-          </p>
-          <div className='overflow-x-auto flex gap-4'>
-            <div className='flex-none w-[135] bg-white rounded-lg overflow-hidden'>
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-16 py-2 bg-white border-b border-solid border-[#dddddd]">
+        <div>
+          <div className="flex items-center">
+            <div className='mr-10'>
               <Image 
-                src="/thumb1.png"
-                alt="Background"
-                width={135}
-                height={50}
-                priority
-              />
-              <p className='text-black p-2 text-sm'>
-                Wedding Day
-              </p>
-            </div>
-            <div className='flex-none w-[135] bg-white rounded-lg overflow-hidden'>
-              <Image 
-                src="/thumb2.png"
-                alt="Background"
-                width={135}
-                height={50}
-                priority
-              />
-              <p className='text-black p-2 text-sm'>
-                Beach Club Party
-              </p>
-            </div>
-            <div className='flex-none w-[135] bg-white rounded-lg overflow-hidden'>
-              <Image 
-                src="/thumb1.png"
-                alt="Background"
-                width={135}
-                height={50}
-                priority
-              />
-              <p className='text-black p-2 text-sm'>
-                Beach Club Party
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className='absolute bottom-5 w-11/12 mb-6'>
-          <div className="flex items-center justify-between mb-4">
-            <div className='rounded-lg overflow-hidden'>
-              <Image 
-                src="/thumb2.png"
-                alt="Background"
-                width={110}
-                height={50}
+                src="/logo.png"
+                alt="Logo"
+                className="imgAlbum !relative w-auto"
+                fill
                 priority
               />
             </div>
             <div>
-              <Button color="danger" variant="bordered" className='bg-[#0BB90B] text-white border-[#0BB90B]'>
-                <span className='text-2xl'>+</span>Upload
-              </Button>
+              <div className="hidden md:flex space-x-8">
+                <Link
+                  href='#'
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                >
+                  How it works
+                </Link>
+                <Link
+                  href='#'
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                >
+                  Pricing
+                </Link>
+                <Link
+                  href='#'
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                >
+                  Whats included
+                </Link>
+                <Link
+                  href='#'
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                >
+                  FAQ
+                </Link>
+              </div>
             </div>
           </div>
-          <div className='mb-4 pb-4 border-b border-solid border-[#999999]'>
-            <h1 className='text-2xl font-bold mb-1'>
-              Beach Club Party
-            </h1>
-            <span>
-              13 Aug 2024
-            </span>
+        </div>
+        <div>
+          <div className="flex items-center space-x-4">
+            <Link
+              href='#'
+              className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+            >
+              Log in
+            </Link>
+            <Button className='rounded-lg h-8 bg-[#0bb90b] text-white border-green-500'>
+              Get Started
+            </Button>
           </div>
-          <p className='text-center' onClick={scrollToBottom}>
-            230 Photos & Videos
-            <svg 
-              className='mx-auto'
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </p>
+        </div>
+      </nav>
+      <div className="mx-auto px-16 py-32 bg-[#f8fafd]">
+        <div className='flex'>
+          <div className='w-[60%]'>
+            <TaglineComponent />
+          </div>
+          <div>
+            <div className="relative flex justify-center">
+              <img alt="Group of people celebrating with a cake" className="absolute top-0 left-1/2 transform -translate-x-1/2 -rotate-6 shadow-lg rounded-lg" height="200" src="https://storage.googleapis.com/a1aa/image/KL6iJ3DAE4KaHRetmArRpYA3iGiCNGHMOa3CLUAk4rM4869JA.jpg" width="300"/>
+              <img alt="Woman celebrating with confetti" className="absolute top-1/2 left-1/4 transform -translate-y-1/2 -rotate-3 shadow-lg rounded-lg" height="200" src="https://storage.googleapis.com/a1aa/image/6LiG6vQc9U7mLpHogeC7PifUDBAYkGQnOemN4AWlnHf6mXvPB.jpg" width="300"/>
+              <img alt="Couple dancing at a wedding" className="absolute top-1/2 right-1/4 transform -translate-y-1/2 rotate-3 shadow-lg rounded-lg" height="200" src="https://storage.googleapis.com/a1aa/image/d5pwTogqPhY0H5u2CLLVXxQjHaAYRa6lBV2jokmQdOpce69JA.jpg" width="300"/>
+            </div>
+          </div>
         </div>
       </div>
-      <div ref={bottomRef} className='bg-[#f8fafd]'>
-        <GalleryComponent />
-      </div>
+      <SetupComponent />
+      <HowItWorkComponent />
+      <PricingComponent />
+      <IncludeComponent />
+      <QuestionsComponent />
     </>
   );
 };
