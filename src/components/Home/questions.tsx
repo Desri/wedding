@@ -14,7 +14,7 @@ const QuestionsComponent = () => {
                 Questions?
               </h2>
               <p>
-                Everything you need to know about the product. Can't find the answer you're looking for? Please chat to our team. Ready to go? Click the button below!
+                Everything you need to know about the product. Can not find the answer you are looking for? Please chat to our team. Ready to go? Click the button below!
               </p>
               <Button variant="bordered" className='rounded-lg mt-6 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
                 Get Started
