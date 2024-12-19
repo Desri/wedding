@@ -32,6 +32,12 @@ const QuestionsComponent = () => {
                 <AccordionItem key="3" aria-label="Accordion 3" title="Do guests need to download an app to participate">
                   {defaultContent}
                 </AccordionItem>
+                <AccordionItem key="4" aria-label="Accordion 4" title="Do guests need to download an app to participate">
+                  {defaultContent}
+                </AccordionItem>
+                <AccordionItem key="5" aria-label="Accordion 5" title="Do guests need to download an app to participate">
+                  {defaultContent}
+                </AccordionItem>
               </Accordion>
             </div>
           </div>

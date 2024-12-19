@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 
 const PricingComponent = () => {
@@ -6,7 +7,7 @@ const PricingComponent = () => {
     <>
       <div className="px-16 py-24 bg-[#f8fafd]">
         <div className="sm:w-5/6 px-4 mx-auto text-black">
-          <div className='text-center mb-14'>
+          <div className='text-center mb-16'>
             <h2 className="text-3xl mb-2 font-bold">
               Pricing
             </h2>
@@ -155,78 +156,92 @@ const PricingComponent = () => {
                 Secure payment
               </p>
             </div>
-            <div className='p-5 hover:border-[#fe7305] border-[#fe7305] border-2 border-solid bg-white rounded-2xl'>
-              <h3 className='text-lg font-bold'>
-                Pro
-              </h3>
-              <p className='text-xs text-[#bfbfbf] font-bold'>
-                Just for Pro like You.
-              </p>
-              <div className='text-center my-6'>
-                <h3 className='text-5xl'>
-                  <span className='text-base mr-1'>$</span>99
+            <div className='relative'>
+              <div className='absolute w-full text-center top-[-28px]'>
+                <div className='flex items-center gap-2 mx-auto w-max text-[15px]'>
+                  <Image 
+                    src="/fire.png"
+                    alt="Hands"
+                    className="!relative !top-[0px] !w-[13px] !h-[15px]"
+                    fill
+                    priority
+                  /> Hot Deal
+                </div>
+              </div>
+              <div className='p-5 hover:border-[#fe7305] border-[#fe7305] border-2 border-solid bg-white rounded-2xl'>
+                <h3 className='text-lg font-bold'>
+                  Pro
                 </h3>
+                <p className='text-xs text-[#bfbfbf] font-bold'>
+                  Just for Pro like You.
+                </p>
+                <div className='text-center my-6'>
+                  <h3 className='text-5xl'>
+                    <span className='text-base mr-1'>$</span>99
+                  </h3>
+                </div>
+                <div className='mb-9'>
+                  <ul>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Up to 5 Albums
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Unlimited uploads of photos & videos
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Unlimited Guest & participants
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Uploads are saved for 120 days
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Advanced customization options
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Upload Active for 30 days from the event date
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> All uploads are saved in High-Quality
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Download all photos & videos at once
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Remove FotoSlide Brand
+                    </li>
+                    <li className='flex items-center text-sm mb-1.5'>
+                      <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg> Moderation tools
+                    </li>
+                  </ul>
+                </div>
+                <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
+                  Start with Pro
+                </Button>
+                <p className='text-xs text-[#b2b2b2] mt-3 ml-2'>
+                  Secure payment
+                </p>
               </div>
-              <div className='mb-9'>
-                <ul>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Up to 5 Albums
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Unlimited uploads of photos & videos
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Unlimited Guest & participants
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Uploads are saved for 120 days
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Advanced customization options
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Upload Active for 30 days from the event date
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> All uploads are saved in High-Quality
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Download all photos & videos at once
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Remove FotoSlide Brand
-                  </li>
-                  <li className='flex items-center text-sm mb-1.5'>
-                    <svg className='mr-1.5' xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#28a745" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg> Moderation tools
-                  </li>
-                </ul>
-              </div>
-              <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
-                Start with Pro
-              </Button>
-              <p className='text-xs text-[#b2b2b2] mt-3 ml-2'>
-                Secure payment
-              </p>
+                
             </div>
           </div>
         </div>
