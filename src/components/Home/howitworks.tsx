@@ -1,11 +1,21 @@
 'use client';
+import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 
 const HowItWorkComponent = () => {
   return (
     <>
-      <div className="px-16 py-32">
+      <div className="px-16 py-20">
         <div className="sm:w-3/5 px-4 mx-auto text-black">
+          <div className='mb-8'>
+            <Image 
+              src="/hearth.png"
+              alt="Hands"
+              className="!relative !top-[-5px] !w-[50px] mx-auto"
+              fill
+              priority
+            />
+          </div>
           <h2 className="text-center text-3xl mb-7 font-bold">
             How does it work?
           </h2>

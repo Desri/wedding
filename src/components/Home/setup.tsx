@@ -1,15 +1,26 @@
 'use client';
+import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 
 const SetupComponent = () => {
   return (
     <>
-      <div className="bg-[#0bb90b] py-4 text-center">
+      <div className="bg-[#0bb90b] py-4 text-center relative z-10">
         <h3>
           It is free and takes 2 minutes to setup!
         </h3>
       </div>
-      <div className="px-16 py-32 bg-[#f8fafd]">
+      
+      <div className="px-16 pb-32 bg-[#f8fafd] mt-[-30px]">
+        <div className='mb-12'>
+          <Image 
+            src="/hands.png"
+            alt="Hands"
+            className="!relative !top-[-5px] !w-[250px] mx-auto"
+            fill
+            priority
+          />
+        </div>
         <div className="text-center sm:w-3/5 px-4 mx-auto text-black">
           <h2 className="text-3xl mb-5 font-bold">
             Yes. Its Like Magic!

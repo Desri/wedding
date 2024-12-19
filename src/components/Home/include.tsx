@@ -1,9 +1,10 @@
 'use client';
+import Image from 'next/image';
 
 const IncludeComponent = () => {
   return (
     <>
-      <div className="px-16 py-28">
+      <div className="px-16 py-24">
         <div className="sm:w-5/6 px-4 mx-auto text-black">
           <div className='text-center'>
             <h2 className="text-3xl mb-2 font-bold">
@@ -13,8 +14,17 @@ const IncludeComponent = () => {
               From digital albums to QR code templates - we have got it all covered
             </p>
           </div>
-          <div className="grid grid-cols-4 gap-5 mt-8">
+          <div className="grid grid-cols-4 gap-5 mt-14">
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/camera.png"
+                  alt="Hands"
+                  className="!relative !top-[-5px] !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Guest-friendly Uploads
               </h3>
@@ -23,6 +33,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/chat.png"
+                  alt="Hands"
+                  className="!relative !w-[35px] !h-[35px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Text Posts & Captions
               </h3>
@@ -31,6 +50,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/rocket.png"
+                  alt="Hands"
+                  className="!relative !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Instant Download
               </h3>
@@ -39,6 +67,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/tv.png"
+                  alt="Hands"
+                  className="!relative !top-[-5px] !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Interactive Live Slideshow
               </h3>
@@ -47,6 +84,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/camera.png"
+                  alt="Hands"
+                  className="!relative !top-[-5px] !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 No Apps Required
               </h3>
@@ -55,6 +101,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/chat.png"
+                  alt="Hands"
+                  className="!relative !w-[35px] !h-[35px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Ready Print QR Code
               </h3>
@@ -63,6 +118,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/rocket.png"
+                  alt="Hands"
+                  className="!relative !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Customize Freely
               </h3>
@@ -71,6 +135,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/tv.png"
+                  alt="Hands"
+                  className="!relative !top-[-5px] !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Secure & Control
               </h3>
@@ -79,6 +152,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/camera.png"
+                  alt="Hands"
+                  className="!relative !top-[-5px] !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Engage with Memories
               </h3>
@@ -87,6 +169,15 @@ const IncludeComponent = () => {
               </p>
             </div>
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
+              <div className='overflow-hidden mb-2'>
+                <Image 
+                  src="/rocket.png"
+                  alt="Hands"
+                  className="!relative !w-[45px] !h-[45px] float-right"
+                  fill
+                  priority
+                />
+              </div>
               <h3 className='text-lg font-bold mb-3 leading-6'>
                 Extremely Easy to Use
               </h3>
