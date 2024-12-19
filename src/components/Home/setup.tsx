@@ -11,7 +11,7 @@ const SetupComponent = () => {
         </h3>
       </div>
       
-      <div className="px-16 pb-32 bg-[#f8fafd] mt-[-30px]">
+      <div className="px-4 sm:px-16 pb-32 bg-[#f8fafd] mt-[-30px]">
         <div className='mb-12'>
           <Image 
             src="/hands.png"
@@ -29,10 +29,10 @@ const SetupComponent = () => {
             Event Photo Sharing Made Easy! Collect & share photos and videos with your guests in a stunning digital album - setup is a breeze, and sharing is even easier. 
           </p>
           <div className="text-center mt-8">
-            <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
+            <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
               Get Started
             </Button>
-            <Button variant="bordered" className='!text-black mx-2 w-36 rounded-lg h-10 text-white border-green-500'>
+            <Button variant="bordered" className='!text-black mx-2 w-36 rounded-lg h-10 text-white border-[#676767]'>
               Try Demo 
               <Image 
                 src="/right-arrow.png"

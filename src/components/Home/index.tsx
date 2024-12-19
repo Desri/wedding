@@ -11,7 +11,7 @@ import QuestionsComponent from './questions';
 const HomeComponent = () => {
   return (
     <>
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-16 py-2 bg-white border-b border-solid border-[#dddddd]">
+      <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-16 py-2 bg-white border-b border-solid border-[#dddddd]">
         <div>
           <div className="flex items-center">
             <div className='mr-10'>
@@ -61,15 +61,15 @@ const HomeComponent = () => {
             >
               Log in
             </Link>
-            <Button className='rounded-lg h-8 bg-[#0bb90b] text-white border-green-500'>
+            <Button className='rounded-lg h-8 bg-[#0BB90B] text-white border-green-500'>
               Get Started
             </Button>
           </div>
         </div>
       </nav>
-      <div className="mx-auto px-16 py-32 bg-[#f8fafd]">
+      <div className="mx-auto px-4 sm:px-16 py-24 sm:py-32 bg-[#f8fafd]">
         <div className='flex'>
-          <div className='w-[60%]'>
+          <div className='sm:w-[60%]'>
             <TaglineComponent />
           </div>
           <div>

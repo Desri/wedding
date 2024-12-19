@@ -5,7 +5,7 @@ import { Button } from '@nextui-org/react';
 const PricingComponent = () => {
   return (
     <>
-      <div className="px-16 py-24 bg-[#f8fafd]">
+      <div className="relative mt-[-60px] sm:px-16 py-24 bg-[#f8fafd]">
         <div className="sm:w-5/6 px-4 mx-auto text-black">
           <div className='text-center mb-16'>
             <h2 className="text-3xl mb-2 font-bold">
@@ -15,7 +15,7 @@ const PricingComponent = () => {
               All plans are a one-time fee. No hidden cost.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-5 mt-8">
+          <div className="grid sm:grid-cols-3 gap-5 mt-8">
             <div className='p-5 hover:border-[#fe7305] border-white border-2 border-solid bg-white rounded-2xl'>
               <h3 className='text-lg font-bold'>
                 Lite
@@ -78,12 +78,16 @@ const PricingComponent = () => {
                   </li>
                 </ul>
               </div>
-              <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
+              <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
                 Create Event
               </Button>
-              <p className='text-xs text-[#b2b2b2] mt-3 ml-2'>
-                Secure payment
-              </p>
+              <Image 
+                src="/secure-payment.png"
+                alt="Hands"
+                className="!relative !top-[0px] !w-[110px] !h-[14px] mt-3 ml-2"
+                fill
+                priority
+              />
             </div>
             <div className='p-5 hover:border-[#fe7305] border-white border-2 border-solid bg-white rounded-2xl'>
               <h3 className='text-lg font-bold'>
@@ -149,12 +153,16 @@ const PricingComponent = () => {
                   </li>
                 </ul>
               </div>
-              <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
+              <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
                 Start with Plus
               </Button>
-              <p className='text-xs text-[#b2b2b2] mt-3 ml-2'>
-                Secure payment
-              </p>
+              <Image 
+                src="/secure-payment.png"
+                alt="Hands"
+                className="!relative !top-[0px] !w-[110px] !h-[14px] mt-3 ml-2"
+                fill
+                priority
+              />
             </div>
             <div className='relative'>
               <div className='absolute w-full text-center top-[-28px]'>
@@ -234,14 +242,17 @@ const PricingComponent = () => {
                     </li>
                   </ul>
                 </div>
-                <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-green-500'>
+                <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
                   Start with Pro
                 </Button>
-                <p className='text-xs text-[#b2b2b2] mt-3 ml-2'>
-                  Secure payment
-                </p>
+                <Image 
+                  src="/secure-payment.png"
+                  alt="Hands"
+                  className="!relative !top-[0px] !w-[110px] !h-[14px] mt-3 ml-2"
+                  fill
+                  priority
+                />
               </div>
-                
             </div>
           </div>
         </div>

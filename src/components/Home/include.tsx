@@ -4,8 +4,8 @@ import Image from 'next/image';
 const IncludeComponent = () => {
   return (
     <>
-      <div className="px-16 py-24">
-        <div className="sm:w-5/6 px-4 mx-auto text-black">
+      <div className="sm:px-16 py-24">
+        <div className="sm:w-5/6 sm:px-4 mx-auto text-black">
           <div className='text-center'>
             <h2 className="text-3xl mb-2 font-bold">
               Whats included?
@@ -14,7 +14,7 @@ const IncludeComponent = () => {
               From digital albums to QR code templates - we have got it all covered
             </p>
           </div>
-          <div className="grid grid-cols-4 gap-5 mt-14">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 mt-14">
             <div className='bg-[#f8fafd] p-5 rounded-2xl'>
               <div className='overflow-hidden mb-2'>
                 <Image 
