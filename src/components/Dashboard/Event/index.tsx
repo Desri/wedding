@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import {Tabs, Tab, Card, CardBody, Input, DatePicker, Button} from "@nextui-org/react";
+import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 import {parseDate} from "@internationalized/date";
 import {useDateFormatter} from "@react-aria/i18n";
 import GeneralDashboardTabComponent from './general';
@@ -8,10 +8,6 @@ import CollaboratorsDashboardTabComponent from './collaborators';
 
 
 const EventDashboardComponent = () => {
-
-  const [value, setValue] = useState(parseDate("2024-04-04"));
-  let formatter = useDateFormatter({dateStyle: "full"});
-
   return (
     <>
       <div className="flex w-full flex-col">

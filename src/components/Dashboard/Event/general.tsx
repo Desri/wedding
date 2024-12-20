@@ -2,13 +2,11 @@
 import React, { useState } from 'react';
 import {Input, DatePicker, Button} from "@nextui-org/react";
 import {parseDate} from "@internationalized/date";
-import {useDateFormatter} from "@react-aria/i18n";
 
 
 const GeneralDashboardTabComponent = () => {
 
   const [value, setValue] = useState(parseDate("2024-04-04"));
-  let formatter = useDateFormatter({dateStyle: "full"});
 
   return (
     <>
