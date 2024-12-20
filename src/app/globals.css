@@ -37,3 +37,16 @@ figure {
   font-weight: bold;
   color: #000000;
 }
+
+.tabs-event {
+  margin-left: 35px;
+}
+.tabs-event button span {
+  background-color: #0bb90b;
+}
+.tabs-event button div {
+  color: #000000 !important;
+}
+.input-date .box-content {
+  color: #000000 !important;
+}

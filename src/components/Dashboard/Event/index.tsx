@@ -1,0 +1,64 @@
+'use client';
+import React, { useState } from 'react';
+import {Tabs, Tab, Card, CardBody, Input, DatePicker, Button} from "@nextui-org/react";
+import {parseDate} from "@internationalized/date";
+import {useDateFormatter} from "@react-aria/i18n";
+import GeneralDashboardTabComponent from './general';
+import CollaboratorsDashboardTabComponent from './collaborators';
+
+
+const EventDashboardComponent = () => {
+
+  const [value, setValue] = useState(parseDate("2024-04-04"));
+  let formatter = useDateFormatter({dateStyle: "full"});
+
+  return (
+    <>
+      <div className="flex w-full flex-col">
+        <Tabs aria-label="Options" variant="underlined" className="tabs-event">
+          <Tab key="general" title="General">
+            <Card className="p-8">
+              <CardBody>
+                <GeneralDashboardTabComponent />
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="appearance" title="Appearance">
+            <Card>
+              <CardBody>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur.
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="slideshow" title="Slideshow">
+            <Card>
+              <CardBody>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="moderation" title="Moderation">
+            <Card>
+              <CardBody>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="collaborators" title="Collaborators">
+            <Card className="p-8">
+              <CardBody>
+                <CollaboratorsDashboardTabComponent />
+              </CardBody>
+            </Card>
+          </Tab>
+        </Tabs>
+      </div>
+    </>
+  );
+};
+
+export default EventDashboardComponent;

@@ -8,7 +8,7 @@ const MenuDashboardComponent = () => {
         <ul>
           <li>
             <Link
-              href='#'
+              href='/dashboard'
               className="block text-black hover:bg-[#eeeeef] rounded-md py-2 px-2.5"
             >
               Dashboard
@@ -16,7 +16,7 @@ const MenuDashboardComponent = () => {
           </li>
           <li>
             <Link
-              href='#'
+              href='/album'
               className="block text-black hover:bg-[#eeeeef] rounded-md py-2 px-2.5"
             >
               My Album
@@ -24,7 +24,7 @@ const MenuDashboardComponent = () => {
           </li>
           <li>
             <Link
-              href='#'
+              href='/event'
               className="block text-black hover:bg-[#eeeeef] rounded-md py-2 px-2.5"
             >
               Event Settings

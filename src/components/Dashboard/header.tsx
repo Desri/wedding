@@ -5,9 +5,7 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-  Avatar,
   Link,
-  Button,
   User,
 } from "@nextui-org/react";
 
