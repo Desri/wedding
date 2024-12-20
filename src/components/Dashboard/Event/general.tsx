@@ -5,9 +5,7 @@ import {parseDate} from "@internationalized/date";
 
 
 const GeneralDashboardTabComponent = () => {
-
   const [value, setValue] = useState(parseDate("2024-04-04"));
-
   return (
     <>
       <div className="text-black mb-8">
@@ -30,7 +28,8 @@ const GeneralDashboardTabComponent = () => {
           className="mt-3 max-w-[180px] border border-solid border-[#dddddd] rounded-md input-date"
           value={value}
           radius="sm"
-          onChange={setValue}
+          // onChange={setValue}
+          onChange={(newValue) => setValue(newValue!)}
         />
       </div>
       <Button className='!text-black max-w-[125px] rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
