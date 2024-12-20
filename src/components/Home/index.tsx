@@ -1,72 +1,16 @@
 'use client';
-import Image from 'next/image';
-import { Link, Button } from '@nextui-org/react';
 import TaglineComponent from './tagline';
 import SetupComponent from './setup';
 import HowItWorkComponent from './howitworks';
 import PricingComponent from './pricing';
 import IncludeComponent from './include';
 import QuestionsComponent from './questions';
+import HeaderComponent from '../header';
 
 const HomeComponent = () => {
   return (
     <>
-      <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-16 py-2 bg-white border-b border-solid border-[#dddddd]">
-        <div>
-          <div className="flex items-center">
-            <div className='mr-10'>
-              <Image 
-                src="/logo.png"
-                alt="Logo"
-                className="imgAlbum !relative w-auto"
-                fill
-                priority
-              />
-            </div>
-            <div>
-              <div className="hidden md:flex space-x-8">
-                <Link
-                  href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
-                >
-                  How it works
-                </Link>
-                <Link
-                  href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
-                >
-                  Pricing
-                </Link>
-                <Link
-                  href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
-                >
-                  Whats included
-                </Link>
-                <Link
-                  href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
-                >
-                  FAQ
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="flex items-center space-x-4">
-            <Link
-              href='#'
-              className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
-            >
-              Log in
-            </Link>
-            <Button className='rounded-lg h-8 bg-[#0BB90B] text-white border-green-500'>
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <HeaderComponent />
       <div className="mx-auto px-4 sm:px-16 py-24 sm:py-32 bg-[#f8fafd]">
         <div className='flex'>
           <div className='sm:w-[60%]'>
