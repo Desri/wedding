@@ -1,11 +1,7 @@
 'use client';
-import React, { useState } from 'react';
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
-import {parseDate} from "@internationalized/date";
-import {useDateFormatter} from "@react-aria/i18n";
 import GeneralDashboardTabComponent from './general';
 import CollaboratorsDashboardTabComponent from './collaborators';
-
 
 const EventDashboardComponent = () => {
   return (
