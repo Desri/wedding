@@ -5,7 +5,7 @@ import { Link, Button } from '@nextui-org/react';
 const HeaderComponent = () => {
   return (
     <>
-      <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-16 py-2 bg-white border-b border-solid border-[#dddddd]">
+      <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-16 py-4 bg-white border-b border-solid border-[#dddddd]">
         <div>
           <div className="flex items-center">
             <div className='mr-10'>
