@@ -1,15 +1,9 @@
 'use client';
 import {
   Button,
-  Table,
-  TableHeader,
-  TableColumn,
   Modal,
   ModalContent,
   ModalBody,
-  TableBody,
-  TableRow,
-  TableCell,
   Input,
   useDisclosure
 } from "@nextui-org/react";
