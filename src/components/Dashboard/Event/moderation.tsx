@@ -1,16 +1,22 @@
 'use client';
+import React, { useState } from 'react';
 import {
   Button,
   Modal,
   ModalContent,
   ModalBody,
-  Input,
   Switch,
-  useDisclosure
+  useDisclosure,
+  Tabs,
+  Tab,
+  Input,
+  DatePicker
 } from "@nextui-org/react";
+import {parseDate} from "@internationalized/date";
 
 const ModerationDashboardTabComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [value, setValue] = useState(parseDate("2024-04-04"));
   return (
     <>
       <div className="text-black mb-2">
@@ -80,27 +86,64 @@ const ModerationDashboardTabComponent = () => {
               <ModalBody className='p-7'>
                 <div className="text-black mb-7">
                   <h3 className="text-sm font-semibold">
-                    Invite
+                    Welcome Screen Settings
                   </h3>
                   <span className="text-xs text-[#909090]">
-                    Share this link with whomever you like:
+                    Set up a welcome screen that appears once for first-time guests.
                   </span>
-                  <Input
-                    radius="sm"
-                    className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
-                    labelPlacement="outside"
-                    placeholder="fotoslide.com/nu38hy"
-                    endContent={
-                      <p className='text-[#0BB90B] text-sm'>
-                        Copy
-                      </p>
-                    }
-                    type="text"
-                  />
+                  <Tabs aria-label="Options" variant="underlined" className="tabs-event !ml-0 !mt-5">
+                    <Tab key="cover" title="Cover">
+                      <div className="text-black mb-8">
+                        <h3 className="text-sm">
+                          Title
+                        </h3>
+                        <span className="text-xs text-[#909090]">
+                          What is the event title?
+                        </span>
+                        <Input type="text" radius="sm" className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+                      </div>
+
+                      <div className="text-black mb-8">
+                        <h3 className="text-sm">
+                          When does it happen?
+                        </h3>
+                        <span className="text-xs text-[#909090]">
+                          Set when your event is scheduled to start.
+                        </span>
+                        <DatePicker
+                          className="mt-3 max-w-[180px] border border-solid border-[#dddddd] rounded-md input-date"
+                          value={value}
+                          radius="sm"
+                          // onChange={setValue}
+                          onChange={(newValue) => setValue(newValue!)}
+                        />
+                      </div>
+
+                      <div className='mt-8'>
+                        <div className="text-black mb-2">
+                          <h3 className="text-sm font-semibold">
+                            Background
+                          </h3>
+                          <span className="text-xs text-[#909090] font-semibold">
+                            Set a background for the welcome screen
+                          </span>
+                        </div>
+                      </div>
+                    </Tab>
+                    <Tab key="form" title="Guest Form">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    </Tab>
+                  </Tabs>
                 </div>
-                <Button variant="bordered" className='!text-[#000000] max-w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#DDDDDD] mt-1.5' onPress={onClose}>
-                  Cancel
-                </Button>
+                <div className='flex items-center gap-3'>
+                  <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
+                    Save
+                  </Button>
+                  <Button variant="bordered" className='!text-[#000000] max-w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#DDDDDD] mt-1.5' onPress={onClose}>
+                    Cancel
+                  </Button>
+                </div>
               </ModalBody>
             </>
           )}
