@@ -1,7 +1,8 @@
 'use client';
 import {
   Button,
-  Switch
+  Switch,
+  Input
 } from "@nextui-org/react";
 
 const SlideshowDashboardTabComponent = () => {
@@ -27,6 +28,37 @@ const SlideshowDashboardTabComponent = () => {
             Adjust how long each media is displayed in the Slideshow
           </span>
         </div>
+        <div className="flex items-center gap-8">
+          <div>
+            <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
+              <Input
+                key="image"
+                radius="sm"
+                className="box-duration"
+                description="seconds"
+                label="Image"
+                labelPlacement="outside-left"
+                placeholder="8"
+                type="text"
+              />
+            </div>
+          </div>
+          <div>
+            <div className="flex w-full flex-wrap items-end md:flex-nowrap mb-6 md:mb-0 gap-4">
+              <Input
+                key="video"
+                radius="sm"
+                className="box-duration"
+                description="seconds"
+                label="Video"
+                labelPlacement="outside-left"
+                placeholder="12"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        
       </div>
       <div className='mt-8'>
         <div className="flex gap-8">
@@ -41,7 +73,7 @@ const SlideshowDashboardTabComponent = () => {
           <Switch size="sm" />
         </div>
       </div>
-      <div className='mt-8'>
+      <div className='mt-8 mb-3'>
         <div className="flex gap-8">
           <div className="text-black mb-2">
             <h3 className="text-sm font-semibold">
