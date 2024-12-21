@@ -26,7 +26,7 @@ const CollaboratorsDashboardTabComponent = () => {
           Invite other members who can access and manage this event.
         </span>
       </div>
-      <Button variant="bordered" className='!text-[#0BB90B] max-w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onPress={onOpen}>
+      <Button variant="bordered" className='!text-[#0BB90B] max-w-[100px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onPress={onOpen}>
         Invite
       </Button>
       <div className='mt-8'>
@@ -59,7 +59,18 @@ const CollaboratorsDashboardTabComponent = () => {
                   <span className="text-xs text-[#909090]">
                     Share this link with whomever you like:
                   </span>
-                  <Input type="text" radius="sm" className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+                  <Input
+                    radius="sm"
+                    className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
+                    labelPlacement="outside"
+                    placeholder="fotoslide.com/nu38hy"
+                    endContent={
+                      <p className='text-[#0BB90B] text-sm'>
+                        Copy
+                      </p>
+                    }
+                    type="text"
+                  />
                 </div>
                 <Button variant="bordered" className='!text-[#000000] max-w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#DDDDDD] mt-1.5' onPress={onClose}>
                   Cancel

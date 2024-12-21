@@ -32,7 +32,7 @@ const GeneralDashboardTabComponent = () => {
           onChange={(newValue) => setValue(newValue!)}
         />
       </div>
-      <Button className='!text-black max-w-[125px] rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
+      <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
         Update
       </Button>
     </>

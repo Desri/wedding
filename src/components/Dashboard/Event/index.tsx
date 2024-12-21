@@ -2,6 +2,8 @@
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 import GeneralDashboardTabComponent from './general';
 import CollaboratorsDashboardTabComponent from './collaborators';
+import ModerationDashboardTabComponent from "./moderation";
+import SlideshowDashboardTabComponent from "./slideshow";
 
 const EventDashboardComponent = () => {
   return (
@@ -25,18 +27,16 @@ const EventDashboardComponent = () => {
             </Card>
           </Tab>
           <Tab key="slideshow" title="Slideshow">
-            <Card>
+            <Card className="p-8">
               <CardBody>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                <SlideshowDashboardTabComponent />
               </CardBody>
             </Card>
           </Tab>
           <Tab key="moderation" title="Moderation">
-            <Card>
+            <Card className="p-8">
               <CardBody>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                <ModerationDashboardTabComponent />
               </CardBody>
             </Card>
           </Tab>
