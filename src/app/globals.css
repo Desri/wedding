@@ -50,3 +50,7 @@ figure {
 .input-date .box-content {
   color: #000000 !important;
 }
+
+.group[data-selected="true"] .group-data-\[selected\=true\]\:bg-primary {
+  background-color: #0bb90b !important;
+}

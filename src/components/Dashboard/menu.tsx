@@ -9,7 +9,7 @@ const MenuDashboardComponent = () => {
           <li>
             <Link
               href='/dashboard'
-              className="block text-black hover:bg-[#eeeeef] rounded-md py-2 px-2.5"
+              className="block text-[#272727] hover:bg-[#eeeeef] rounded-md py-2 px-2.5 text-sm font-semibold"
             >
               Dashboard
             </Link>
@@ -17,7 +17,7 @@ const MenuDashboardComponent = () => {
           <li>
             <Link
               href='/album'
-              className="block text-black hover:bg-[#eeeeef] rounded-md py-2 px-2.5"
+              className="block text-[#272727] hover:bg-[#eeeeef] rounded-md py-2 px-2.5 text-sm font-semibold"
             >
               My Album
             </Link>
@@ -25,7 +25,7 @@ const MenuDashboardComponent = () => {
           <li>
             <Link
               href='/event'
-              className="block text-black hover:bg-[#eeeeef] rounded-md py-2 px-2.5"
+              className="block text-[#272727] hover:bg-[#eeeeef] rounded-md py-2 px-2.5 text-sm font-semibold"
             >
               Event Settings
             </Link>
