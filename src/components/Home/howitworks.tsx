@@ -156,24 +156,26 @@ const HowItWorkComponent = () => {
             </ul>
           </div>
         </div>
-        <div className='hidden sm:block flex items-centers justify-between mt-[-150px]'>
-          <div>
-            <Image 
-              src="/hands1.png"
-              alt="hands1"
-              className="!relative !top-[-5px] !w-[200px] mx-auto"
-              fill
-              priority
-            />
-          </div>
-          <div>
-            <Image 
-              src="/hands2.png"
-              alt="hands2"
-              className="!relative !top-[-5px] !w-[200px] mx-auto"
-              fill
-              priority
-            />
+        <div className="hidden sm:block">
+          <div className='flex items-centers justify-between mt-[-150px]'>
+            <div>
+              <Image 
+                src="/hands1.png"
+                alt="hands1"
+                className="!relative !top-[-5px] !w-[200px] mx-auto"
+                fill
+                priority
+              />
+            </div>
+            <div>
+              <Image 
+                src="/hands2.png"
+                alt="hands2"
+                className="!relative !top-[-5px] !w-[200px] mx-auto"
+                fill
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
