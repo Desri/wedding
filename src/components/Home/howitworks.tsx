@@ -5,7 +5,7 @@ import { Button } from '@nextui-org/react';
 const HowItWorkComponent = () => {
   return (
     <>
-      <div className="px-4 sm:px-16 pt-20">
+      <div className="px-4 sm:px-16 py-16 sm:pt-20 sm:pb-0">
         <div className="sm:w-3/5 px-4 mx-auto text-black">
           <div className='mb-8'>
             <Image 
@@ -38,10 +38,10 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 1
                     </p>
-                    <h2 className='text-2xl font-bold mb-3'>
+                    <h2 className='text-2xl font-bold mb-3 leading-6'>
                       Create your event
                     </h2>
-                    <p>
+                    <p className='text-sm'>
                       Create a private digital album for guests to add photos, videos, and messages. Customize the title, date, colors, and backgrounds to make it your own!
                     </p>
                     <Button variant="bordered" className='rounded-lg mt-6 w-36 h-10 bg-[#0BB90B] text-white border-[#0BB90B]'>
@@ -67,19 +67,19 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 2
                     </p>
-                    <h2 className='text-2xl font-bold mb-3'>
+                    <h2 className='text-2xl font-bold mb-3 leading-6'>
                       Share it with your guests
                     </h2>
-                    <p className='mb-2'>
+                    <p className='mb-2 text-sm'>
                       Your guests can easily view or contribute photos and videos to your digital album by scanning the unique QR code or using the album URL-before, during, and after your event!
                     </p>
-                    <p>
+                    <p className='text-sm'>
                       Share as a link through email, SMS, chat apps etc.
                     </p>
-                    <p>
+                    <p className='text-sm'>
                       Share as a QR code on printed cards and signs.
                     </p>
-                    <p>
+                    <p className='text-sm'>
                       No app downloads. No registrations needed.
                     </p>
                   </div>
@@ -102,10 +102,10 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 3
                     </p>
-                    <h2 className='text-2xl font-bold mb-3'>
+                    <h2 className='text-2xl font-bold mb-3 leading-6'>
                       Display it all on a live slideshow
                     </h2>
-                    <p>
+                    <p className='text-sm'>
                       Up for some fun? Add to the event a Live Photo Wall (slideshow) that updates in real-time with every photo and video added by you or your guests. Easily display it on projectors, TVs, tablets or wherever you like.
                     </p>
                     <Button variant="bordered" className='!text-black rounded-lg h-10 text-white border-[#676767] mt-4'>
@@ -138,13 +138,13 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 4
                     </p>
-                    <h2 className='text-2xl font-bold mb-3'>
+                    <h2 className='text-2xl font-bold mb-3 leading-6'>
                       Enjoy all captured moments
                     </h2>
-                    <p className='mb-2'>
+                    <p className='mb-2 text-sm'>
                       At any given moment you can view all the photos and videos captured by your guests in your own digital album. Revisit and cherish those unforgettable memories!
                     </p>
-                    <p>
+                    <p className='text-sm'>
                       Every moment is captured in a stunning digital album. Download everything as a zipped folder in a click.
                     </p>
                     <Button variant="bordered" className='rounded-lg mt-6 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
@@ -156,7 +156,7 @@ const HowItWorkComponent = () => {
             </ul>
           </div>
         </div>
-        <div className='flex items-centers justify-between mt-[-150px]'>
+        <div className='hidden sm:block flex items-centers justify-between mt-[-150px]'>
           <div>
             <Image 
               src="/hands1.png"

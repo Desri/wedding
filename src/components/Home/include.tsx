@@ -4,7 +4,7 @@ import Image from 'next/image';
 const IncludeComponent = () => {
   return (
     <>
-      <div className="sm:px-16 py-24">
+      <div className="sm:px-16 py-16 sm:py-24">
         <div className="sm:w-5/6 sm:px-4 mx-auto text-black">
           <div className='text-center'>
             <h2 className="text-3xl mb-2 font-bold">

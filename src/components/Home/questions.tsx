@@ -6,7 +6,7 @@ const QuestionsComponent = () => {
   return (
     <>
       <div className="px-4 sm:px-16 pt-5 pb-28">
-        <div className="sm:w-5/6 px-4 mx-auto text-black">
+        <div className="sm:w-5/6 sm:px-4 mx-auto text-black">
           
           <div className="grid sm:grid-cols-2 gap-10 mt-8">
             <div className='mb-3'>

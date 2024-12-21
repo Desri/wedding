@@ -164,7 +164,7 @@ const PricingComponent = () => {
                 priority
               />
             </div>
-            <div className='relative'>
+            <div className='relative mt-7 sm:mt-0'>
               <div className='absolute w-full text-center top-[-28px]'>
                 <div className='flex items-center gap-2 mx-auto w-max text-[15px]'>
                   <Image 
