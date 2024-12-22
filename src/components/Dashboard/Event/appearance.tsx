@@ -1,5 +1,4 @@
 'use client';
-import React, { useState } from 'react';
 import {
   Input,
   Button,
@@ -8,7 +7,6 @@ import {
   ModalBody,
   useDisclosure
 } from "@nextui-org/react";
-
 
 const AppearanceDashboardTabComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
