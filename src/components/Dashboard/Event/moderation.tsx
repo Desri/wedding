@@ -53,6 +53,23 @@ const ModerationDashboardTabComponent = () => {
             Control what type of media can be uploaded to your event.
           </span>
         </div>
+        <div className='flex items-center gap-5 mt-1'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-5 rounded-lg w-28 cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold'>
+              Photos
+            </h2>
+          </div>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-5 rounded-lg w-28 cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold'>
+              Videos
+            </h2>
+          </div>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-5 rounded-lg w-28 cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold'>
+              Text
+            </h2>
+          </div>
+        </div>
       </div>
       <div className='mt-8'>
         <div className="text-black mb-2">
