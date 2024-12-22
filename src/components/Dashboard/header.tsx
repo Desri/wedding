@@ -24,7 +24,7 @@ const HeaderDashboardComponent = () => {
                 priority
               />
             </div>
-            <div>
+            {/* <div>
               <div className="hidden md:flex space-x-8">
                 <Link
                   href='#'
@@ -51,7 +51,7 @@ const HeaderDashboardComponent = () => {
                   FAQ
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div>

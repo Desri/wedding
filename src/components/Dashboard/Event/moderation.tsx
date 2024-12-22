@@ -63,6 +63,32 @@ const ModerationDashboardTabComponent = () => {
             Control how guests can interact with your event’s digital album.
           </span>
         </div>
+        <div className='flex items-center gap-5 mt-1'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] p-5 rounded-xl w-1/5 cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold mb-7'>
+              View & Upload
+            </h2>
+            <p className='text-xs text-[#909090]'>
+              Guests can upload new photos & view existing ones
+            </p>
+          </div>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] p-5 rounded-xl w-1/5 cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold mb-7'>
+              View Only
+            </h2>
+            <p className='text-xs text-[#909090]'>
+              Guests can view existing photos but can not upload new ones
+            </p>
+          </div>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] p-5 rounded-xl w-1/5 cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold mb-7'>
+              Upload Only
+            </h2>
+            <p className='text-xs text-[#909090]'>
+              Guests can upload new photos but can not view existing ones.
+            </p>
+          </div>
+        </div>
       </div>
       <div className='mt-8 mb-5'>
         <div className="flex gap-8">
