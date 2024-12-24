@@ -179,9 +179,30 @@ const ModerationDashboardTabComponent = () => {
                           </div>
                         </Tab>
                         <Tab key="form" title="Guest Form">
-                          <p className='text-[#909090] text-sm'>
+                          <p className='text-[#909090] text-sm sm:mr-5'>
                             Create a form to collect guest information before they proceed to your album. Add new fields as needed, or rearrange existing ones by dragging.
                           </p>
+                          <div className='sm:mr-5 mt-4 rounded-xl shadow-input py-2 px-3'>
+                            <Input
+                              key="name"
+                              label="Name"
+                              placeholder='[Text]'
+                              labelPlacement="outside-left"
+                              type="text"
+                            />
+                          </div>
+                          <div className='sm:mr-5 mt-4 rounded-xl shadow-input py-2 px-3'>
+                            <Input
+                              key="email"
+                              label="Email"
+                              placeholder='[Email]'
+                              labelPlacement="outside-left"
+                              type="email"
+                            />
+                          </div>
+                          <button className='text-sm w-11/12 font-semibold text-[#0BB90B] rounded-lg text-center mt-7 block py-2.5 border border-dashed border-[#0BB90B] ml-2.5'>
+                            Add New Field
+                          </button>
                         </Tab>
                       </Tabs>
                     </div>
@@ -215,7 +236,7 @@ const ModerationDashboardTabComponent = () => {
                           </div>
                           <div className='mb-4 pb-4 border-b border-solid border-[#cecece]'>
                             <h1 className='text-xl font-bold'>
-                              Daraa & Arifin Weddings
+                              Dara & Arifin Weddings
                             </h1>
                             <span className='text-sm'>
                               13 Aug 2024
