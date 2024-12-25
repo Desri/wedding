@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import {Button} from "@nextui-org/react";
+import Link from 'next/link';
 const GalleryComponent = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const GalleryComponent = () => {
           </span>
         </div>
         <div>
-          <Button color="danger" variant="bordered" className='bg-[#0BB90B] text-white border-[#0BB90B]'>
+          <Button color="danger" variant="bordered" className='bg-[#0BB90B] text-white border-[#0BB90B]' as={Link} href="/lite/upload">
             <span className='text-2xl'>+</span>Upload
           </Button>
         </div>
