@@ -1,14 +1,7 @@
 'use client';
-import React, { useRef } from 'react';
 import Image from 'next/image';
 import {Input, Button} from "@nextui-org/react";
 const ProComponent = () => {
-
-  const bottomRef = useRef<HTMLDivElement>(null);
-  const scrollToBottom = () => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <>
       <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
