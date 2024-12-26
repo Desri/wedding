@@ -41,28 +41,43 @@ const GeneralDashboardTabComponent = () => {
           We’ll adjust the experience according to your event type.
         </span>
         <div className='flex items-center gap-5 mt-1.5'>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
-            <h2 className='text-black text-sm font-semibold'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
+              <span>
+                💍
+              </span>
               Wedding
             </h2>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
-            <h2 className='text-black text-sm font-semibold'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
+              <span>
+                🥳
+              </span>
               Party
             </h2>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
-            <h2 className='text-black text-sm font-semibold'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
+              <span>
+                🎤
+              </span>
               Conference
             </h2>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
-            <h2 className='text-black text-sm font-semibold'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
+              <span>
+                🎂
+              </span>
               Birthday
             </h2>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
-            <h2 className='text-black text-sm font-semibold'>
+          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg cursor-pointer'>
+            <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
+              <span>
+                🤩
+              </span>
               Others
             </h2>
           </div>
