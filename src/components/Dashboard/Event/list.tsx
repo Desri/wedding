@@ -26,6 +26,40 @@ const ListEventComponent = () => {
         <Button className='!text-black !mt-4 rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5' onPress={onOpen}>
           Create New Event
         </Button>
+        <div className='grid grid-cols-4 gap-5 mt-8'>
+          <div className='bg-white px-5 pt-5 pb-3 rounded-lg'>
+            <h2 className='text-md text-black font-semibold'>
+              Dara & Arifin Weddings
+            </h2>
+            <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
+              <p className='text-sm text-[#909090]'>
+                90 uploads
+              </p>
+              <p className='text-sm text-[#909090]'>
+                Created on Sept 21, 2024
+              </p>
+            </div>
+            <p className='text-center text-xs text-[#909090]'>
+              View Event
+            </p>
+          </div>
+          <div className='bg-white px-5 pt-5 pb-3 rounded-lg'>
+            <h2 className='text-md text-black font-semibold'>
+              New Events
+            </h2>
+            <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
+              <p className='text-sm text-[#909090]'>
+                90 uploads
+              </p>
+              <p className='text-sm text-[#909090]'>
+                Created on Sept 21, 2024
+              </p>
+            </div>
+            <p className='text-center text-xs text-[#909090]'>
+              View Event
+            </p>
+          </div>
+        </div>
         <Modal isOpen={isOpen} size="2xl" onOpenChange={onOpenChange}>
           <ModalContent>
             {(onClose) => (
@@ -115,7 +149,7 @@ const ListEventComponent = () => {
                       </div>
                     </div>
                   </div>
-                  <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'>
+                  <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]' onPress={onClose}>
                     Create Event
                   </Button>
                 </ModalBody>
