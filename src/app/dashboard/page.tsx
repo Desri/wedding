@@ -10,7 +10,7 @@ export default function Dashboard() {
       <HeaderDashboardComponent />
       <div className="flex gap-5s">
         <MenuDashboardComponent />
-        <div className="w-10/12 bg-[#f8fafd]">
+        <div className="w-10/12 bg-[#f8fafd] h-screen">
           <div className="p-8">
             <div className="flex items-center gap-4 mb-8">
               <Image 

@@ -1,5 +1,4 @@
 'use client';
-import React, { useRef } from 'react';
 // import Image from 'next/image';
 // import {Button} from "@nextui-org/react";
 import GalleryComponent from '../SmallWeb/gallery';

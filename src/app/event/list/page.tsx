@@ -1,16 +1,16 @@
 import HeaderDashboardComponent from "@/components/Dashboard/header";
 import MenuDashboardComponent from "@/components/Dashboard/menu";
-import EventDashboardComponent from '@/components/Dashboard/Event';
+import ListEventComponent from "@/components/Dashboard/Event/list";
 
 export default function Dashboard() {
   return (
     <>
       <HeaderDashboardComponent />
-      <div className="flex gap-5s">
+      <div className="flex">
         <MenuDashboardComponent />
         <div className="w-10/12 bg-[#f8fafd] h-screen">
           <div className="p-8">
-            <EventDashboardComponent />
+            <ListEventComponent />
           </div>
         </div>
       </div>
