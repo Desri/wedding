@@ -31,7 +31,7 @@ const ListEventComponent = () => {
             {(onClose) => (
               <>
                 <ModalBody className='p-7'>
-                  <div className="text-black mb-7">
+                  <div className="text-black">
                     <h3 className="text-sm font-semibold">
                       Create New Event
                     </h3>
@@ -115,8 +115,8 @@ const ListEventComponent = () => {
                       </div>
                     </div>
                   </div>
-                  <Button variant="bordered" className='!text-[#000000] max-w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#DDDDDD] mt-1.5' onPress={onClose}>
-                    Cancel
+                  <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'>
+                    Create Event
                   </Button>
                 </ModalBody>
               </>
