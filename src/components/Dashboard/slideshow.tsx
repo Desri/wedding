@@ -32,8 +32,8 @@ const SlideShowDashboardComponent = () => {
           </div>
         </div>
         
-        <div className="flex items-center gap-8 mx-auto w-max">
-          <div>
+        <div className="sm:flex items-center gap-8 mx-auto w-max">
+          <div className='mb-7 sm:mb-0'>
             <img alt="QR code for shared album" className="mx-auto mb-4 w-24 h-24" height="100" src="/barcode.png" width="100"/>
             <Button className='!text-black rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
               DOWNLOAD QR CODE

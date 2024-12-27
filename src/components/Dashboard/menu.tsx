@@ -4,7 +4,7 @@ import { Link } from '@nextui-org/react';
 const MenuDashboardComponent = () => {
   return (
     <>
-      <div className='w-2/12 sm:px-5 sm:py-3 border-r-2 border-[#dddddd]'>
+      <div className='sm:w-2/12 hidden sm:block sm:px-5 sm:py-3 border-r-2 border-[#dddddd]'>
         <ul>
           <li>
             <Link

@@ -90,31 +90,31 @@ const AlbumDashboardComponent = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-8 gap-5">
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[120px] rounded-lg"></div>
+        <div className="grid grid-cols-3 sm:grid-cols-8 gap-2 sm:gap-5">
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
         </div>
       </div>
     </>

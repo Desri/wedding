@@ -8,9 +8,9 @@ export default function Dashboard() {
   return (
     <>
       <HeaderDashboardComponent />
-      <div className="flex gap-5s">
+      <div className="flex">
         <MenuDashboardComponent />
-        <div className="w-10/12 bg-[#f8fafd] h-screen">
+        <div className="sm:w-10/12 bg-[#f8fafd] h-screen">
           <div className="p-8">
             <div className="flex items-center gap-4 mb-8">
               <Image 
@@ -22,7 +22,7 @@ export default function Dashboard() {
               />
               <div>
                 <div className='text-black'>
-                  <h2 className='text-2xl'>
+                  <h2 className='text-xl sm:text-2xl mb-1 sm:mb-0'>
                     Dara & Arifin Weddings
                   </h2>
                   <p className='text-xs font-bold'>
@@ -31,7 +31,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className='grid grid-cols-2 gap-8'>
+            <div className='grid sm:grid-cols-2 gap-8'>
               <div>
                 <ShareAlbumDashboardComponent />
               </div>

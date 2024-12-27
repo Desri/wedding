@@ -6,10 +6,10 @@ export default function Dashboard() {
   return (
     <>
       <HeaderDashboardComponent />
-      <div className="flex gap-5s">
+      <div className="sm:flex">
         <MenuDashboardComponent />
-        <div className="w-10/12 bg-[#f8fafd] h-screen">
-          <div className="p-8">
+        <div className="sm:w-10/12 bg-[#f8fafd] h-screen">
+          <div className="p-4 sm:p-8">
             <EventDashboardComponent />
           </div>
         </div>
