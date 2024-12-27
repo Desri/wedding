@@ -50,7 +50,7 @@ const HeaderComponent = () => {
         <div>
           <div className="flex items-center space-x-4">
             <Link
-              href='#'
+              href='/auth/login'
               className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
             >
               Log in
