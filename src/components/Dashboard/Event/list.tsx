@@ -27,10 +27,11 @@ const ListEventComponent = () => {
           Create New Event
         </Button>
         <div className='grid grid-cols-4 gap-5 mt-8'>
-          <div className='bg-white px-5 pt-5 pb-3 rounded-lg'>
+          <div className='bg-white px-5 pt-5 pb-3 rounded-lg cursor-pointer border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7]'>
             <h2 className='text-md text-black font-semibold'>
               Dara & Arifin Weddings
             </h2>
+            <span className='bg-[#dbe5ff] font-medium py-1 px-2 rounded text-[#0145bb] text-xs'>Plan: Pro</span>
             <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
               <p className='text-sm text-[#909090]'>
                 90 uploads
@@ -43,10 +44,11 @@ const ListEventComponent = () => {
               View Event
             </p>
           </div>
-          <div className='bg-white px-5 pt-5 pb-3 rounded-lg'>
+          <div className='bg-white px-5 pt-5 pb-3 rounded-lg cursor-pointer border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7]'>
             <h2 className='text-md text-black font-semibold'>
               New Events
             </h2>
+            <span className='bg-[#CEFFCE] font-medium py-1 px-2 rounded text-[#0bb90b] text-xs'>Plan: Lite</span>
             <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
               <p className='text-sm text-[#909090]'>
                 90 uploads
