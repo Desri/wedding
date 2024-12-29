@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import {Link, Input, Button} from "@nextui-org/react";
 
-const LoginComponent = () => {
+const ForgotPasswordComponent = () => {
   return (
     <>
       <div className="sm:px-6 xl:px-28 py-28">
@@ -34,4 +34,4 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default ForgotPasswordComponent;
