@@ -55,7 +55,7 @@ const HeaderComponent = () => {
             >
               Log in
             </Link>
-            <Button className='rounded-lg h-8 bg-[#0BB90B] text-white border-green-500'>
+            <Button as={Link} href="/auth/register" className='rounded-lg h-8 bg-[#0BB90B] text-white border-green-500'>
               Get Started
             </Button>
           </div>
