@@ -14,9 +14,29 @@
   }
 }
 
+@font-face {
+  font-family: 'inter-regular';
+  src: url("../assets/fonts/Inter/static/Inter_18pt-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'inter-italic';
+  src: url("../assets/fonts/Inter/static/Inter_18pt-Italic.ttf");
+}
+
+@font-face {
+  font-family: 'inter-bold';
+  src: url("../assets/fonts/Inter/static/Inter_18pt-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'inter-medium';
+  src: url("../assets/fonts/Inter/static/Inter_18pt-Medium.ttf");
+}
+
 body {
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "inter-regular" !important;
 }
 
 .imgAlbum {
