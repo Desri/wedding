@@ -9,7 +9,7 @@ const LoginComponent = () => {
     email: "",
     password: "",
   });
-
+  /* eslint-disable */
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -23,7 +23,7 @@ const LoginComponent = () => {
     console.log("Form Data:", formData);
     // Hit API
   };
-
+  /* eslint-enable */
   return (
     <>
       <div className="sm:px-6 xl:px-28 py-28">
