@@ -1,8 +1,29 @@
 'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import {Link, Input, Button} from "@nextui-org/react";
 
 const LoginComponent = () => {
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+    // Hit API
+  };
+
   return (
     <>
       <div className="sm:px-6 xl:px-28 py-28">
@@ -19,13 +40,14 @@ const LoginComponent = () => {
         <p className="text-sm text-black mb-2">
           Enter your Fotoslide account email dan password <br /> to sign in
         </p>
-        <Input type="email" radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-        <Input type="password" radius="sm" placeholder="Password" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-        <Link href='/auth/forgot-password' className="text-xs text-black font-semibold mt-2.5">Forgot Password?</Link>
-        <Button className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
-          Continue
-        </Button>
-        
+        <form onSubmit={handleSubmit}>
+          <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
+          <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
+          <Link href='/auth/forgot-password' className="text-xs text-black font-semibold mt-2.5">Forgot Password?</Link>
+          <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
+            Continue
+          </Button>
+        </form>
         <p className="text-xs text-black font-semibold mt-12">
           Dont have an account? <Link href='/auth/register' className="underline !text-[#0BB90B] hover:text-gray-900 text-xs text-semibold">Sign up</Link>
         </p>

@@ -1,4 +1,5 @@
 'use client';
+import React, { useState } from 'react';
 import {
   Button,
   Table,
@@ -16,6 +17,23 @@ import {
 
 const CollaboratorsDashboardTabComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [formData, setFormData] = useState({
+    url: ""
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+    // Hit API
+  };
   return (
     <>
       <div className="text-black mb-2">
@@ -52,29 +70,33 @@ const CollaboratorsDashboardTabComponent = () => {
           {(onClose) => (
             <>
               <ModalBody className='p-7'>
-                <div className="text-black mb-7">
+                <div className="text-black">
                   <h3 className="text-sm font-semibold">
                     Invite
                   </h3>
                   <span className="text-xs text-[#909090]">
                     Share this link with whomever you like:
                   </span>
-                  <Input
-                    radius="sm"
-                    className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
-                    labelPlacement="outside"
-                    placeholder="fotoslide.com/nu38hy"
-                    endContent={
-                      <p className='text-[#0BB90B] text-sm'>
-                        Copy
-                      </p>
-                    }
-                    type="text"
-                  />
+                  <form onSubmit={handleSubmit}>
+                    <Input
+                      radius="sm"
+                      className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
+                      labelPlacement="outside"
+                      placeholder="fotoslide.com/nu38hy"
+                      endContent={
+                        <p className='text-[#0BB90B] text-sm'>
+                          Copy
+                        </p>
+                      }
+                      type="text"
+                      name="url"
+                      value={formData.url} onChange={handleChange}
+                    />
+                    <Button type='submit' variant="bordered" className='!text-[#000000] !w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#DDDDDD] mt-10' onPress={onClose}>
+                      Cancel
+                    </Button>
+                  </form>
                 </div>
-                <Button variant="bordered" className='!text-[#000000] max-w-[100px] rounded-lg !h-[37px] text-xs !font-semibold border-[#DDDDDD] mt-1.5' onPress={onClose}>
-                  Cancel
-                </Button>
               </ModalBody>
             </>
           )}

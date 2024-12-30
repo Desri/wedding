@@ -1,8 +1,28 @@
 'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import {Link, Input, Button} from "@nextui-org/react";
 
 const RegisterComponent = () => {
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+    // Hit API
+  };
   return (
     <>
       <div className="sm:px-6 xl:px-28 py-28">
@@ -19,12 +39,14 @@ const RegisterComponent = () => {
         <p className="text-sm text-black">
           Start preserving your memories today! <br /> Sign up quickly and securely
         </p>
-        <Input type="text" radius="sm" placeholder="Full Name" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-        <Input type="email" radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-        <Input type="password" radius="sm" placeholder="Password" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-        <Button className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
-          Continue With Email
-        </Button>
+        <form onSubmit={handleSubmit}>
+          <Input type="text" name="fullname" value={formData.fullname} onChange={handleChange} radius="sm" placeholder="Full Name" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+          <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+          <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+          <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
+            Continue With Email
+          </Button>
+        </form>
         <p className="text-xs text-black mt-1">
           By continuingl, you agree to the Terms of use and Privacy Policy.
         </p>
