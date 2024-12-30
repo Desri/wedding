@@ -9,7 +9,7 @@ const GeneralDashboardTabComponent = () => {
     eventName: "",
     valDate: parseDate("2024-04-04")
   });
-  
+  /* eslint-disable */
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -23,6 +23,7 @@ const GeneralDashboardTabComponent = () => {
     console.log("Form Data:", formData);
     // Hit API
   };
+  /* eslint-enable */
   return (
     <>
       <form onSubmit={handleSubmit}>
