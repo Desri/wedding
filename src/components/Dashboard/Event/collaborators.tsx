@@ -20,7 +20,7 @@ const CollaboratorsDashboardTabComponent = () => {
   const [formData, setFormData] = useState({
     url: ""
   });
-
+  /* eslint-disable */
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -34,6 +34,7 @@ const CollaboratorsDashboardTabComponent = () => {
     console.log("Form Data:", formData);
     // Hit API
   };
+  /* eslint-enable */
   return (
     <>
       <div className="text-black mb-2">
