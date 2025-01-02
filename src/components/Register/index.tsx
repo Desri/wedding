@@ -26,7 +26,7 @@ const RegisterComponent = () => {
   /* eslint-enable */
   return (
     <>
-      <div className="sm:px-6 xl:px-28 py-28">
+      <div className="px-4 sm:px-6 xl:px-28 py-28">
         <Image 
           src="/logo.png"
           alt="Logo"

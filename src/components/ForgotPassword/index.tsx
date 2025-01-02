@@ -23,10 +23,10 @@ const ForgotPasswordComponent = () => {
   /* eslint-enable */
   return (
     <>
-      <div className="sm:px-6 xl:px-16 py-14">
+      <div className="px-4 sm:px-6 xl:px-16 py-14">
         <Link
           href='/auth/login'
-          className="font-semibold text-sm text-[#464646] mb-16"
+          className="font-semibold text-sm text-[#464646] sm:mb-16"
         >
           Back
         </Link>

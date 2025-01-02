@@ -21,7 +21,7 @@ const SetupComponent = () => {
             priority
           />
         </div>
-        <div className="text-center sm:w-3/5 px-4 mx-auto text-black">
+        <div className="text-center sm:w-3/5 sm:px-4 mx-auto text-black">
           <h2 className="text-3xl mb-5 font-bold">
             Yes. Its Like Magic!
           </h2>

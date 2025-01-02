@@ -6,7 +6,7 @@ const HowItWorkComponent = () => {
   return (
     <>
       <div className="px-4 sm:px-16 py-16 sm:pt-20 sm:pb-0">
-        <div className="sm:w-3/5 px-4 mx-auto text-black">
+        <div className="sm:w-3/5 sm:px-4 mx-auto text-black">
           <div className='mb-8'>
             <Image 
               src="/hearth.png"
@@ -38,7 +38,7 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 1
                     </p>
-                    <h2 className='text-2xl font-bold mb-3 leading-6'>
+                    <h2 className='text-xl sm:text-2xl font-bold mb-3 leading-6'>
                       Create your event
                     </h2>
                     <p className='text-sm'>
@@ -67,7 +67,7 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 2
                     </p>
-                    <h2 className='text-2xl font-bold mb-3 leading-6'>
+                    <h2 className='text-xl sm:text-2xl font-bold mb-3 leading-6'>
                       Share it with your guests
                     </h2>
                     <p className='mb-2 text-sm'>
@@ -102,7 +102,7 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 3
                     </p>
-                    <h2 className='text-2xl font-bold mb-3 leading-6'>
+                    <h2 className='text-xl sm:text-2xl font-bold mb-3 leading-6'>
                       Display it all on a live slideshow
                     </h2>
                     <p className='text-sm'>
@@ -138,7 +138,7 @@ const HowItWorkComponent = () => {
                     <p className='text-[#0bb90b] mb-1 text-sm font-bold'>
                       Step 4
                     </p>
-                    <h2 className='text-2xl font-bold mb-3 leading-6'>
+                    <h2 className='text-xl sm:text-2xl font-bold mb-3 leading-6'>
                       Enjoy all captured moments
                     </h2>
                     <p className='mb-2 text-sm'>
