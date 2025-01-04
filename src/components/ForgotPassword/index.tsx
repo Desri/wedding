@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {Link, Input, Button} from "@nextui-org/react";
 
 const ForgotPasswordComponent = () => {
+  const [errorEmail, setErrorEmail] = useState(false);
   const [formData, setFormData] = useState({
     email: ""
   });
@@ -17,6 +18,12 @@ const ForgotPasswordComponent = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    if (formData.email === '') {
+      setErrorEmail(true);
+    }
+    if (formData.email !== '') {
+      setErrorEmail(false);
+    }
     console.log("Form Data:", formData);
     // Hit API
   };
@@ -37,7 +44,12 @@ const ForgotPasswordComponent = () => {
           Enter your email below, and we will send you a Link<br /> to reset your password. Lets get you back in action!
         </p>
         <form onSubmit={handleSubmit}>
-          <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+          <div>
+            <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+            {errorEmail && (
+              <span className='text-xs text-[#ff0202]'>Email is required!</span>
+            )}
+          </div>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-7'>
             Send
           </Button>

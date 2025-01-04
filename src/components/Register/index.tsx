@@ -4,6 +4,9 @@ import Image from 'next/image';
 import {Link, Input, Button} from "@nextui-org/react";
 
 const RegisterComponent = () => {
+  const [errorFullname, setErrorFullname] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -20,6 +23,15 @@ const RegisterComponent = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    if (formData.fullname === '') {
+      setErrorFullname(true);
+    }
+    if (formData.email === '') {
+      setErrorEmail(true);
+    }
+    if (formData.password === '') {
+      setErrorPassword(true);
+    }
     console.log("Form Data:", formData);
     // Hit API
   };
@@ -41,9 +53,24 @@ const RegisterComponent = () => {
           Start preserving your memories today! <br /> Sign up quickly and securely
         </p>
         <form onSubmit={handleSubmit}>
-          <Input type="text" name="fullname" value={formData.fullname} onChange={handleChange} radius="sm" placeholder="Full Name" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-          <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
-          <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+          <div>
+            <Input type="text" name="fullname" value={formData.fullname} onChange={handleChange} radius="sm" placeholder="Full Name" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+            {errorFullname && (
+              <span className='text-xs text-[#ff0202]'>Fullname is required!</span>
+            )}
+          </div>
+          <div>
+            <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+            {errorEmail && (
+              <span className='text-xs text-[#ff0202]'>Email is required!</span>
+            )}
+          </div>
+          <div>
+            <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+            {errorPassword && (
+              <span className='text-xs text-[#ff0202]'>Password is required!</span>
+            )}
+          </div>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
             Continue With Email
           </Button>
