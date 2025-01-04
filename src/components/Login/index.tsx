@@ -5,6 +5,8 @@ import {Link, Input, Button} from "@nextui-org/react";
 
 const LoginComponent = () => {
 
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,7 +22,18 @@ const LoginComponent = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    if (formData.email === '') {
+      setErrorEmail(true);
+    }
+    if (formData.password === '') {
+      setErrorPassword(true);
+    }
+    if (formData.email !== '' && formData.password !== '') {
+      setErrorEmail(false);
+      setErrorPassword(false);
+      console.log("Form Data:", formData);
+    }
+    
     // Hit API
   };
   /* eslint-enable */
@@ -41,8 +54,18 @@ const LoginComponent = () => {
           Enter your Fotoslide account email dan password <br /> to sign in
         </p>
         <form onSubmit={handleSubmit}>
-          <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
-          <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
+          <div>
+            <Input type="email" name="email" value={formData.email} onChange={handleChange} radius="sm" placeholder="Email" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
+            {errorEmail && (
+              <span className='text-xs text-[#ff0202]'>Email is required!</span>
+            )}
+          </div>
+          <div>
+            <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
+            {errorPassword && (
+              <span className='text-xs text-[#ff0202]'>Password is required!</span>
+            )}
+          </div>
           <Link href='/auth/forgot-password' className="text-xs text-black font-semibold mt-2.5">Forgot Password?</Link>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
             Continue
