@@ -1,12 +1,16 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import {Link, Input, Button} from "@nextui-org/react";
+import { registration } from '../../../services/client/auth';
 
 const RegisterComponent = () => {
+  const router = useRouter();
   const [errorFullname, setErrorFullname] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -22,6 +26,7 @@ const RegisterComponent = () => {
   };
 
   const handleSubmit = (e: any) => {
+    setLoading(true);
     e.preventDefault();
     if (formData.fullname === '') {
       setErrorFullname(true);
@@ -32,8 +37,19 @@ const RegisterComponent = () => {
     if (formData.password === '') {
       setErrorPassword(true);
     }
-    console.log("Form Data:", formData);
-    // Hit API
+    if(formData.fullname !== '' && formData.email !== '' && formData.password !== '') {
+      registration({ formData })
+      .then((res: any) => {
+        if(res.success) {
+          setLoading(false);
+          router.push('/auth/login');
+        }
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log('Error', err)
+      })
+    }
   };
   /* eslint-enable */
   return (
@@ -72,7 +88,11 @@ const RegisterComponent = () => {
             )}
           </div>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
-            Continue With Email
+            {loading ? (
+              <span>Loading</span>
+            ) : (
+              <span>Continue With Email</span>
+            )}
           </Button>
         </form>
         <p className="text-xs text-black mt-1">
