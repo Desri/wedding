@@ -4,22 +4,18 @@ import { AxiosError } from 'axios';
 // import { deleteCookie, hasCookie } from 'cookies-next';
 import { clientAPI } from '../../lib/axiosInterceptors/client';
 
-// export const login = ({ Email }: { Email: string }) => {
-//   return new Promise((resolve, reject) => {
-//     clientAPI
-//       .get(api.auth.login, {
-//         params: {
-//           Email,
-//         },
-//       })
-//       .then((res) => {
-//         resolve(res?.data?.Data);
-//       })
-//       .catch((err: AxiosError) => {
-//         reject(err.response?.data);
-//       });
-//   });
-// };
+export const login = ({ formData }: { formData: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .post(api.auth.login, formData)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
 
 export const registration = ({ formData }: { formData: any }) => {
   return new Promise((resolve, reject) => {
@@ -29,7 +25,7 @@ export const registration = ({ formData }: { formData: any }) => {
         resolve(res.data);
       })
       .catch((err: AxiosError) => {
-        reject(err.response?.data);
+        reject(err);
       });
   });
 };

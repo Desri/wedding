@@ -1,12 +1,15 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import {Link, Input, Button} from "@nextui-org/react";
+import { login } from '../../../services/client/auth';
 
 const LoginComponent = () => {
-
+  const router = useRouter();
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -21,6 +24,7 @@ const LoginComponent = () => {
   };
 
   const handleSubmit = (e: any) => {
+    setLoading(true);
     e.preventDefault();
     if (formData.email === '') {
       setErrorEmail(true);
@@ -31,10 +35,19 @@ const LoginComponent = () => {
     if (formData.email !== '' && formData.password !== '') {
       setErrorEmail(false);
       setErrorPassword(false);
-      console.log("Form Data:", formData);
+
+      login({ formData })
+      .then((res: any) => {
+        if(res.success) {
+          setLoading(false);
+          router.push('/dashboard');
+        }
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log('Error', err)
+      })
     }
-    
-    // Hit API
   };
   /* eslint-enable */
   return (
@@ -68,7 +81,11 @@ const LoginComponent = () => {
           </div>
           <Link href='/auth/forgot-password' className="text-xs text-black font-semibold mt-2.5">Forgot Password?</Link>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
-            Continue
+            {loading ? (
+              <span>Loading</span>
+            ) : (
+              <span>Continue</span>
+            )}
           </Button>
         </form>
         <p className="text-xs text-black font-semibold mt-12">
