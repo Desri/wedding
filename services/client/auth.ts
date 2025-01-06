@@ -1,8 +1,9 @@
 import { api } from '../../constant/api';
-// import { getTokenName } from '@/lib/helpers';
 import { AxiosError } from 'axios';
 // import { deleteCookie, hasCookie } from 'cookies-next';
 import { clientAPI } from '../../lib/axiosInterceptors/client';
+import { deleteCookie } from 'cookies-next';
+import { getTokenName } from '../../lib/helpers';
 
 export const login = ({ formData }: { formData: any }) => {
   return new Promise((resolve, reject) => {
@@ -54,6 +55,10 @@ export const getProfile = () => {
         reject(err);
       });
   });
+};
+
+export const userLogout = () => {
+  deleteCookie(getTokenName());
 };
 
 // export const verifyOTP = ({

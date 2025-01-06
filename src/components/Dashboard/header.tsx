@@ -1,17 +1,47 @@
 'use client';
+import React, { useContext, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { AppContext } from '../../../contexts/ContextProviders';
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-  // Link,
   User,
 } from "@nextui-org/react";
-import { getProfile } from '../../../services/client/auth';
+import { getProfile, userLogout } from '../../../services/client/auth';
 
-const HeaderDashboardComponent = () => {
-  getProfile()
+const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
+  const router = useRouter();
+  const { state, dispatch } = useContext(AppContext);
+  useEffect(() => {
+    if (isAuth) {
+      fetchProfile();
+    }
+  }, []);
+
+  const logout = () => {
+    userLogout();
+    router.push('/');
+  };
+
+  const fetchProfile = () => {
+    getProfile()
+      .then((res: any) => {
+        dispatch({
+          type: 'SET_PROFILE',
+          value: {
+            Email: res.result.email,
+            Fullname: res.result.fullname,
+          },
+        });
+      })
+      .catch((err: any) => {
+        console.log('Check Error', err)
+      });
+  };
+
   return (
     <>
       <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-5 py-2 bg-white border-b border-solid border-[#dddddd]">
@@ -141,7 +171,7 @@ const HeaderDashboardComponent = () => {
                     src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
                   }}
                   className="transition-transform text-black gap-4"
-                  name="My Account"
+                  name={state.profile?.Fullname || ''}
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="User Actions" variant="flat">
@@ -149,7 +179,7 @@ const HeaderDashboardComponent = () => {
                   <p className="text-black">Settings</p>
                 </DropdownItem>
                 <DropdownItem key="logout">
-                  <p className="text-black">Log Out</p>
+                  <p className="text-black" onClick={() => logout()}>Log Out</p>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>

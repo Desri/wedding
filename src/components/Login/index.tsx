@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {Link, Input, Button} from "@nextui-org/react";
-import { getProfile, login } from '../../../services/client/auth';
+import { login } from '../../../services/client/auth';
 import { setCookie } from 'cookies-next';
 
 const LoginComponent = () => {
@@ -41,8 +41,8 @@ const LoginComponent = () => {
       .then((res: any) => {
         if(res.success) {
           setLoading(false);
+          setCookie('isAuth', true);
           setCookie('_FotoSlideToken', res.token);
-          getProfile()
           router.push('/dashboard');
         }
       })
