@@ -39,6 +39,10 @@ body {
   font-family: "inter-regular" !important;
 }
 
+input {
+  color: #000000;
+}
+
 .imgAlbum {
   position: relative;
   width: 100%;

@@ -1,3 +1,3 @@
 export const getTokenName = () => {
-  return '_YTokenDP';
+  return '_FotoSlideToken';
 };

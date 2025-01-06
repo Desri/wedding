@@ -1,9 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import {Link, Input, Button} from "@nextui-org/react";
+import { forgotPassword } from '../../../services/client/auth';
 
 const ForgotPasswordComponent = () => {
   const [errorEmail, setErrorEmail] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: ""
   });
@@ -23,6 +25,17 @@ const ForgotPasswordComponent = () => {
     }
     if (formData.email !== '') {
       setErrorEmail(false);
+      setLoading(true);
+      forgotPassword({ formData })
+      .then((res: any) => {
+        if(res.success) {
+          setLoading(false);
+        }
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log('Error', err)
+      })
     }
     console.log("Form Data:", formData);
     // Hit API
@@ -51,7 +64,11 @@ const ForgotPasswordComponent = () => {
             )}
           </div>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-7'>
-            Send
+            {loading ? (
+              <span>Loading...</span>
+            ) : (
+              <span>Send</span>
+            )}
           </Button>
         </form>
         

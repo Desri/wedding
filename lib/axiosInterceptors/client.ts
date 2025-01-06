@@ -7,9 +7,6 @@ export const clientAPI = axios.create({
 });
 
 clientAPI.interceptors.request.use((config) => {
-  config.headers.DeviceType = 'web';
-  config.headers.WebVersion = 2;
-
   const token = getCookie(getTokenName());
   const tokenAnonymous = getCookie('AnonymousToken');
   if (token) {

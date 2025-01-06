@@ -26,7 +26,6 @@ const RegisterComponent = () => {
   };
 
   const handleSubmit = (e: any) => {
-    setLoading(true);
     e.preventDefault();
     if (formData.fullname === '') {
       setErrorFullname(true);
@@ -38,6 +37,7 @@ const RegisterComponent = () => {
       setErrorPassword(true);
     }
     if(formData.fullname !== '' && formData.email !== '' && formData.password !== '') {
+      setLoading(true);
       registration({ formData })
       .then((res: any) => {
         if(res.success) {
@@ -89,7 +89,7 @@ const RegisterComponent = () => {
           </div>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
             {loading ? (
-              <span>Loading</span>
+              <span>Loading...</span>
             ) : (
               <span>Continue With Email</span>
             )}

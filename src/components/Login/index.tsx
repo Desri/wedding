@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {Link, Input, Button} from "@nextui-org/react";
-import { login } from '../../../services/client/auth';
+import { getProfile, login } from '../../../services/client/auth';
+import { setCookie } from 'cookies-next';
 
 const LoginComponent = () => {
   const router = useRouter();
@@ -24,7 +25,6 @@ const LoginComponent = () => {
   };
 
   const handleSubmit = (e: any) => {
-    setLoading(true);
     e.preventDefault();
     if (formData.email === '') {
       setErrorEmail(true);
@@ -33,6 +33,7 @@ const LoginComponent = () => {
       setErrorPassword(true);
     }
     if (formData.email !== '' && formData.password !== '') {
+      setLoading(true);
       setErrorEmail(false);
       setErrorPassword(false);
 
@@ -40,6 +41,8 @@ const LoginComponent = () => {
       .then((res: any) => {
         if(res.success) {
           setLoading(false);
+          setCookie('_FotoSlideToken', res.token);
+          getProfile()
           router.push('/dashboard');
         }
       })
@@ -82,7 +85,7 @@ const LoginComponent = () => {
           <Link href='/auth/forgot-password' className="text-xs text-black font-semibold mt-2.5">Forgot Password?</Link>
           <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
             {loading ? (
-              <span>Loading</span>
+              <span>Loading...</span>
             ) : (
               <span>Continue</span>
             )}

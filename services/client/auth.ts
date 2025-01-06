@@ -30,6 +30,32 @@ export const registration = ({ formData }: { formData: any }) => {
   });
 };
 
+export const forgotPassword = ({ formData }: { formData: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .post(api.auth.forgotPassword, formData)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
+
+export const getProfile = () => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .get(api.auth.profile)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
+
 // export const verifyOTP = ({
 //   Code,
 //   Token,
