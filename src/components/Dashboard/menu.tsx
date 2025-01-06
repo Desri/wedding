@@ -16,7 +16,7 @@ const MenuDashboardComponent = () => {
           </li>
           <li>
             <Link
-              href='/album'
+              href='/dashboard/album'
               className="block text-[#272727] hover:bg-[#eeeeef] rounded-md py-2 px-2.5 text-sm font-semibold"
             >
               My Album
@@ -24,7 +24,7 @@ const MenuDashboardComponent = () => {
           </li>
           <li>
             <Link
-              href='/event'
+              href='/dashboard/event'
               className="block text-[#272727] hover:bg-[#eeeeef] rounded-md py-2 px-2.5 text-sm font-semibold"
             >
               Event Settings

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import HeaderDashboardComponent from "@/components/Dashboard/header";
 import MenuDashboardComponent from "@/components/Dashboard/menu";
 import ShareAlbumDashboardComponent from '@/components/Dashboard/sharealbum';
 import SlideShowDashboardComponent from '@/components/Dashboard/slideshow';
@@ -7,7 +6,6 @@ import SlideShowDashboardComponent from '@/components/Dashboard/slideshow';
 export default function Dashboard() {
   return (
     <>
-      <HeaderDashboardComponent />
       <div className="flex">
         <MenuDashboardComponent />
         <div className="sm:w-10/12 bg-[#f8fafd] h-screen">

@@ -8,8 +8,10 @@ import {
   // Link,
   User,
 } from "@nextui-org/react";
+import { getProfile } from '../../../services/client/auth';
 
 const HeaderDashboardComponent = () => {
+  getProfile()
   return (
     <>
       <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-5 py-2 bg-white border-b border-solid border-[#dddddd]">
