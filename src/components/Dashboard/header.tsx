@@ -15,6 +15,7 @@ import { getProfile, userLogout } from '../../../services/client/auth';
 const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
   const router = useRouter();
   const { state, dispatch } = useContext(AppContext);
+  /* eslint-disable */
   useEffect(() => {
     if (isAuth) {
       fetchProfile();
@@ -41,7 +42,7 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
         console.log('Check Error', err)
       });
   };
-
+  /* eslint-enable */
   return (
     <>
       <nav className="sticky top-0 z-50 flex items-center justify-between sm:px-5 py-2 bg-white border-b border-solid border-[#dddddd]">
