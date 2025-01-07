@@ -14,3 +14,16 @@ export const createEvent = ({ payload }: { payload: any }) => {
       });
   });
 };
+
+export const getEvent = () => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .get(api.event.listEvent)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
