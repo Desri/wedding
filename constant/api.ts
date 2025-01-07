@@ -8,5 +8,8 @@ export const api = {
     // resendOtp: '/patient/otp/auth/resend',
     // connect: '/patient/connect',
     // referralCode: '/referral/check',
+  },
+  event: {
+    createEvent: '/api/create-event',
   }
 };

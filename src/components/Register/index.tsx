@@ -42,7 +42,8 @@ const RegisterComponent = () => {
       .then((res: any) => {
         if(res.success) {
           setLoading(false);
-          router.push('/auth/login');
+          console.log('SSS', res)
+          // router.push('/auth/login');
         }
       })
       .catch((err: any) => {
