@@ -3,7 +3,7 @@ import { deleteCookie, getCookie } from 'cookies-next';
 import { getTokenName } from '../helpers';
 
 export const clientAPI = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://api-photoslide.vercel.app",
 });
 
 clientAPI.interceptors.request.use((config) => {
