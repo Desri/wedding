@@ -1,6 +1,7 @@
 'use client';
 import React, { useContext, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AppContext } from '../../../contexts/ContextProviders';
 import {
@@ -57,6 +58,7 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                 priority
               />
             </div>
+            
             <div className='ml-3'>
               <div className="flex items-center space-x-4">
                 <Dropdown placement="bottom-start">
@@ -73,60 +75,27 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                     />
                   </DropdownTrigger>
                   <DropdownMenu aria-label="User Actions" variant="flat">
-                    <DropdownItem key="settings">
-                      <div className="flex items-center gap-4">
-                        <Image 
-                          src="/small-thumb.png"
-                          alt="Thumb"
-                          className="!relative !w-[32px] !rounded-md"
-                          fill
-                          priority
-                        />
-                        <div>
-                          <div className='text-black'>
-                            <h2 className='text-xs'>
-                              Birthday Party
-                            </h2>
+                    {state.showListEvent?.map((item) => (
+                      // @ts-ignore
+                      <DropdownItem key={item._id} as={Link} href={item._id}>
+                        <div className="flex items-center gap-4">
+                          <Image 
+                            src="/small-thumb.png"
+                            alt="Thumb"
+                            className="!relative !w-[32px] !rounded-md"
+                            fill
+                            priority
+                          />
+                          <div>
+                            <div className='text-black'>
+                              <h2 className='text-xs'>
+                                {item.title}
+                              </h2>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </DropdownItem>
-                    <DropdownItem key="logout">
-                      <div className="flex items-center gap-4">
-                        <Image 
-                          src="/thumb.png"
-                          alt="Thumb"
-                          className="!relative !w-[32px] !rounded-md"
-                          fill
-                          priority
-                        />
-                        <div>
-                          <div className='text-black'>
-                            <h2 className='text-xs'>
-                              Dara & Arifin Weddings
-                            </h2>
-                          </div>
-                        </div>
-                      </div>
-                    </DropdownItem>
-                    <DropdownItem key="store">
-                      <div className="flex items-center gap-4">
-                        <Image 
-                          src="/small-thumb.png"
-                          alt="Thumb"
-                          className="!relative !w-[32px] !rounded-md"
-                          fill
-                          priority
-                        />
-                        <div>
-                          <div className='text-black'>
-                            <h2 className='text-xs'>
-                              Store Opening
-                            </h2>
-                          </div>
-                        </div>
-                      </div>
-                    </DropdownItem>
+                      </DropdownItem>
+                    ))}
                   </DropdownMenu>
                 </Dropdown>
               </div>

@@ -16,23 +16,24 @@ const ListEventComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [value, setValue] = useState(parseDate("2024-04-04"));
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState('');
-  const [eventName, setEventName] = useState('');
+  const [title, setTitle] = useState('');
+  const [eventType, setEventType] = useState('');
+  
 
   /* eslint-disable */
   const handleClick = (newValue: any) => {
-    setType(newValue);
+    setEventType(newValue);
   };
 
   const handleChange = (e: any) => {
     const { value } = e.target;
-    setEventName(value)
+    setTitle(value)
   };
 
   const handleSubmit = () => {
     const payload = {
-      type,
-      eventName,
+      title,
+      eventType,
       value
     }
     console.log("Form Data:", payload);
@@ -121,8 +122,8 @@ const ListEventComponent = () => {
                       <Input
                         type="text"
                         radius="sm"
-                        name="eventName"
-                        value={eventName}
+                        name="title"
+                        value={title}
                         onChange={handleChange}
                         placeholder="i.e - Dara & Arifin Weddings"
                         className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"

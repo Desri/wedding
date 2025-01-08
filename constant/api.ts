@@ -10,7 +10,7 @@ export const api = {
     // referralCode: '/referral/check',
   },
   event: {
-    createEvent: '/api/create-event',
+    createEvent: '/api/event/create-event',
     listEvent: '/api/event/list'
   }
 };

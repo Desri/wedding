@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {parseDate} from "@internationalized/date";
 import {
   Button,
@@ -11,6 +11,7 @@ import {
   useDisclosure
 } from "@nextui-org/react";
 import { createEvent, getEvent } from '../../../../services/client/event';
+import { AppContext } from '../../../../contexts/ContextProviders';
 
 type Event = {
   _id: string;
@@ -23,9 +24,10 @@ const EventDashboardComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [value, setValue] = useState(parseDate("2024-04-04"));
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState('');
-  const [eventName, setEventName] = useState('');
   const [listEvent, setListEvent] = useState<Event[]>([]);
+  const [title, setTitle] = useState('');
+  const [eventType, setEventType] = useState('');
+  const { state, dispatch } = useContext(AppContext);
 
   /* eslint-disable */
   useEffect(() => {
@@ -35,24 +37,28 @@ const EventDashboardComponent = () => {
     getEvent()
       .then((res: any) => {
         setListEvent(res.data)
+        dispatch({
+          type: 'SET_LIST_EVENT',
+          value: res.data
+        });
       })
       .catch((err: any) => {
         console.log('Check Error', err)
       });
   };
   const handleClick = (newValue: any) => {
-    setType(newValue);
+    setEventType(newValue);
   };
 
   const handleChange = (e: any) => {
     const { value } = e.target;
-    setEventName(value)
+    setTitle(value)
   };
 
   const handleSubmit = () => {
     const payload = {
-      type,
-      eventName,
+      eventType,
+      title,
       value
     }
     console.log("Form Data:", payload);
@@ -145,8 +151,8 @@ const EventDashboardComponent = () => {
                       <Input
                         type="text"
                         radius="sm"
-                        name="eventName"
-                        value={eventName}
+                        name="title"
+                        value={title}
                         onChange={handleChange}
                         placeholder="i.e - Dara & Arifin Weddings"
                         className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
@@ -178,7 +184,7 @@ const EventDashboardComponent = () => {
 
                       <div className='flex items-center gap-5 mt-1.5'>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('1')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
@@ -189,7 +195,7 @@ const EventDashboardComponent = () => {
                           </h2>
                         </div>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('2')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
@@ -200,7 +206,7 @@ const EventDashboardComponent = () => {
                           </h2>
                         </div>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('3')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
@@ -211,7 +217,7 @@ const EventDashboardComponent = () => {
                           </h2>
                         </div>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '4' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '4' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('4')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
@@ -222,7 +228,7 @@ const EventDashboardComponent = () => {
                           </h2>
                         </div>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '5' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '5' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('5')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
