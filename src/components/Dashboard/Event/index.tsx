@@ -27,7 +27,7 @@ const EventDashboardComponent = () => {
   const [listEvent, setListEvent] = useState<Event[]>([]);
   const [title, setTitle] = useState('');
   const [eventType, setEventType] = useState('');
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   /* eslint-disable */
   useEffect(() => {

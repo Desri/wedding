@@ -76,7 +76,6 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                   </DropdownTrigger>
                   <DropdownMenu aria-label="User Actions" variant="flat">
                     {state.showListEvent?.map((item) => (
-                      // @ts-ignore
                       <DropdownItem key={item._id} as={Link} href={item._id}>
                         <div className="flex items-center gap-4">
                           <Image 
