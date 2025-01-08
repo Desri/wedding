@@ -155,7 +155,7 @@ const ListEventComponent = () => {
 
                       <div className='flex items-center gap-5 mt-1.5'>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('1')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
@@ -166,7 +166,7 @@ const ListEventComponent = () => {
                           </h2>
                         </div>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('2')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
@@ -177,7 +177,7 @@ const ListEventComponent = () => {
                           </h2>
                         </div>
                         <div
-                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${type === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+                          className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg cursor-pointer ${eventType === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
                           onClick={() => handleClick('3')}
                         >
                           <h2 className='text-black text-sm font-semibold flex items-center gap-2'>
