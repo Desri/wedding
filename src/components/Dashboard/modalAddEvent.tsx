@@ -13,8 +13,8 @@ import {
 import { createEvent } from '../../../services/client/event';
 import { AppContext } from '../../../contexts/ContextProviders';
 
-const ModalAddEventComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+const ModalAddEventComponent =  () => {
+  const {onOpenChange} = useDisclosure();
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(parseDate("2024-04-04"));
   const [title, setTitle] = useState('');
