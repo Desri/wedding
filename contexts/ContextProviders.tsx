@@ -17,18 +17,21 @@ interface AppState {
   profile: UserProfile | null;
   showListEvent: ListEvent[];
   showDetailEvent: any;
+  showPopupEvent: boolean;
 }
 
 const initialState = {
   profile: null,
   showListEvent: [],
-  showDetailEvent: null
+  showDetailEvent: null,
+  showPopupEvent: false
 };
 
 type AppAction =
   | { type: 'SET_PROFILE'; value: UserProfile }
   | { type: 'SET_LIST_EVENT'; value: [] }
-  | { type: 'SET_DETAIL_EVENT'; value: any };
+  | { type: 'SET_DETAIL_EVENT'; value: any }
+  | { type: 'SET_POPUP_EVENT'; value: boolean };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -38,6 +41,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, showListEvent: action.value };
     case 'SET_DETAIL_EVENT':
       return { ...state, showDetailEvent: action.value };
+    case 'SET_POPUP_EVENT':
+      return { ...state, showPopupEvent: action.value };
     default:
       return state;
   }
