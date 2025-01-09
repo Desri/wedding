@@ -83,7 +83,11 @@ const LoginComponent = () => {
             )}
           </div>
           <Link href='/auth/forgot-password' className="text-xs text-black font-semibold mt-2.5">Forgot Password?</Link>
-          <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
+          <Button
+            type='submit'
+            className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'
+            isDisabled={loading}
+          >
             {loading ? (
               <span>Loading...</span>
             ) : (

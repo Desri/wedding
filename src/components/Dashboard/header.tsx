@@ -12,6 +12,7 @@ import {
   User,
 } from "@nextui-org/react";
 import { getProfile, userLogout } from '../../../services/client/auth';
+import { getEvent } from '../../../services/client/event';
 
 const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
   useEffect(() => {
     if (isAuth) {
       fetchProfile();
+      fetchEvent();
     }
   }, []);
 
@@ -43,6 +45,18 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
         console.log('Check Error', err)
       });
   };
+  const fetchEvent = () => {
+    getEvent()
+      .then((res: any) => {
+        dispatch({
+          type: 'SET_LIST_EVENT',
+          value: res.data
+        });
+      })
+      .catch((err: any) => {
+        console.log('Check Error', err)
+      });
+  };
   /* eslint-enable */
   return (
     <>
@@ -58,47 +72,48 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                 priority
               />
             </div>
-            
-            <div className='ml-3'>
-              <div className="flex items-center space-x-4">
-                <Dropdown placement="bottom-start">
-                  <DropdownTrigger>
-                    <User
-                      as="button"
-                      avatarProps={{
-                        isBordered: false,
-                        className: "rounded-md",
-                        src:"/thumb.png"
-                      }}
-                      className="text-black gap-4"
-                      name="Dara & Arifin Weddings"
-                    />
-                  </DropdownTrigger>
-                  <DropdownMenu aria-label="User Actions" variant="flat">
-                    {state.showListEvent?.map((item) => (
-                      <DropdownItem key={item._id} as={Link} href={item._id}>
-                        <div className="flex items-center gap-4">
-                          <Image 
-                            src="/small-thumb.png"
-                            alt="Thumb"
-                            className="!relative !w-[32px] !rounded-md"
-                            fill
-                            priority
-                          />
-                          <div>
-                            <div className='text-black'>
-                              <h2 className='text-xs'>
-                                {item.title}
-                              </h2>
+            {state.showListEvent.length > 0 && (
+              <div className='ml-3'>
+                <div className="flex items-center space-x-4">
+                  <Dropdown placement="bottom-start">
+                    <DropdownTrigger>
+                      <User
+                        as="button"
+                        avatarProps={{
+                          isBordered: false,
+                          className: "rounded-md",
+                          src:"/thumb.png"
+                        }}
+                        className="text-black gap-4"
+                        name="Dara & Arifin Weddings"
+                      />
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="User Actions" variant="flat">
+                      {state.showListEvent?.map((item) => (
+                        <DropdownItem key={item._id} as={Link} href={item._id}>
+                          <div className="flex items-center gap-4">
+                            <Image 
+                              src="/small-thumb.png"
+                              alt="Thumb"
+                              className="!relative !w-[32px] !rounded-md"
+                              fill
+                              priority
+                            />
+                            <div>
+                              <div className='text-black'>
+                                <h2 className='text-xs'>
+                                  {item.title}
+                                </h2>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </DropdownItem>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
+                        </DropdownItem>
+                      ))}
+                    </DropdownMenu>
+                  </Dropdown>
+                </div>
               </div>
-            </div>
+            )}
             {/* <div>
               <div className="hidden md:flex space-x-8">
                 <Link

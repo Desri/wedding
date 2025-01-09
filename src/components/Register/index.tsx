@@ -87,7 +87,11 @@ const RegisterComponent = () => {
               <span className='text-xs text-[#ff0202]'>Password is required!</span>
             )}
           </div>
-          <Button type='submit' className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'>
+          <Button
+            type='submit'
+            className='!text-black w-full rounded-lg !h-[39px] text-sm !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-5'
+            isDisabled={loading}
+          >
             {loading ? (
               <span>Loading...</span>
             ) : (

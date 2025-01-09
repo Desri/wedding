@@ -1,5 +1,6 @@
 'use client';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from '@nextui-org/react';
 import {parseDate} from "@internationalized/date";
 import {
   Button,
@@ -10,42 +11,18 @@ import {
   DatePicker,
   useDisclosure
 } from "@nextui-org/react";
-import { createEvent, getEvent } from '../../../../services/client/event';
+import { createEvent } from '../../../../services/client/event';
 import { AppContext } from '../../../../contexts/ContextProviders';
 
-type Event = {
-  _id: string;
-  title: string;
-  date: string;
-  eventType: string;
-};
-
 const EventDashboardComponent = () => {
+  const { state } = useContext(AppContext);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [value, setValue] = useState(parseDate("2024-04-04"));
   const [loading, setLoading] = useState(false);
-  const [listEvent, setListEvent] = useState<Event[]>([]);
   const [title, setTitle] = useState('');
   const [eventType, setEventType] = useState('');
-  const { dispatch } = useContext(AppContext);
 
   /* eslint-disable */
-  useEffect(() => {
-    fetchEvent();
-  }, []);
-  const fetchEvent = () => {
-    getEvent()
-      .then((res: any) => {
-        setListEvent(res.data)
-        dispatch({
-          type: 'SET_LIST_EVENT',
-          value: res.data
-        });
-      })
-      .catch((err: any) => {
-        console.log('Check Error', err)
-      });
-  };
   const handleClick = (newValue: any) => {
     setEventType(newValue);
   };
@@ -93,45 +70,34 @@ const EventDashboardComponent = () => {
         <Button className='!text-black !mt-4 rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5' onPress={onOpen}>
           Create New Event
         </Button>
-        <div className='grid grid-cols-4 gap-5 mt-8'>
-          {listEvent.map((event) => (
-            <div key={event._id} className='bg-white px-5 pt-5 pb-3 rounded-lg cursor-pointer border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7]'>
-              <h2 className='text-md text-black font-semibold'>
-                {event.title}
-              </h2>
-              <span className='bg-[#dbe5ff] font-medium py-1 px-2 rounded text-[#0145bb] text-xs'>Plan: Pro</span>
-              <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
-                <p className='text-sm text-[#909090]'>
-                  90 uploads
-                </p>
-                <p className='text-sm text-[#909090]'>
-                  Created on {event.date}
-                </p>
+        {state.showListEvent.length > 0 && (
+          <div className='grid grid-cols-4 gap-5 mt-8'>
+            {state.showListEvent.map((event) => (
+              <div key={event._id} className='bg-white px-5 pt-5 pb-3 rounded-lg cursor-pointer border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7]'>
+                <Link
+                  href={`/dashboard/event/${event._id}`}
+                  className="block"
+                >
+                  <h2 className='text-md text-black font-semibold'>
+                    {event.title}
+                  </h2>
+                  <span className='bg-[#dbe5ff] font-medium py-1 px-2 rounded text-[#0145bb] text-xs'>Plan: Pro</span>
+                  <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
+                    <p className='text-sm text-[#909090]'>
+                      90 uploads
+                    </p>
+                    <p className='text-sm text-[#909090]'>
+                      Created on {event.date}
+                    </p>
+                  </div>
+                  <p className='text-center text-xs text-[#909090]'>
+                    View Event
+                  </p>
+                </Link>
               </div>
-              <p className='text-center text-xs text-[#909090]'>
-                View Event
-              </p>
-            </div>
-          ))}
-          {/* <div className='bg-white px-5 pt-5 pb-3 rounded-lg cursor-pointer border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7]'>
-            <h2 className='text-md text-black font-semibold'>
-              New Events
-            </h2>
-            <span className='bg-[#CEFFCE] font-medium py-1 px-2 rounded text-[#0bb90b] text-xs'>Plan: Lite</span>
-            <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
-              <p className='text-sm text-[#909090]'>
-                90 uploads
-              </p>
-              <p className='text-sm text-[#909090]'>
-                Created on Sept 21, 2024
-              </p>
-            </div>
-            <p className='text-center text-xs text-[#909090]'>
-              View Event
-            </p>
-          </div> */}
-
-        </div>
+            ))}
+          </div>
+        )}
         <Modal isOpen={isOpen} size="2xl" onOpenChange={onOpenChange}>
           <ModalContent>
             {(onClose) => (
