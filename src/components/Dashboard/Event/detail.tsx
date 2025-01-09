@@ -11,7 +11,7 @@ import { getDetailEvent } from '../../../../services/client/event';
 import { AppContext } from '../../../../contexts/ContextProviders';
 
 const DetailEventDashboardComponent = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const pathname = usePathname();
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   /* eslint-disable */
