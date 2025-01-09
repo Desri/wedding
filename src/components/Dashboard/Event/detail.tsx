@@ -1,22 +1,30 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 import GeneralDashboardTabComponent from './general';
 import CollaboratorsDashboardTabComponent from './collaborators';
 import ModerationDashboardTabComponent from "./moderation";
 import SlideshowDashboardTabComponent from "./slideshow";
 import AppearanceDashboardTabComponent from "./appearance";
-import { getEvent } from '../../../../services/client/event';
+import { getDetailEvent } from '../../../../services/client/event';
+import { AppContext } from '../../../../contexts/ContextProviders';
 
 const DetailEventDashboardComponent = () => {
+  const { state, dispatch } = useContext(AppContext);
+  const pathname = usePathname();
+  const lastSegment = pathname.split('/').filter(Boolean).pop();
   /* eslint-disable */
   useEffect(() => {
-    fetchEvent();
+    fetchDetailEvent();
   }, []);
-  const fetchEvent = () => {
-    getEvent()
+  const fetchDetailEvent = () => {
+    getDetailEvent({lastSegment})
       .then((res: any) => {
-        console.log('Check Res', res)
+        dispatch({
+          type: 'SET_DETAIL_EVENT',
+          value: res.data
+        });
       })
       .catch((err: any) => {
         console.log('Check Error', err)

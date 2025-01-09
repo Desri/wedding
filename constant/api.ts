@@ -11,6 +11,7 @@ export const api = {
   },
   event: {
     createEvent: '/api/event/create-event',
-    listEvent: '/api/event/list'
+    listEvent: '/api/event/list',
+    detailEvent: '/api/event'
   }
 };

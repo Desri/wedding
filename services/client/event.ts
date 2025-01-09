@@ -27,3 +27,16 @@ export const getEvent = () => {
       });
   });
 };
+
+export const getDetailEvent = (slug: any) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .get(`${api.event.detailEvent}/${slug.lastSegment}`)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};

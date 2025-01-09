@@ -16,16 +16,19 @@ interface ListEvent {
 interface AppState {
   profile: UserProfile | null;
   showListEvent: ListEvent[];
+  showDetailEvent: any;
 }
 
 const initialState = {
   profile: null,
-  showListEvent: []
+  showListEvent: [],
+  showDetailEvent: null
 };
 
 type AppAction =
   | { type: 'SET_PROFILE'; value: UserProfile }
-  | { type: 'SET_LIST_EVENT'; value: [] };
+  | { type: 'SET_LIST_EVENT'; value: [] }
+  | { type: 'SET_DETAIL_EVENT'; value: any };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -33,6 +36,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, profile: action.value };
     case 'SET_LIST_EVENT':
       return { ...state, showListEvent: action.value };
+    case 'SET_DETAIL_EVENT':
+      return { ...state, showDetailEvent: action.value };
     default:
       return state;
   }

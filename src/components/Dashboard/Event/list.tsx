@@ -18,7 +18,6 @@ const ListEventComponent = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [eventType, setEventType] = useState('');
-  
 
   /* eslint-disable */
   const handleClick = (newValue: any) => {

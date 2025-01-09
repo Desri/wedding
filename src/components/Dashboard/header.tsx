@@ -90,7 +90,7 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                     </DropdownTrigger>
                     <DropdownMenu aria-label="User Actions" variant="flat">
                       {state.showListEvent?.map((item) => (
-                        <DropdownItem key={item._id} as={Link} href={item._id}>
+                        <DropdownItem key={item._id} as={Link} href={`/dashboard/event/${item._id}`}>
                           <div className="flex items-center gap-4">
                             <Image 
                               src="/small-thumb.png"
