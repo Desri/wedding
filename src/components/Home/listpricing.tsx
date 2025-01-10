@@ -1,8 +1,24 @@
 'use client';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import { Button } from '@nextui-org/react';
+import { AppContext } from '../../../contexts/ContextProviders';
 
 const ListPricingComponent = () => {
+  const { dispatch } = useContext(AppContext);
+  const showPayment = (e: string) => {
+    dispatch({
+      type: 'SET_POPUP_PAYMENT',
+      value: {
+        Status: true,
+        Plan: e
+      },
+    });
+    dispatch({
+      type: 'SET_POPUP_EVENT',
+      value: false
+    });
+  };
   return (
     <>
       <div className="grid sm:grid-cols-3 gap-5 mt-8">
@@ -68,7 +84,7 @@ const ListPricingComponent = () => {
               </li>
             </ul>
           </div>
-          <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
+          <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]' onClick={() => showPayment('lite')}>
             Create Event
           </Button>
           <Image 
@@ -143,7 +159,7 @@ const ListPricingComponent = () => {
               </li>
             </ul>
           </div>
-          <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
+          <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]' onClick={() => showPayment('plus')}>
             Start with Plus
           </Button>
           <Image 
@@ -232,7 +248,7 @@ const ListPricingComponent = () => {
                 </li>
               </ul>
             </div>
-            <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]'>
+            <Button variant="bordered" className='rounded-lg mx-2 w-36 h-10 bg-[#0bb90b] text-white border-[#0BB90B]' onClick={() => showPayment('pro')}>
               Start with Pro
             </Button>
             <Image 

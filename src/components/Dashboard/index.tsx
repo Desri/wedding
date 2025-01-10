@@ -9,15 +9,16 @@ import {
 } from "@nextui-org/react";
 import { AppContext } from '../../../contexts/ContextProviders';
 import ModalAddEventComponent from './modalAddEvent';
+import ModalPaymentComponent from './modalpayment';
 
 const DashboardComponent = () => {
   const { state, dispatch } = useContext(AppContext);
   const showPopup = () => {
-      dispatch({
-        type: 'SET_POPUP_EVENT',
-        value: true
-      });
-    };
+    dispatch({
+      type: 'SET_POPUP_EVENT',
+      value: true
+    });
+  };
   return (
     <>
       {state.profile?.Plan === '' || state.showListEvent.length === 0 ? (
@@ -80,6 +81,7 @@ const DashboardComponent = () => {
         </div>
       )}
       <ModalAddEventComponent />
+      <ModalPaymentComponent />
     </>
   );
 };

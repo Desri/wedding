@@ -14,25 +14,33 @@ interface ListEvent {
   _id: string;
 }
 
+interface PopupPlan {
+  Status: boolean;
+  Plan: string;
+}
+
 interface AppState {
   profile: UserProfile | null;
   showListEvent: ListEvent[];
   showDetailEvent: any;
   showPopupEvent: boolean;
+  showPopupPayment: PopupPlan | null;
 }
 
 const initialState = {
   profile: null,
   showListEvent: [],
   showDetailEvent: null,
-  showPopupEvent: false
+  showPopupEvent: false,
+  showPopupPayment: null
 };
 
 type AppAction =
   | { type: 'SET_PROFILE'; value: UserProfile }
   | { type: 'SET_LIST_EVENT'; value: [] }
   | { type: 'SET_DETAIL_EVENT'; value: any }
-  | { type: 'SET_POPUP_EVENT'; value: boolean };
+  | { type: 'SET_POPUP_EVENT'; value: boolean }
+  | { type: 'SET_POPUP_PAYMENT'; value: PopupPlan };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -44,6 +52,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, showDetailEvent: action.value };
     case 'SET_POPUP_EVENT':
       return { ...state, showPopupEvent: action.value };
+    case 'SET_POPUP_PAYMENT':
+      return { ...state, showPopupPayment: action.value };
     default:
       return state;
   }
