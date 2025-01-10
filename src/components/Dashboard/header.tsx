@@ -47,6 +47,7 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
           value: {
             Email: res.result.email,
             Fullname: res.result.fullname,
+            Plan: res.result.plan
           },
         });
       })

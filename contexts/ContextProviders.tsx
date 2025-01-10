@@ -4,6 +4,7 @@ import React, { createContext, useReducer } from 'react';
 interface UserProfile {
   Email: string;
   Fullname: string;
+  Plan: string;
 }
 
 interface ListEvent {
