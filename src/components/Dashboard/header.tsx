@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AppContext } from '../../../contexts/ContextProviders';
 import {
-  Button,
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
@@ -82,11 +81,6 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                 priority
               />
             </div>
-            {state.showListEvent.length === 0 && (
-              <Button className='!text-black !mt-0 rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5' onClick={() => showPopup()}>
-                Create New Event
-              </Button>
-            )}
             {state.showListEvent.length > 0 && (
               <div className='ml-3'>
                 <div className="flex items-center space-x-4">
