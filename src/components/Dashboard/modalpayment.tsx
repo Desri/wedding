@@ -31,20 +31,18 @@ const ModalPaymentComponent =  () => {
     <>
       <Modal hideCloseButton={true} isOpen={state.showPopupPayment?.Status} size="md" onOpenChange={onOpenChange}>
         <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalBody className='p-7'>
-                <div className='text-center my-3'>
-                  <p className='text-[#909090] mb-5'>
-                    Anda memilih plan: <span className='text-bold capitalize'>{state.showPopupPayment?.Plan}</span>
-                  </p>
-                  <Button variant="bordered" className='rounded-lg mx-auto w-24 h-10 bg-[#0bb90b] text-white border-[#0BB90B]' onClick={closeModal}>
-                    Ok
-                  </Button>
-                </div>
-              </ModalBody>
-            </>
-          )}
+          <>
+            <ModalBody className='p-7'>
+              <div className='text-center my-3'>
+                <p className='text-[#909090] mb-5'>
+                  Anda memilih plan: <span className='text-bold capitalize'>{state.showPopupPayment?.Plan}</span>
+                </p>
+                <Button variant="bordered" className='rounded-lg mx-auto w-24 h-10 bg-[#0bb90b] text-white border-[#0BB90B]' onClick={closeModal}>
+                  Ok
+                </Button>
+              </div>
+            </ModalBody>
+          </>
         </ModalContent>
       </Modal>
     </>
