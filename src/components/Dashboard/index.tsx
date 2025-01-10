@@ -8,9 +8,16 @@ import {
   Button
 } from "@nextui-org/react";
 import { AppContext } from '../../../contexts/ContextProviders';
+import ModalAddEventComponent from './modalAddEvent';
 
 const DashboardComponent = () => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const showPopup = () => {
+      dispatch({
+        type: 'SET_POPUP_EVENT',
+        value: true
+      });
+    };
   return (
     <>
       {state.profile?.Plan === '' || state.showListEvent.length === 0 ? (
@@ -72,6 +79,7 @@ const DashboardComponent = () => {
           </div>
         </div>
       )}
+      <ModalAddEventComponent />
     </>
   );
 };

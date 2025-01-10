@@ -13,7 +13,6 @@ import {
 } from "@nextui-org/react";
 import { getProfile, userLogout } from '../../../services/client/auth';
 import { getEvent } from '../../../services/client/event';
-import ModalAddEventComponent from './modalAddEvent';
 
 const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
   const router = useRouter();
@@ -29,13 +28,6 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
   const logout = () => {
     userLogout();
     router.push('/');
-  };
-
-  const showPopup = () => {
-    dispatch({
-      type: 'SET_POPUP_EVENT',
-      value: true
-    });
   };
 
   const fetchProfile = () => {
@@ -178,8 +170,6 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
             </Dropdown>
           </div>
         </div>
-
-        <ModalAddEventComponent />
       </nav>
     </>
   );
