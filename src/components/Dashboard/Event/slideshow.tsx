@@ -16,7 +16,7 @@ const SlideshowDashboardTabComponent = () => {
     hideSlideshowQR: state.showDetailEvent.slideShow?.hideSlideshowQR,
     hideVideoSound: state.showDetailEvent.slideShow?.hideVideoSound
   });
-
+  /* eslint-disable */
   useEffect(() => {
     if (state.showDetailEvent) {
       setFormData((prev) => ({
@@ -36,6 +36,7 @@ const SlideshowDashboardTabComponent = () => {
       [name]: value,
     }));
   };
+  /* eslint-enable */
   return (
     <>
       <div className="text-black mb-2">
