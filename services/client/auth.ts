@@ -57,6 +57,19 @@ export const getProfile = () => {
   });
 };
 
+export const addPlan = ({ payload }: { payload: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .post(api.auth.plan, payload)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
+
 export const userLogout = () => {
   deleteCookie(getTokenName());
 };

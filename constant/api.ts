@@ -4,6 +4,7 @@ export const api = {
     register: '/api/auth/signup',
     forgotPassword: '/api/auth/forgot-password',
     profile: '/api/profile',
+    plan: 'api/add-plan',
     // verifyOtp: '/patient/otp/auth/verify',
     // resendOtp: '/patient/otp/auth/resend',
     // connect: '/patient/connect',

@@ -13,6 +13,7 @@ import {
 import { createEvent } from '../../../services/client/event';
 import { AppContext } from '../../../contexts/ContextProviders';
 import ListPricingComponent from '../Home/listpricing';
+import { getProfile } from '../../../services/client/auth';
 
 const ModalAddEventComponent =  () => {
   const {onOpenChange} = useDisclosure();
@@ -32,33 +33,46 @@ const ModalAddEventComponent =  () => {
   };
 
   const handleSubmit = () => {
-      const payload = {
-        eventType,
-        title,
-        value
-      }
-      console.log("Form Data:", payload);
-  
-      createEvent({ payload })
-      .then((res: any) => {
-        console.log('Check', res.data)
-        dispatch({
-          type: 'SET_POPUP_EVENT',
-          value: false
-        });
-        // if(res.success) {
-        //   setLoading(false);
-        //   setCookie('isAuth', true);
-        //   setCookie('_FotoSlideToken', res.token);
-        //   router.push('/dashboard');
-        // }
-      })
-      .catch((err: any) => {
-        setLoading(false);
-        console.log('Error', err)
-      })
-      // Hit API
-    };
+    setLoading(true);
+    const payload = {
+      eventType,
+      title,
+      value
+    }
+    console.log("Form Data:", payload);
+    createEvent({ payload })
+    .then((res: any) => {
+      console.log('Check', res.data)
+      fetchProfile();
+      setLoading(false);
+    })
+    .catch((err: any) => {
+      setLoading(false);
+      console.log('Error', err)
+    })
+    // Hit API
+  };
+
+  const fetchProfile = () => {
+    getProfile()
+    .then((res: any) => {
+      dispatch({
+        type: 'SET_PROFILE',
+        value: {
+          Email: res.result.email,
+          Fullname: res.result.fullname,
+          Plan: res.result.plan
+        },
+      });
+      dispatch({
+        type: 'SET_POPUP_EVENT',
+        value: false
+      });
+    })
+    .catch((err: any) => {
+      console.log('Check Error', err)
+    });
+  };
   /* eslint-enable */
   return (
     <>
@@ -175,6 +189,7 @@ const ModalAddEventComponent =  () => {
                     </div>
                     <Button
                       className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'
+                      isDisabled={loading}
                       onPress={onClose}
                       onClick={handleSubmit}
                     >
