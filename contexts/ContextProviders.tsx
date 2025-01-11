@@ -11,6 +11,7 @@ interface ListEvent {
   title: string;
   eventType: string;
   date: string;
+  plan: any;
   _id: string;
 }
 

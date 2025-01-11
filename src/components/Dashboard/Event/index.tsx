@@ -42,7 +42,7 @@ const EventDashboardComponent = () => {
                   <h2 className='text-md text-black font-semibold'>
                     {event.title}
                   </h2>
-                  <span className='bg-[#dbe5ff] font-medium py-1 px-2 rounded text-[#0145bb] text-xs'>Plan: Pro</span>
+                  <span className='bg-[#dbe5ff] font-medium py-1 px-2 rounded text-[#0145bb] text-xs capitalize'>Plan: {event.plan?.plan}</span>
                   <div className='mt-7 border-b border-solid border-[#dddddd] mb-3 pb-3'>
                     <p className='text-sm text-[#909090]'>
                       90 uploads

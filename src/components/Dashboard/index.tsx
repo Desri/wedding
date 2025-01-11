@@ -63,7 +63,7 @@ const DashboardComponent = () => {
                       Dara & Arifin Weddings
                     </h2>
                     <p className='text-xs font-bold'>
-                      Event start: 13 Aug 2024 <span className='bg-[#CEFFCE] font-medium py-1 px-1.5 rounded ml-1'>Plan: Lite</span>
+                      Event start: 13 Aug 2024 <span className='bg-[#CEFFCE] font-medium py-1 px-1.5 rounded ml-1 capitalize'>Plan: {state.profile?.Plan}</span>
                     </p>
                   </div>
                 </div>
