@@ -53,3 +53,16 @@ export const updateSlideShow = ({ payload }: { payload: any }) => {
       });
   });
 };
+
+export const updateModeration = ({ payload }: { payload: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .put(api.event.updateModeration, payload.formData)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};

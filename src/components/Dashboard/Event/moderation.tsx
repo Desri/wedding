@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 import {
   Button,
@@ -14,10 +14,54 @@ import {
   DatePicker
 } from "@nextui-org/react";
 import {parseDate} from "@internationalized/date";
+import { usePathname } from 'next/navigation';
+import { AppContext } from '../../../../contexts/ContextProviders';
+import { updateModeration } from '../../../../services/client/event';
 
 const ModerationDashboardTabComponent = () => {
+  const { state } = useContext(AppContext);
+  const pathname = usePathname();
+  const lastSegment = pathname.split('/').filter(Boolean).pop();
+  const [loading, setLoading] = useState(false);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [value, setValue] = useState(parseDate("2024-04-04"));
+
+  const [isManualApprove, setIsManualApprove] = useState(state.showDetailEvent.moderation.isManualApprove ? true : false);
+  const [isDisableGuestsDownload, setDisableGuestsDownload] = useState(state.showDetailEvent.moderation?.isDisableGuestsDownload ? true : false);
+
+  const [formData, setFormData] = useState({
+    isManualApprove: isManualApprove,
+    isDisableGuestsDownload: isDisableGuestsDownload,
+    eventId: lastSegment
+  });
+
+  /* eslint-disable */
+  useEffect(() => {
+    if (state.showDetailEvent) {
+      setFormData((prev) => ({
+        ...prev,
+        isManualApprove: isManualApprove,
+        isDisableGuestsDownload: isDisableGuestsDownload,
+      }));
+    }
+  }, [state.showDetailEvent, isManualApprove, isDisableGuestsDownload]);
+  const handleSubmit = () => {
+    setLoading(true);
+    const payload = {
+      formData
+    }
+    console.log("Form Data:", payload);
+    updateModeration({ payload })
+    .then((res: any) => {
+      console.log('Check', res)
+      setLoading(false);
+    })
+    .catch((err: any) => {
+      setLoading(false);
+      console.log('Error', err)
+    })
+  };
+  /* eslint-enable */
   return (
     <>
       <div className="text-black mb-2">
@@ -41,7 +85,7 @@ const ModerationDashboardTabComponent = () => {
               Manually approve uploads made by guests before it is shown on <br /> your Slideshow and Digital Album. <span className="text-[#0BB90B]">More Info</span>
             </p>
           </div>
-          <Switch size="sm" />
+          <Switch name="isManualApprove" defaultSelected={formData.isManualApprove} onValueChange={setIsManualApprove} size="sm" />
         </div>
       </div>
       <div className='mt-8'>
@@ -117,11 +161,19 @@ const ModerationDashboardTabComponent = () => {
               Hide the download button to prevent guests from <br /> downloading photos/videos in the album page.
             </p>
           </div>
-          <Switch size="sm" />
+          <Switch name="isDisableGuestsDownload" defaultSelected={formData.isDisableGuestsDownload} onValueChange={setDisableGuestsDownload} size="sm" />
         </div>
       </div>
-      <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
-        Update
+      <Button
+        className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'
+        isDisabled={loading}
+        onClick={handleSubmit}
+      >
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <span>Update</span>
+        )}
       </Button>
       <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
         <ModalContent>
