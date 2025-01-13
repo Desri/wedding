@@ -14,11 +14,15 @@ const SlideshowDashboardTabComponent = () => {
   const pathname = usePathname();
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [loading, setLoading] = useState(false);
+
+  const [isSelectedQR, setIsSelectedQR] = useState(state.showDetailEvent.slideShow.hideSlideshowQR ? true : false);
+  const [isHideVideoSound, setHideVideoSound] = useState(state.showDetailEvent.slideShow?.hideVideoSound ? true : false);
+
   const [formData, setFormData] = useState({
     durationImage: '',
     durationVideo: '',
-    hideSlideshowQR: state.showDetailEvent.slideShow?.hideSlideshowQR,
-    hideVideoSound: state.showDetailEvent.slideShow?.hideVideoSound,
+    hideSlideshowQR: isSelectedQR,
+    hideVideoSound: isHideVideoSound,
     eventId: lastSegment
   });
 
@@ -29,11 +33,11 @@ const SlideshowDashboardTabComponent = () => {
         ...prev,
         durationImage: state.showDetailEvent.slideShow?.durationImage,
         durationVideo: state.showDetailEvent.slideShow?.durationVideo,
-        hideSlideshowQR: state.showDetailEvent.slideShow?.hideSlideshowQR,
-        hideVideoSound: state.showDetailEvent.slideShow?.hideVideoSound,
+        hideSlideshowQR: isSelectedQR,
+        hideVideoSound: isHideVideoSound,
       }));
     }
-  }, [state.showDetailEvent]);
+  }, [state.showDetailEvent, isSelectedQR, isHideVideoSound]);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -130,7 +134,7 @@ const SlideshowDashboardTabComponent = () => {
               Turn on to remove the QR code from the Slideshow page.
             </span>
           </div>
-          <Switch name="hideSlideshowQR" defaultSelected={formData.hideSlideshowQR} onChange={handleChange} size="sm" />
+          <Switch name="hideSlideshowQR" defaultSelected={formData.hideSlideshowQR} onValueChange={setIsSelectedQR} size="sm" />
         </div>
       </div>
       <div className='mt-8 mb-3'>
@@ -143,7 +147,7 @@ const SlideshowDashboardTabComponent = () => {
               This will enable videos sound when played in Slideshow.
             </span>
           </div>
-          <Switch name="hideVideoSound" defaultSelected={formData.hideVideoSound} onChange={handleChange} size="sm" />
+          <Switch name="hideVideoSound" defaultSelected={formData.hideVideoSound} onValueChange={setHideVideoSound} size="sm" />
         </div>
       </div>
       <Button
