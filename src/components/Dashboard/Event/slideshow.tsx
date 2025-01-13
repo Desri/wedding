@@ -6,16 +6,22 @@ import {
   Input
 } from "@nextui-org/react";
 import { AppContext } from "../../../../contexts/ContextProviders";
+import { usePathname } from 'next/navigation';
+import { updateSlideShow } from '../../../../services/client/event';
 
 const SlideshowDashboardTabComponent = () => {
   const { state } = useContext(AppContext);
-
+  const pathname = usePathname();
+  const lastSegment = pathname.split('/').filter(Boolean).pop();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     durationImage: '',
     durationVideo: '',
     hideSlideshowQR: state.showDetailEvent.slideShow?.hideSlideshowQR,
-    hideVideoSound: state.showDetailEvent.slideShow?.hideVideoSound
+    hideVideoSound: state.showDetailEvent.slideShow?.hideVideoSound,
+    eventId: lastSegment
   });
+
   /* eslint-disable */
   useEffect(() => {
     if (state.showDetailEvent) {
@@ -35,6 +41,23 @@ const SlideshowDashboardTabComponent = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleSubmit = () => {
+    setLoading(true);
+    const payload = {
+      formData
+    }
+    console.log("Form Data:", payload);
+    updateSlideShow({ payload })
+    .then((res: any) => {
+      console.log('Check', res)
+      setLoading(false);
+    })
+    .catch((err: any) => {
+      setLoading(false);
+      console.log('Error', err)
+    })
   };
   /* eslint-enable */
   return (
@@ -123,8 +146,16 @@ const SlideshowDashboardTabComponent = () => {
           <Switch name="hideVideoSound" defaultSelected={formData.hideVideoSound} onChange={handleChange} size="sm" />
         </div>
       </div>
-      <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
-        Update
+      <Button
+        className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'
+        isDisabled={loading}
+        onClick={handleSubmit}
+      >
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <span>Update</span>
+        )}
       </Button>
     </>
   );
