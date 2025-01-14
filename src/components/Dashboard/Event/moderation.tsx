@@ -34,8 +34,6 @@ const ModerationDashboardTabComponent = () => {
   const [formData, setFormData] = useState({
     isManualApprove: isManualApprove,
     isDisableGuestsDownload: isDisableGuestsDownload,
-    isAllowedMedia: mediaType,
-    digitalAlbumPermissions: permissions,
     eventId: lastSegment
   });
 
@@ -46,12 +44,11 @@ const ModerationDashboardTabComponent = () => {
         ...prev,
         isManualApprove: isManualApprove,
         isDisableGuestsDownload: isDisableGuestsDownload,
-        isAllowedMedia: mediaType,
       }));
-      setMediaType(state.showDetailEvent.isAllowedMedia);
-      setPermissions(state.showDetailEvent.digitalAlbumPermissions)
+      setMediaType(state.showDetailEvent.moderation.isAllowedMedia);
+      setPermissions(state.showDetailEvent.moderation.digitalAlbumPermissions)
     }
-  }, [state.showDetailEvent, isManualApprove, isDisableGuestsDownload]);
+  }, []);
 
   const handleClick = (newValue: any) => {
     setMediaType(newValue);
@@ -64,9 +61,12 @@ const ModerationDashboardTabComponent = () => {
   const handleSubmit = () => {
     setLoading(true);
     const payload = {
-      formData
+      isManualApprove: isManualApprove,
+      isDisableGuestsDownload: isDisableGuestsDownload,
+      isAllowedMedia: mediaType,
+      digitalAlbumPermissions: permissions,
+      eventId: lastSegment
     }
-    console.log("Form Data:", payload);
     updateModeration({ payload })
     .then((res: any) => {
       console.log('Check', res)
@@ -115,24 +115,24 @@ const ModerationDashboardTabComponent = () => {
         </div>
         <div className='flex items-center gap-5 mt-1'>
           <div
-            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
-            onClick={() => handleClick('1')}
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === 'photo' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+            onClick={() => handleClick('photo')}
           >
             <h2 className='text-black text-sm font-semibold'>
               Photos
             </h2>
           </div>
           <div
-            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
-            onClick={() => handleClick('2')}
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === 'video' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+            onClick={() => handleClick('video')}
           >
             <h2 className='text-black text-sm font-semibold'>
               Videos
             </h2>
           </div>
           <div
-            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
-            onClick={() => handleClick('3')}
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === 'text' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+            onClick={() => handleClick('text')}
           >
             <h2 className='text-black text-sm font-semibold'>
               Text

@@ -1,4 +1,5 @@
 'use client';
+import React, { useState } from 'react';
 import {
   Input,
   Button,
@@ -10,6 +11,13 @@ import {
 
 const AppearanceDashboardTabComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [captionTheme, setCaptionTheme] = useState('');
+
+  /* eslint-disable */
+  const selectTheme = (newValue: any) => {
+    setCaptionTheme(newValue);
+  };
+  /* eslint-enable */
   return (
     <>
       <div className='grid grid-cols-2 gap-5'>
@@ -50,12 +58,18 @@ const AppearanceDashboardTabComponent = () => {
               Change the theme color of the photo/video caption (if it has one)
             </span>
             <div className='flex items-center gap-5 mt-1.5'>
-              <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
+              <div
+                className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg w-28 cursor-pointer ${captionTheme === 'light' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+                onClick={() => selectTheme('light')}
+              >
                 <h2 className='text-black text-sm font-semibold'>
                   Light
                 </h2>
               </div>
-              <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-2 rounded-lg w-28 cursor-pointer'>
+              <div
+                className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg w-28 cursor-pointer ${captionTheme === 'dark' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+                onClick={() => selectTheme('dark')}
+              >
                 <h2 className='text-black text-sm font-semibold'>
                   Dark
                 </h2>
