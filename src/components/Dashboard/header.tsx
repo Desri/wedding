@@ -77,18 +77,22 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
               <div className='ml-3'>
                 <div className="flex items-center space-x-4">
                   <Dropdown placement="bottom-start">
-                    <DropdownTrigger>
-                      <User
-                        as="button"
-                        avatarProps={{
-                          isBordered: false,
-                          className: "rounded-md",
-                          src:"/thumb.png"
-                        }}
-                        className="text-black gap-4"
-                        name="Dara & Arifin Weddings"
-                      />
-                    </DropdownTrigger>
+                    {state.showListEvent?.[0] && (
+                      <DropdownTrigger>
+                        <User
+                          as="button"
+                          avatarProps={{
+                            isBordered: false,
+                            className: "rounded-md",
+                            src:"/thumb.png"
+                          }}
+                          className="text-black gap-4"
+                          name={state.showListEvent[0].title}
+                        />
+                      </DropdownTrigger>
+                    )}
+                    
+
                     <DropdownMenu aria-label="User Actions" variant="flat">
                       {state.showListEvent?.map((item) => (
                         <DropdownItem key={item._id} as={Link} href={`/dashboard/event/${item._id}`}>

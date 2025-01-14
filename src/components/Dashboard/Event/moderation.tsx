@@ -23,6 +23,8 @@ const ModerationDashboardTabComponent = () => {
   const pathname = usePathname();
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [loading, setLoading] = useState(false);
+  const [mediaType, setMediaType] = useState('');
+  const [permissions, setPermissions] = useState('');
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [value, setValue] = useState(parseDate("2024-04-04"));
 
@@ -32,6 +34,8 @@ const ModerationDashboardTabComponent = () => {
   const [formData, setFormData] = useState({
     isManualApprove: isManualApprove,
     isDisableGuestsDownload: isDisableGuestsDownload,
+    isAllowedMedia: mediaType,
+    digitalAlbumPermissions: permissions,
     eventId: lastSegment
   });
 
@@ -42,9 +46,21 @@ const ModerationDashboardTabComponent = () => {
         ...prev,
         isManualApprove: isManualApprove,
         isDisableGuestsDownload: isDisableGuestsDownload,
+        isAllowedMedia: mediaType,
       }));
+      setMediaType(state.showDetailEvent.isAllowedMedia);
+      setPermissions(state.showDetailEvent.digitalAlbumPermissions)
     }
   }, [state.showDetailEvent, isManualApprove, isDisableGuestsDownload]);
+
+  const handleClick = (newValue: any) => {
+    setMediaType(newValue);
+  };
+
+  const selectedPermissions = (newValue: any) => {
+    setPermissions(newValue);
+  };
+
   const handleSubmit = () => {
     setLoading(true);
     const payload = {
@@ -98,17 +114,26 @@ const ModerationDashboardTabComponent = () => {
           </span>
         </div>
         <div className='flex items-center gap-5 mt-1'>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-5 rounded-lg w-28 cursor-pointer'>
+          <div
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+            onClick={() => handleClick('1')}
+          >
             <h2 className='text-black text-sm font-semibold'>
               Photos
             </h2>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-5 rounded-lg w-28 cursor-pointer'>
+          <div
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+            onClick={() => handleClick('2')}
+          >
             <h2 className='text-black text-sm font-semibold'>
               Videos
             </h2>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] text-center py-2 px-5 rounded-lg w-28 cursor-pointer'>
+          <div
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-5 w-28 rounded-lg cursor-pointer ${mediaType === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'bg-[#F7F7F7] border-[#F7F7F7]'}`}
+            onClick={() => handleClick('3')}
+          >
             <h2 className='text-black text-sm font-semibold'>
               Text
             </h2>
@@ -125,7 +150,10 @@ const ModerationDashboardTabComponent = () => {
           </span>
         </div>
         <div className='flex items-center gap-5 mt-1'>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] p-5 rounded-xl w-1/5 cursor-pointer'>
+          <div
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] p-5 rounded-xl w-1/4 cursor-pointer ${permissions === '1' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+            onClick={() => selectedPermissions('1')}
+          >
             <h2 className='text-black text-sm font-semibold mb-7'>
               View & Upload
             </h2>
@@ -133,7 +161,10 @@ const ModerationDashboardTabComponent = () => {
               Guests can upload new photos & view existing ones
             </p>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] p-5 rounded-xl w-1/5 cursor-pointer'>
+          <div
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] p-5 rounded-xl w-1/4 cursor-pointer ${permissions === '2' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+            onClick={() => selectedPermissions('2')}
+          >
             <h2 className='text-black text-sm font-semibold mb-7'>
               View Only
             </h2>
@@ -141,7 +172,10 @@ const ModerationDashboardTabComponent = () => {
               Guests can view existing photos but can not upload new ones
             </p>
           </div>
-          <div className='hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7] bg-[#F7F7F7] p-5 rounded-xl w-1/5 cursor-pointer'>
+          <div
+            className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] p-5 rounded-xl w-1/4 cursor-pointer ${permissions === '3' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+            onClick={() => selectedPermissions('3')}
+          >
             <h2 className='text-black text-sm font-semibold mb-7'>
               Upload Only
             </h2>
