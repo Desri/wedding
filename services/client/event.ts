@@ -66,3 +66,18 @@ export const updateModeration = ({ payload }: { payload: any }) => {
       });
   });
 };
+
+export const updateAppearance = ({ payload }: { payload: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .put(api.event.updateAppearance, payload)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
+
+

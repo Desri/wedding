@@ -8,14 +8,41 @@ import {
   ModalBody,
   useDisclosure
 } from "@nextui-org/react";
+import { usePathname } from 'next/navigation';
+import { updateAppearance } from '../../../../services/client/event';
 
 const AppearanceDashboardTabComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [captionTheme, setCaptionTheme] = useState('');
+  const pathname = usePathname();
+  const lastSegment = pathname.split('/').filter(Boolean).pop();
+  const [caption, setCaption] = useState('');
+  const [language, setLanguage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   /* eslint-disable */
   const selectTheme = (newValue: any) => {
-    setCaptionTheme(newValue);
+    setCaption(newValue);
+  };
+
+  const handleChange = (e: any) => {
+    const { value } = e.target;
+    setLanguage(value)
+  };
+
+  const handleSubmit = () => {
+    setLoading(true);
+    const payload = {
+      caption: caption,
+      eventId: lastSegment
+    }
+    updateAppearance({ payload })
+    .then((res: any) => {
+      setLoading(false);
+    })
+    .catch((err: any) => {
+      setLoading(false);
+      console.log('Error', err)
+    })
   };
   /* eslint-enable */
   return (
@@ -37,7 +64,15 @@ const AppearanceDashboardTabComponent = () => {
             <span className="text-xs text-[#909090] font-semibold">
               Localize the experience according your audience language.
             </span>
-            <Input type="text" radius="sm" placeholder='English' className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md" />
+            <Input
+              type="text"
+              radius="sm"
+              name="language"
+              value={language}
+              onChange={handleChange}
+              placeholder='English'
+              className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
+            />
           </div>
 
           <div className="text-black mb-8">
@@ -59,7 +94,7 @@ const AppearanceDashboardTabComponent = () => {
             </span>
             <div className='flex items-center gap-5 mt-1.5'>
               <div
-                className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg w-28 cursor-pointer ${captionTheme === 'light' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+                className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg w-28 cursor-pointer ${caption === 'light' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
                 onClick={() => selectTheme('light')}
               >
                 <h2 className='text-black text-sm font-semibold'>
@@ -67,7 +102,7 @@ const AppearanceDashboardTabComponent = () => {
                 </h2>
               </div>
               <div
-                className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg w-28 cursor-pointer ${captionTheme === 'dark' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
+                className={`hover:bg-[#0BB90B17] border-2 border-solid hover:border-[#0BB90B] text-center py-2 px-2 rounded-lg w-28 cursor-pointer ${caption === 'dark' ? 'bg-[#0BB90B17] border-[#0BB90B]' : 'border-[#F7F7F7] bg-[#F7F7F7]'}`}
                 onClick={() => selectTheme('dark')}
               >
                 <h2 className='text-black text-sm font-semibold'>
@@ -118,8 +153,17 @@ const AppearanceDashboardTabComponent = () => {
           )}
         </ModalContent>
       </Modal>
-      <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
-        Update
+
+      <Button
+        className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'
+        isDisabled={loading}
+        onClick={handleSubmit}
+      >
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <span>Update</span>
+        )}
       </Button>
     </>
   );
