@@ -80,4 +80,15 @@ export const updateAppearance = ({ payload }: { payload: any }) => {
   });
 };
 
-
+export const updateWelcomeScreen = ({ payload }: { payload: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .put(api.event.updateWelcomeScreen, payload)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};

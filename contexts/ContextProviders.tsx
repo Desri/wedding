@@ -26,6 +26,7 @@ interface AppState {
   showDetailEvent: any;
   showPopupEvent: boolean;
   showPopupPayment: PopupPlan | null;
+  showPopupWelcomeScreen: boolean;
 }
 
 const initialState = {
@@ -33,7 +34,8 @@ const initialState = {
   showListEvent: [],
   showDetailEvent: null,
   showPopupEvent: false,
-  showPopupPayment: null
+  showPopupPayment: null,
+  showPopupWelcomeScreen: false,
 };
 
 type AppAction =
@@ -41,7 +43,8 @@ type AppAction =
   | { type: 'SET_LIST_EVENT'; value: [] }
   | { type: 'SET_DETAIL_EVENT'; value: any }
   | { type: 'SET_POPUP_EVENT'; value: boolean }
-  | { type: 'SET_POPUP_PAYMENT'; value: PopupPlan };
+  | { type: 'SET_POPUP_PAYMENT'; value: PopupPlan }
+  | { type: 'SET_POPUP_WELCOME_SCREEN'; value: boolean };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -55,6 +58,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, showPopupEvent: action.value };
     case 'SET_POPUP_PAYMENT':
       return { ...state, showPopupPayment: action.value };
+    case 'SET_POPUP_WELCOME_SCREEN':
+      return { ...state, showPopupWelcomeScreen: action.value };
     default:
       return state;
   }

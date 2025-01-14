@@ -16,6 +16,7 @@ export const api = {
     detailEvent: '/api/event',
     updateSlideshow: '/api/event/slideshow-event',
     updateModeration: '/api/event/moderation',
-    updateAppearance: '/api/event/appearance'
+    updateAppearance: '/api/event/appearance',
+    updateWelcomeScreen: '/api/event/welcome-screen'
   }
 };
