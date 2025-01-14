@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   Input,
   Button,
@@ -10,9 +10,11 @@ import {
 } from "@nextui-org/react";
 import { usePathname } from 'next/navigation';
 import { updateAppearance } from '../../../../services/client/event';
+import { AppContext } from '../../../../contexts/ContextProviders';
 
 const AppearanceDashboardTabComponent = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { state } = useContext(AppContext);
   const pathname = usePathname();
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [caption, setCaption] = useState('');
@@ -20,6 +22,13 @@ const AppearanceDashboardTabComponent = () => {
   const [loading, setLoading] = useState(false);
 
   /* eslint-disable */
+  useEffect(() => {
+    if (state.showDetailEvent) {
+      setCaption(state.showDetailEvent.appearance.caption)
+      setLanguage(state.showDetailEvent.appearance.language)
+    }
+  }, [state.showDetailEvent]);
+
   const selectTheme = (newValue: any) => {
     setCaption(newValue);
   };
@@ -33,6 +42,7 @@ const AppearanceDashboardTabComponent = () => {
     setLoading(true);
     const payload = {
       caption: caption,
+      language: language,
       eventId: lastSegment
     }
     updateAppearance({ payload })
