@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 import {
   Button,
@@ -24,18 +24,37 @@ const ModalWelcomeScreenComponent =  () => {
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [loading, setLoading] = useState(false);
   // const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [title, setTitle] = useState('');
+  // const [title, setTitle] = useState('');
   const [value, setValue] = useState(parseDate("2024-04-04"));
+
+  const [formData, setFormData] = useState({
+    title: '',
+    eventId: lastSegment
+  });
   
   /* eslint-disable */
-  const handleChange = (newValue: any) => {
-    setTitle(newValue);
+  useEffect(() => {
+    if (state.showDetailEvent) {
+      setFormData((prev) => ({
+        ...prev,
+        title: state.showDetailEvent.welcomeScreen.title,
+      }));
+    }
+  }, [state.showDetailEvent]);
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   };
+  
   const handleSubmit = () => {
     setLoading(true);
     const payload = {
-      title: title,
-      eventId: lastSegment
+      // title: title,
+      // eventId: lastSegment
+      formData
     }
     updateWelcomeScreen({ payload })
     .then((res: any) => {
@@ -77,7 +96,7 @@ const ModalWelcomeScreenComponent =  () => {
                             <Input
                               type="text"
                               name="title"
-                              value={title}
+                              value={formData.title}
                               onChange={handleChange}
                               radius="sm"
                               className="mt-3 w-96 border border-solid border-[#dddddd] rounded-md"
@@ -169,7 +188,7 @@ const ModalWelcomeScreenComponent =  () => {
                           </div>
                           <div className='mb-4 pb-4 border-b border-solid border-[#cecece]'>
                             <h1 className='text-xl font-bold'>
-                              Dara & Arifin Weddings
+                              {state.showDetailEvent.welcomeScreen?.title}
                             </h1>
                             <span className='text-sm'>
                               13 Aug 2024

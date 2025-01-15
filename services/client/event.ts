@@ -83,7 +83,7 @@ export const updateAppearance = ({ payload }: { payload: any }) => {
 export const updateWelcomeScreen = ({ payload }: { payload: any }) => {
   return new Promise((resolve, reject) => {
     clientAPI
-      .put(api.event.updateWelcomeScreen, payload)
+      .put(api.event.updateWelcomeScreen, payload.formData)
       .then((res: any) => {
         resolve(res.data);
       })
