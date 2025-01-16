@@ -1,8 +1,9 @@
 'use client';
 import React, { useContext, useState, useEffect } from 'react';
 import {Input, DatePicker, Button} from "@nextui-org/react";
-import {parseDate} from "@internationalized/date";
+import {parseDate, getLocalTimeZone} from "@internationalized/date";
 import { AppContext } from '../../../../contexts/ContextProviders';
+import {useDateFormatter} from "@react-aria/i18n";
 
 const GeneralDashboardTabComponent = () => {
   // const [value, setValue] = useState(parseDate("2024-04-04"));
@@ -10,7 +11,7 @@ const GeneralDashboardTabComponent = () => {
   const [eventType, setEventType] = useState('');
   const [formData, setFormData] = useState({
     eventName: '',
-    valDate: parseDate("2024-04-04")
+    valDate: parseDate("2025-01-16")
   });
   /* eslint-disable */
 
@@ -41,6 +42,8 @@ const GeneralDashboardTabComponent = () => {
     console.log("Form Data:", formData);
     // Hit API
   };
+
+  let formatter = useDateFormatter({dateStyle: "full"});
   /* eslint-enable */
   return (
     <>
@@ -73,6 +76,9 @@ const GeneralDashboardTabComponent = () => {
               }))
             }
           />
+          <p className="text-default-500 text-sm">
+            Selected date: {formData.valDate ? formatter.format(formData.valDate.toDate(getLocalTimeZone())) : "--"}
+          </p>
         </div>
         <div className="text-black mb-8">
           <h3 className="text-sm font-semibold">

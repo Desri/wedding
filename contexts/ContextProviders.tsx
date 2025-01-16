@@ -2,6 +2,7 @@
 import React, { createContext, useReducer } from 'react';
 
 interface UserProfile {
+  Id: string;
   Email: string;
   Fullname: string;
   Plan: string;

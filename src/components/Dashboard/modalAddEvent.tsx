@@ -37,7 +37,9 @@ const ModalAddEventComponent =  () => {
     const payload = {
       eventType,
       title,
-      value
+      value,
+      userId: state.profile?.Id,
+      plan: state.profile?.Plan
     }
     console.log("Form Data:", payload);
     createEvent({ payload })
