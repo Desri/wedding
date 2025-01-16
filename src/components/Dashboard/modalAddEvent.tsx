@@ -61,6 +61,7 @@ const ModalAddEventComponent =  () => {
       dispatch({
         type: 'SET_PROFILE',
         value: {
+          Id: res.result._id,
           Email: res.result.email,
           Fullname: res.result.fullname,
           Plan: res.result.plan
