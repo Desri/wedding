@@ -23,6 +23,10 @@ const AppearanceDashboardTabComponent = () => {
     if (state.showDetailEvent) {
       setCaption(state.showDetailEvent.appearance.caption)
       setLanguage(state.showDetailEvent.appearance.language)
+      dispatch({
+        type: 'SET_COLOR_PLATE',
+        value: state.showDetailEvent.appearance.colorPlate
+      });
     }
   }, [state.showDetailEvent]);
 
@@ -54,6 +58,7 @@ const AppearanceDashboardTabComponent = () => {
     const payload = {
       caption: caption,
       language: language,
+      colorPlate: state.colorPlate,
       eventId: lastSegment
     }
     updateAppearance({ payload })
@@ -103,10 +108,25 @@ const AppearanceDashboardTabComponent = () => {
             <p className="text-xs text-[#909090] font-semibold sm:mr-16">
               Choose a theme color for your brand. We’ll use that throughout the public pages (Photo Wall, Album, etc.)
             </p>
-            <div className='mt-2.5'>
-              <Button variant="bordered" className='!text-[#0BB90B] max-w-[155px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onClick={showPopupColorPlate}>
-                Edit Color
-              </Button>
+            <div
+              className={`mt-2.5 cursor-pointer border rounded-md w-max ${state.colorPlate !== null ? 'pr-4' : 'bg-[#f7f7f7]'}`}
+              onClick={showPopupColorPlate}
+            >
+              <div
+                className={`flex items-center ${state.colorPlate !== null ? '' : 'px-3 py-1.5'}`}
+              >
+                {state.colorPlate !== null && (
+                  <div
+                    className={`w-[32px] h-[32px] ${state.colorPlate ? 'mr-3' : ''}`}
+                    style={{ backgroundColor: state.colorPlate || 'transparent' }}
+                  ></div>
+                )}
+                <div>
+                  <p className='text-sm'>
+                    {state.colorPlate === null ? 'Select color' : state.colorPlate}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

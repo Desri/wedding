@@ -30,6 +30,7 @@ interface AppState {
   showPopupWelcomeScreen: boolean;
   showPopupBackgroundText: boolean;
   showPopupColorPlate: boolean;
+  colorPlate: any;
 }
 
 const initialState = {
@@ -40,7 +41,8 @@ const initialState = {
   showPopupPayment: null,
   showPopupWelcomeScreen: false,
   showPopupBackgroundText: false,
-  showPopupColorPlate: false
+  showPopupColorPlate: false,
+  colorPlate: null
 };
 
 type AppAction =
@@ -51,7 +53,8 @@ type AppAction =
   | { type: 'SET_POPUP_PAYMENT'; value: PopupPlan }
   | { type: 'SET_POPUP_WELCOME_SCREEN'; value: boolean }
   | { type: 'SET_POPUP_BACKGROUND_TEXT'; value: boolean }
-  | { type: 'SET_POPUP_COLOR_PLATE'; value: boolean };
+  | { type: 'SET_POPUP_COLOR_PLATE'; value: boolean }
+  | { type: 'SET_COLOR_PLATE'; value: any };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -71,6 +74,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, showPopupBackgroundText: action.value };
     case 'SET_POPUP_COLOR_PLATE':
       return { ...state, showPopupColorPlate: action.value };
+    case 'SET_COLOR_PLATE':
+      return { ...state, colorPlate: action.value };
     default:
       return state;
   }
