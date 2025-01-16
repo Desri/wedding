@@ -77,7 +77,20 @@ const LoginComponent = () => {
             )}
           </div>
           <div>
-            <Input type="password" name="password" value={formData.password} onChange={handleChange} radius="sm" placeholder="Password" className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md" />
+            <div className='relative'>
+              <Input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                radius="sm" 
+                placeholder="Password"
+                className="!w-full mt-3 border border-solid border-[#dddddd] rounded-md"
+              />
+              {/* <div className='absolute top-2 right-3.5 cursor-pointer'>
+                <p className='text-black'>C</p>
+              </div> */}
+            </div>
             {errorPassword && (
               <span className='text-xs text-[#ff0202]'>Password is required!</span>
             )}

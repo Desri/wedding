@@ -2,19 +2,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import {
   Input,
-  Button,
-  Modal,
-  ModalContent,
-  ModalBody,
-  useDisclosure
+  Button
 } from "@nextui-org/react";
 import { usePathname } from 'next/navigation';
 import { updateAppearance } from '../../../../services/client/event';
 import { AppContext } from '../../../../contexts/ContextProviders';
+import ModalBackgroundTextComponent from '../modalbackgroundtext';
+import ModalColorPlateComponent from '../modalcolorplate';
 
 const AppearanceDashboardTabComponent = () => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const pathname = usePathname();
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [caption, setCaption] = useState('');
@@ -37,6 +34,20 @@ const AppearanceDashboardTabComponent = () => {
     const { value } = e.target;
     setLanguage(value)
   };
+
+  const showPopupBackgroundText = () => {
+    dispatch({
+      type: 'SET_POPUP_BACKGROUND_TEXT',
+      value: true
+    });
+  }
+
+  const showPopupColorPlate = () => {
+    dispatch({
+      type: 'SET_POPUP_COLOR_PLATE',
+      value: true
+    });
+  }
 
   const handleSubmit = () => {
     setLoading(true);
@@ -92,6 +103,11 @@ const AppearanceDashboardTabComponent = () => {
             <p className="text-xs text-[#909090] font-semibold sm:mr-16">
               Choose a theme color for your brand. We’ll use that throughout the public pages (Photo Wall, Album, etc.)
             </p>
+            <div className='mt-2.5'>
+              <Button variant="bordered" className='!text-[#0BB90B] max-w-[155px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onClick={showPopupColorPlate}>
+                Edit Color
+              </Button>
+            </div>
           </div>
         </div>
         <div>
@@ -130,42 +146,17 @@ const AppearanceDashboardTabComponent = () => {
               Customize the backgrounds that can be used for uploading Text Posts.
             </span>
           </div>
-          <Button variant="bordered" className='!text-[#0BB90B] max-w-[155px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onPress={onOpen}>
+          <Button variant="bordered" className='!text-[#0BB90B] max-w-[155px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onClick={showPopupBackgroundText}>
             Edit Background
           </Button>
         </div>
       </div>
-      <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalBody className='p-7'>
-                <div className="text-black mb-7">
-                  <h3 className="text-sm font-semibold mb-1">
-                    Text Post Background
-                  </h3>
-                  <p className="text-xs text-[#909090] font-semibold">
-                    Choose which backgrounds are available for guests to choose from when uploading a Text Post.
-                  </p>
-                  
-                </div>
-                <div className='flex gap-3'>
-                  <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
-                    Save
-                  </Button>
-                  <Button variant="bordered" className='!text-[#000000] max-w-[100px] rounded-lg !h-[35px] text-xs !font-semibold border-[#DDDDDD] mt-1.5' onPress={onClose}>
-                    Cancel
-                  </Button>
-                </div>
-                
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+
+      <ModalColorPlateComponent />
+      <ModalBackgroundTextComponent />
 
       <Button
-        className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'
+        className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-3'
         isDisabled={loading}
         onClick={handleSubmit}
       >

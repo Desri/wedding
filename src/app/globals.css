@@ -97,3 +97,7 @@ figure {
 .shadow-input label {
   color: #000000;
 }
+
+.group[data-focus-visible="true"] .group-data-\[focus-visible\=true\]\:ring-2 {
+  box-shadow: none !important;
+}
