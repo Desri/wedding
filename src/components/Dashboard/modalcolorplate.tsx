@@ -27,16 +27,14 @@ const ModalColorPlateComponent =  () => {
     <>
       <Modal hideCloseButton={true} isOpen={state.showPopupColorPlate} size="sm" onOpenChange={onOpenChange}>
         <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalBody className='p-3'>
-                <ColorPicker color={color} onChange={color => setColor(color.hex)} className='!w-full ssssssssssssssssss' />
-                <Button variant="bordered" className='!text-[#0BB90B] mx-auto max-w-[155px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onClick={hidePopupColorPlate}>
-                  Submit
-                </Button>
-              </ModalBody>
-            </>
-          )}
+          <>
+            <ModalBody className='p-3'>
+              <ColorPicker color={color} onChange={color => setColor(color.hex)} className='!w-full ssssssssssssssssss' />
+              <Button variant="bordered" className='!text-[#0BB90B] mx-auto max-w-[155px] rounded-lg !h-[35px] text-xs !font-semibold border-[#0BB90B] mt-1.5' onClick={hidePopupColorPlate}>
+                Submit
+              </Button>
+            </ModalBody>
+          </>
         </ModalContent>
       </Modal>
     </>
