@@ -92,3 +92,16 @@ export const updateWelcomeScreen = ({ payload }: { payload: any }) => {
       });
   });
 };
+
+export const updateGeneralEvent = ({ payload }: { payload: any }) => {
+  return new Promise((resolve, reject) => {
+    clientAPI
+      .put(api.event.updateGeneral, payload)
+      .then((res: any) => {
+        resolve(res.data);
+      })
+      .catch((err: AxiosError) => {
+        reject(err);
+      });
+  });
+};
