@@ -11,7 +11,7 @@ interface UserProfile {
 interface ListEvent {
   title: string;
   eventType: string;
-  date: string;
+  date: any;
   plan: any;
   _id: string;
 }

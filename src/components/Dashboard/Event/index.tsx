@@ -7,9 +7,12 @@ import {
 import { AppContext } from '../../../../contexts/ContextProviders';
 import ModalAddEventComponent from '../modalAddEvent';
 
-const EventDashboardComponent = () => {
+const EventDashboardComponent = ({
+  list
+}: {
+  list?: any;
+}) => {
   const { state, dispatch } = useContext(AppContext);
-
   /* eslint-disable */
   const showPopup = () => {
     dispatch({
@@ -31,7 +34,7 @@ const EventDashboardComponent = () => {
         <Button className='!text-black !mt-4 rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5' onClick={() => showPopup()}>
           Create New Event
         </Button>
-        {state.showListEvent.length > 0 && (
+        {list.data.length > 0 && (
           <div className='grid grid-cols-4 gap-5 mt-8'>
             {state.showListEvent.map((event) => (
               <div key={event._id} className='bg-white px-5 pt-5 pb-3 rounded-lg cursor-pointer border-2 border-solid hover:border-[#0BB90B] border-[#F7F7F7]'>
@@ -48,7 +51,7 @@ const EventDashboardComponent = () => {
                       90 uploads
                     </p>
                     <p className='text-sm text-[#909090]'>
-                      Created on {event.date}
+                      Created on {event.date.day}/{event.date.month}/{event.date.year}
                     </p>
                   </div>
                   <p className='text-center text-xs text-[#909090]'>

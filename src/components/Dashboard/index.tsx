@@ -11,7 +11,13 @@ import { AppContext } from '../../../contexts/ContextProviders';
 import ModalAddEventComponent from './modalAddEvent';
 import ModalPaymentComponent from './modalpayment';
 
-const DashboardComponent = () => {
+const DashboardComponent = ({
+  data,
+  listEvent
+}: {
+  data?: any;
+  listEvent?: any
+}) => {
   const { state, dispatch } = useContext(AppContext);
   const showPopup = () => {
     dispatch({
@@ -21,10 +27,10 @@ const DashboardComponent = () => {
   };
   return (
     <>
-      {state.profile?.Plan === '' || state.showListEvent.length === 0 ? (
+      {data.result.Plan === '' || listEvent.data.length === 0 ? (
         <div className='text-center bg-[#F8FAFD] py-16'>
           <h1 className='text-black mb-4 text-3xl'>
-            Welcome, {state.profile?.Fullname}!
+            Welcome, {data.result.fullname}!
           </h1>
           <p className='text-xs text-[#909090]'>
             Let’s make your moments unforgettable. Start by creating your first event and watch the magic unfold!
