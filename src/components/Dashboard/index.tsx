@@ -15,8 +15,8 @@ const DashboardComponent = ({
   data,
   listEvent
 }: {
-  data?: any;
-  listEvent?: any
+  data?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  listEvent?: any // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) => {
   const { state, dispatch } = useContext(AppContext);
   const showPopup = () => {

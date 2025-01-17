@@ -10,7 +10,7 @@ import ModalAddEventComponent from '../modalAddEvent';
 const EventDashboardComponent = ({
   list
 }: {
-  list?: any;
+  list?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) => {
   const { state, dispatch } = useContext(AppContext);
   /* eslint-disable */
