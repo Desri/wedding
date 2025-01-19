@@ -4,12 +4,10 @@ import {
   Input,
   Button
 } from "@nextui-org/react";
-import Image from 'next/image';
-import { FileUploadWithPreview } from 'file-upload-with-preview';
 import 'file-upload-with-preview/dist/style.css';
 import { usePathname } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
-import { updateAppearance } from '../../../../services/client/event';
+import { getDetailEvent, getEvent, updateAppearance, uploadImage } from '../../../../services/client/event';
 import { AppContext } from '../../../../contexts/ContextProviders';
 import ModalBackgroundTextComponent from '../modalbackgroundtext';
 import ModalColorPlateComponent from '../modalcolorplate';
@@ -21,8 +19,8 @@ const AppearanceDashboardTabComponent = () => {
   const [caption, setCaption] = useState('');
   const [language, setLanguage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [preview, setPreview] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [preview, setPreview] = useState<any>(null);
 
   /* eslint-disable */
   useEffect(() => {
@@ -30,6 +28,7 @@ const AppearanceDashboardTabComponent = () => {
     if (state.showDetailEvent) {
       setCaption(state.showDetailEvent.appearance.caption)
       setLanguage(state.showDetailEvent.appearance.language)
+      setPreview(state.showDetailEvent.appearance.fileUrl)
       dispatch({
         type: 'SET_COLOR_PLATE',
         value: state.showDetailEvent.appearance.colorPlate
@@ -61,45 +60,32 @@ const AppearanceDashboardTabComponent = () => {
   }
 
   const handleSubmit = async () => {
-    // if (!selectedFile) return;
-
-    // const formData = new FormData();
-    // formData.append("file", selectedFile);
-
-    // console.log('Check', formData)
-
-    // try {
-    //   const response = await fetch("/api/upload", {
-    //     method: "POST",
-    //     body: formData,
-    //   });
-
-    //   if (response.ok) {
-    //     alert("File uploaded successfully!");
-    //   } else {
-    //     alert("Failed to upload file.");
-    //   }
-    // } catch (error) {
-    //   console.error("Error uploading file:", error);
-    // }
-
     setLoading(true);
-    // const payload = {
-    //   file: selectedFile,
-    //   caption: caption,
-    //   language: language,
-    //   colorPlate: state.colorPlate,
-    //   eventId: lastSegment
-    // }
-    const payload = new FormData();
-    payload.append('file', selectedFile); // Sesuaikan `formData` dengan file yang ingin dikirim
-    payload.append('caption', caption);
-    payload.append('language', language);
-    payload.append('colorPlate', state.colorPlate);
-    payload.append('eventId', lastSegment);
-    updateAppearance({ payload })
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('upload_preset', 'ml_default');
+    uploadImage({ formData })
     .then((res: any) => {
-      setLoading(false);
+      const payload = {
+        fileUrl: res.secure_url,
+        originalFilename: res.original_filename,
+        assetId: res.asset_id,
+        publicId: res.public_id,
+        caption: caption,
+        language: language,
+        colorPlate: state.colorPlate,
+        eventId: lastSegment
+      }
+      updateAppearance({ payload })
+      .then((res: any) => {
+        setLoading(false);
+        getDetail()
+        getListEvent()
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        console.log('Error', err)
+      })
     })
     .catch((err: any) => {
       setLoading(false);
@@ -107,10 +93,35 @@ const AppearanceDashboardTabComponent = () => {
     })
   };
 
+  const getDetail = async () => {
+    getDetailEvent({lastSegment})
+    .then((res: any) => {
+      dispatch({
+        type: 'SET_DETAIL_EVENT',
+        value: res.data
+      });
+    })
+    .catch((err: any) => {
+      console.log('Check Error', err)
+    });
+  }
+
+  const getListEvent = async () => {
+    getEvent()
+    .then((res: any) => {
+      dispatch({
+        type: 'SET_LIST_EVENT',
+        value: res.data
+      });
+    })
+    .catch((err: any) => {
+      console.log('Check Error', err)
+    });
+  }
+
   // Handle file selection
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
-    console.log('DDDDDDDDD', file)
     if (file) {
       if (file.type === 'image/png' || file.type === 'image/jpeg') {
         setSelectedFile(file);
@@ -129,30 +140,6 @@ const AppearanceDashboardTabComponent = () => {
     setPreview(null);
     setSelectedFile(null);
   }
-
-  // Handle file upload (optional)
-  const handleUpload = async () => {
-    if (!selectedFile) return;
-
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-
-    try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert("File uploaded successfully!");
-      } else {
-        alert("Failed to upload file.");
-      }
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  };
-
   /* eslint-enable */
   return (
     <>

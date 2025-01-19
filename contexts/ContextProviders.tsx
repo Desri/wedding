@@ -14,6 +14,9 @@ interface ListEvent {
   date: any;
   plan: any;
   _id: string;
+  appearance?: {
+    fileUrl?: string;
+  };
 }
 
 interface PopupPlan {

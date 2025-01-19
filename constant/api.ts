@@ -10,6 +10,9 @@ export const api = {
     // connect: '/patient/connect',
     // referralCode: '/referral/check',
   },
+  upload: {
+    image: 'https://api.cloudinary.com/v1_1/doebhykyu/image/upload',
+  },
   event: {
     createEvent: '/api/event/create-event',
     listEvent: '/api/event/list',
@@ -18,6 +21,6 @@ export const api = {
     updateModeration: '/api/event/moderation',
     updateAppearance: '/api/event/appearance',
     updateWelcomeScreen: '/api/event/welcome-screen',
-    updateGeneral: '/api/event/general'
+    updateGeneral: '/api/event/general',
   }
 };

@@ -105,3 +105,18 @@ export const updateGeneralEvent = ({ payload }: { payload: any }) => {
       });
   });
 };
+
+export const uploadImage = ({ formData }: { formData: any }) => {
+  return new Promise((resolve, reject) => {
+    fetch(api.upload.image, {
+      method: 'post',
+      body: formData,
+    })
+    .then((res: any) => {
+      resolve(res.json());
+    })
+    .catch((err: AxiosError) => {
+      reject(err);
+    });
+  });
+};

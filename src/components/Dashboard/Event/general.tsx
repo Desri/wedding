@@ -14,8 +14,6 @@ const GeneralDashboardTabComponent = () => {
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [eventType, setEventType] = useState('');
   const [loading, setLoading] = useState(false);
-
-  console.log('Check', state.showDetailEvent?.date)
   
   // const { year = 0, month = 0, day = 0 } = state.showDetailEvent?.date;
   // const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -28,7 +26,6 @@ const GeneralDashboardTabComponent = () => {
       setTitle(state.showDetailEvent.title)
       setEventType(state.showDetailEvent.eventType)
     }
-    console.log('Check 2', state.showDetailEvent)
   }, [state.showDetailEvent]);
 
   const handleClick = (newValue: any) => {

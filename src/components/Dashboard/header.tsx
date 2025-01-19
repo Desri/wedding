@@ -85,7 +85,7 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                           avatarProps={{
                             isBordered: false,
                             className: "rounded-md",
-                            src:"/thumb.png"
+                            src: state.showListEvent[0]?.appearance?.fileUrl || "/no-image.png"
                           }}
                           className="text-black gap-4"
                           name={state.showListEvent[0].title}
@@ -93,17 +93,14 @@ const HeaderDashboardComponent =  ({ isAuth }: { isAuth?: boolean; }) => {
                       </DropdownTrigger>
                     )}
                     
-
                     <DropdownMenu aria-label="User Actions" variant="flat">
                       {state.showListEvent?.map((item) => (
                         <DropdownItem key={item._id} as={Link} href={`/dashboard/event/${item._id}`}>
                           <div className="flex items-center gap-4">
-                            <Image 
-                              src="/small-thumb.png"
-                              alt="Thumb"
-                              className="!relative !w-[32px] !rounded-md"
-                              fill
-                              priority
+                            <img
+                              src={item.appearance?.fileUrl || "/no-image.png"}
+                              alt="Preview"
+                              className='object-cover relative w-[32px] h-[32px] rounded-md'
                             />
                             <div>
                               <div className='text-black'>
