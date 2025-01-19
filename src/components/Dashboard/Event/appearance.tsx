@@ -4,7 +4,11 @@ import {
   Input,
   Button
 } from "@nextui-org/react";
+import Image from 'next/image';
+import { FileUploadWithPreview } from 'file-upload-with-preview';
+import 'file-upload-with-preview/dist/style.css';
 import { usePathname } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
 import { updateAppearance } from '../../../../services/client/event';
 import { AppContext } from '../../../../contexts/ContextProviders';
 import ModalBackgroundTextComponent from '../modalbackgroundtext';
@@ -17,9 +21,12 @@ const AppearanceDashboardTabComponent = () => {
   const [caption, setCaption] = useState('');
   const [language, setLanguage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState<string | null>(null);
 
   /* eslint-disable */
   useEffect(() => {
+    // const upload = new FileUploadWithPreview('my-unique-id');
     if (state.showDetailEvent) {
       setCaption(state.showDetailEvent.appearance.caption)
       setLanguage(state.showDetailEvent.appearance.language)
@@ -53,14 +60,43 @@ const AppearanceDashboardTabComponent = () => {
     });
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    // if (!selectedFile) return;
+
+    // const formData = new FormData();
+    // formData.append("file", selectedFile);
+
+    // console.log('Check', formData)
+
+    // try {
+    //   const response = await fetch("/api/upload", {
+    //     method: "POST",
+    //     body: formData,
+    //   });
+
+    //   if (response.ok) {
+    //     alert("File uploaded successfully!");
+    //   } else {
+    //     alert("Failed to upload file.");
+    //   }
+    // } catch (error) {
+    //   console.error("Error uploading file:", error);
+    // }
+
     setLoading(true);
-    const payload = {
-      caption: caption,
-      language: language,
-      colorPlate: state.colorPlate,
-      eventId: lastSegment
-    }
+    // const payload = {
+    //   file: selectedFile,
+    //   caption: caption,
+    //   language: language,
+    //   colorPlate: state.colorPlate,
+    //   eventId: lastSegment
+    // }
+    const payload = new FormData();
+    payload.append('file', selectedFile); // Sesuaikan `formData` dengan file yang ingin dikirim
+    payload.append('caption', caption);
+    payload.append('language', language);
+    payload.append('colorPlate', state.colorPlate);
+    payload.append('eventId', lastSegment);
     updateAppearance({ payload })
     .then((res: any) => {
       setLoading(false);
@@ -70,18 +106,103 @@ const AppearanceDashboardTabComponent = () => {
       console.log('Error', err)
     })
   };
+
+  // Handle file selection
+  const handleFileChange = (e: any) => {
+    const file = e.target.files[0];
+    console.log('DDDDDDDDD', file)
+    if (file) {
+      if (file.type === 'image/png' || file.type === 'image/jpeg') {
+        setSelectedFile(file);
+
+        // Generate a preview URL
+        const previewUrl = URL.createObjectURL(file);
+        setPreview(previewUrl);
+      } else {
+        toast("Uppsss something went wrong!");
+      } 
+    }
+  };
+
+  const removeImage = () => {
+    URL.revokeObjectURL(preview);
+    setPreview(null);
+    setSelectedFile(null);
+  }
+
+  // Handle file upload (optional)
+  const handleUpload = async () => {
+    if (!selectedFile) return;
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("File uploaded successfully!");
+      } else {
+        alert("Failed to upload file.");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
+
   /* eslint-enable */
   return (
     <>
-      <div className='grid grid-cols-2 gap-5'>
+      <div className='grid grid-cols-2 gap-14'>
         <div>
           <div className="text-black mb-8">
             <h3 className="text-sm font-semibold">
               Event Logo
             </h3>
-            <p className="text-xs text-[#909090] font-semibold sm:mr-16">
-              Brand your event with a logo that will be publically shown through out the event. For best results, use square photos (1:1).
-            </p>
+            <div className='flex justify-between'>
+              <div className='w-3/5'>
+                <p className="text-xs text-[#909090] font-semibold mb-6">
+                  Brand your event with a logo that will be publically shown through out the event. For best results, use square photos (1:1).
+                </p>
+                <div className='flex items-center'>
+                  <div>
+                    <label
+                      htmlFor="file-upload"
+                      className="cursor-pointer text-[#0BB90B] w-[100px] rounded-lg h-[35px] text-xs font-semibold border-2 px-6 py-2 border-[#0BB90B] transition"
+                    >
+                      Upload
+                    </label>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                  </div>
+                  <div>
+                    <p className='text-xs text-[#909090] ml-2'>
+                      .JPG/.PNG Accepted
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className='w-2/5 pl-5'>
+                {preview && (
+                  <div className='text-center w-[90px] h-[90px] rounded-lg border-solid border border-[#dddddd]'>
+                    <img
+                      src={preview}
+                      alt="Preview"
+                      className='object-cover h-full w-full rounded-lg mb-1.5'
+                    />
+                    <p className='text-xs text-[#909090] cursor-pointer underline' onClick={removeImage}>Remove</p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
           <div className="text-black mb-8">
             <h3 className="text-sm font-semibold">
@@ -186,6 +307,7 @@ const AppearanceDashboardTabComponent = () => {
           <span>Update</span>
         )}
       </Button>
+      <ToastContainer />
     </>
   );
 };
