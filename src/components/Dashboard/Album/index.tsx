@@ -19,7 +19,7 @@ const AlbumDashboardComponent = () => {
                     <img
                       src={item.appearance?.fileUrl}
                       alt="Preview"
-                      className='object-cover h-[140px] w-full rounded-lg mb-0.5 h-full w-full'
+                      className='object-cover h-[140px] w-full rounded-lg mb-0.5'
                     />
                   ) : (
                     <div className='h-[140px] w-[130px] bg-[#F7F7F7] rounded-lg'>
