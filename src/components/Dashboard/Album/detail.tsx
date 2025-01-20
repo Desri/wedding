@@ -23,7 +23,7 @@ const DetailAlbumDashboardComponent = () => {
                     <img
                       src={item.appearance?.fileUrl}
                       alt="Preview"
-                      className='object-cover h-[110px] w-full rounded-t-xl mb-0.5 h-full w-full'
+                      className='object-cover h-[110px] w-full rounded-t-xl mb-0.5'
                     />
                   ) : (
                     <div className='h-[110px] bg-[#F7F7F7] rounded-t-xl'>
