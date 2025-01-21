@@ -10,9 +10,9 @@ type Props = {
 };
 
 const AlbumDetail = async ({ params }: Props) => {
-  // Mendapatkan URL lengkap
-  console.log('DDSSSS', await params)
   const cookiesData = await cookies();
+  
+  // Fungsi untuk mengambil data album
   const getDataAlbum = async () => {
     const res = await fetch(`https://api-photoslide.vercel.app/api/event/${params.slug}`, {
       method: 'GET',
@@ -21,9 +21,12 @@ const AlbumDetail = async ({ params }: Props) => {
         'Content-Type': 'application/json',
       },
     });
-    return res.json()
-  }
-  const detailEvent = await getDataAlbum()
+    return res.json();
+  };
+
+  // Ambil detail album
+  const detailEvent = await getDataAlbum();
+
   return (
     <>
       <div className="sm:flex">
@@ -36,6 +39,6 @@ const AlbumDetail = async ({ params }: Props) => {
       </div>
     </>
   );
-}
+};
 
 export default AlbumDetail;
