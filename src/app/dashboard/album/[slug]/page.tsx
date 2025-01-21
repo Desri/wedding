@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import DetailAlbumDashboardComponent from "@/components/Dashboard/Album/detail";
 import MenuDashboardComponent from "@/components/Dashboard/menu";
@@ -10,15 +9,9 @@ type Props = {
   };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return {
-    title: decodeURIComponent(
-      params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
-    ),
-  };
-}
-
 const AlbumDetail = async ({ params }: Props) => {
+  // Mendapatkan URL lengkap
+  console.log('DDSSSS', await params)
   const cookiesData = await cookies();
   const getDataAlbum = async () => {
     const res = await fetch(`https://api-photoslide.vercel.app/api/event/${params.slug}`, {
