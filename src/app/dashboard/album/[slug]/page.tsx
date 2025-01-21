@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { cookies } from 'next/headers';
 import DetailAlbumDashboardComponent from "@/components/Dashboard/Album/detail";
 import MenuDashboardComponent from "@/components/Dashboard/menu";
@@ -5,7 +6,18 @@ import { getTokenName } from '../../../../../lib/helpers';
 
 type Props = {
   params: {
-    slug: string;
+    slug: string; // Pastikan slug adalah string
+  };
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { slug } = context.params as { slug: string };
+
+  // Lakukan operasi server-side jika diperlukan
+  return {
+    props: {
+      slug, // Kirim slug ke komponen
+    },
   };
 };
 
