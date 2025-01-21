@@ -1,15 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import {
   Button
 } from "@nextui-org/react";
+import { AppContext } from '../../../../contexts/ContextProviders';
 
-const ListAlbumImageDashboardComponent = ({
-  listAlbumImage
-}: {
-  listAlbumImage?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-}) => {
+const ListAlbumImageDashboardComponent = () => {
+  const { state } = useContext(AppContext);
 
   const [images, setImages] = useState<File[]>([]);;
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
@@ -63,7 +61,7 @@ const ListAlbumImageDashboardComponent = ({
             <div className="flex items-center gap-3">
               <div>
                 <h3 className="text-sm font-semibold text-black">
-                  {listAlbumImage.data.title}
+                  {state.showDetailEvent?.title}
                 </h3>
               </div>
               <div className='mr-6 cursor-pointer'>

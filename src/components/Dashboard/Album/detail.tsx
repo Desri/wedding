@@ -1,16 +1,34 @@
 'use client';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { Link } from '@nextui-org/react';
 
 import { AppContext } from '../../../../contexts/ContextProviders';
 import ListAlbumImageDashboardComponent from './listAlbumImage';
+import { getDetailEvent } from '../../../../services/client/event';
 
-const DetailAlbumDashboardComponent = ({
-  dataDetail
-}: {
-  dataDetail?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
-}) => {
-  const { state } = useContext(AppContext);
+const DetailAlbumDashboardComponent = () => {
+  const { state, dispatch } = useContext(AppContext);
+  const pathname = usePathname();
+  const lastSegment = pathname.split('/').filter(Boolean).pop();
+
+  /* eslint-disable */
+  useEffect(() => {
+    fetchDetailEvent();
+  }, []);
+  const fetchDetailEvent = () => {
+    getDetailEvent({lastSegment})
+      .then((res: any) => {
+        dispatch({
+          type: 'SET_DETAIL_EVENT',
+          value: res.data
+        });
+      })
+      .catch((err: any) => {
+        console.log('Check Error', err)
+      });
+  };
+  /* eslint-enable */
   return (
     <>
       {state.showListEvent.length > 0 && (
@@ -45,9 +63,7 @@ const DetailAlbumDashboardComponent = ({
           ))}
         </div>
       )}
-      <ListAlbumImageDashboardComponent listAlbumImage={dataDetail} />
-      
-
+      <ListAlbumImageDashboardComponent />
     </>
   );
 };
