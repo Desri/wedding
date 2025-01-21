@@ -11,12 +11,12 @@ const ListAlbumImageDashboardComponent = ({
   listAlbumImage?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) => {
 
-  const [images, setImages] = useState([]);
-  const [previewUrls, setPreviewUrls] = useState([]);
+  const [images, setImages] = useState<File[]>([]);;
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
 
   /* eslint-disable */
   const handleImageChange = (e: any) => {
-    const files = Array.from(e.target.files);
+    const files = Array.from(e.target.files || []) as File[];
 
     // Simpan file gambar ke state
     setImages((prevImages) => [...prevImages, ...files]);
@@ -32,29 +32,28 @@ const ListAlbumImageDashboardComponent = ({
     setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
   };
 
-  const handleUpload = async () => {
-    const formData = new FormData();
+  // const handleUpload = async () => {
+  //   const formData = new FormData();
 
-    // Tambahkan file ke formData
-    images.forEach((image) => {
-      formData.append("images", image);
-    });
+  //   images.forEach((image) => {
+  //     formData.append("images", image);
+  //   });
 
-    try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+  //   try {
+  //     const response = await fetch("/api/upload", {
+  //       method: "POST",
+  //       body: formData,
+  //     });
 
-      if (response.ok) {
-        console.log("Upload successful");
-      } else {
-        console.error("Upload failed");
-      }
-    } catch (error) {
-      console.error("Error uploading images:", error);
-    }
-  };
+  //     if (response.ok) {
+  //       console.log("Upload successful");
+  //     } else {
+  //       console.error("Upload failed");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error uploading images:", error);
+  //   }
+  // };
   /* eslint-enable */
   return (
     <>
@@ -77,9 +76,31 @@ const ListAlbumImageDashboardComponent = ({
                 />
               </div>
               <div>
-                <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'>
+                <div className='flex items-center'>
+                  <div>
+                    <label
+                      htmlFor="file-upload"
+                      className="cursor-pointer text-[#0BB90B] w-[100px] rounded-lg h-[35px] text-xs font-semibold border-2 px-6 py-2 border-[#0BB90B] transition"
+                    >
+                      Upload
+                    </label>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="hidden"
+                    />
+                  </div>
+                  <div>
+                    <p className='text-xs text-[#909090] ml-2'>
+                      .JPG/.PNG Accepted
+                    </p>
+                  </div>
+                </div>
+                {/* <Button className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'>
                   Upload
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
@@ -98,31 +119,37 @@ const ListAlbumImageDashboardComponent = ({
           </div>
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-8 gap-2 sm:gap-5">
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
-          <div className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg"></div>
+          {previewUrls.map((url, index) => (
+            <div key={index} className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg relative overflow-hidden">
+              <img
+                src={url}
+                alt={`Preview ${index}`}
+                style={{ objectFit: "cover" }}
+                className='h-full w-full'
+              />
+              <button
+                onClick={() => handleRemoveImage(index)}
+                className='absolute top-1.5 right-1.5 w-[24px] h-[24px] rounded-2xl cursor-pointer text-white bg-[#949494]'
+              >
+                <span className='relative top-[-1px] left-[0.5px]'>
+                  &times;
+                </span>
+              </button>
+            </div>
+          ))}
         </div>
+        {previewUrls.length === 0 && (
+          <div className='text-center py-12 sm:py-16'>
+            <img
+              src="/no-image.png"
+              alt="Preview"
+              className='object-cover mx-auto h-[60px] w-[60px] mb-3'
+            />
+            <p className="font-semibold">
+              No album!
+            </p>
+          </div>
+        )}
       </div>
     </>
   );
