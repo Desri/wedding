@@ -5,7 +5,7 @@ import { getTokenName } from '../../../../../lib/helpers';
 
 type Props = {
   params: {
-    slug: any;
+    slug: string | number;
   };
 };
 
