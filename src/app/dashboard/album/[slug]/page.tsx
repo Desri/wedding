@@ -11,10 +11,10 @@ type Props = {
 
 const AlbumDetail = async ({ params }: Props) => {
   const cookiesData = await cookies();
-  
+  const { slug } = await params;
   // Fungsi untuk mengambil data album
   const getDataAlbum = async () => {
-    const res = await fetch(`https://api-photoslide.vercel.app/api/event/${params.slug}`, {
+    const res = await fetch(`https://api-photoslide.vercel.app/api/event/${slug}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${cookiesData.get(getTokenName())?.value}`,
