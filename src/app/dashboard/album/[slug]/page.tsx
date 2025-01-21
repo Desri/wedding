@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next';
+import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import DetailAlbumDashboardComponent from "@/components/Dashboard/Album/detail";
 import MenuDashboardComponent from "@/components/Dashboard/menu";
@@ -10,16 +10,13 @@ type Props = {
   };
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { slug } = context.params as { slug: string };
-
-  // Lakukan operasi server-side jika diperlukan
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
-    props: {
-      slug, // Kirim slug ke komponen
-    },
+    title: decodeURIComponent(
+      params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
+    ),
   };
-};
+}
 
 const AlbumDetail = async ({ params }: Props) => {
   const cookiesData = await cookies();
