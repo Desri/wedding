@@ -19,7 +19,7 @@ interface ListEvent {
   };
 }
 
-interface ListEvent {
+interface ListAlbum {
   _id: string;
   userId: string;
   eventId: string;
