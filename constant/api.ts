@@ -22,5 +22,9 @@ export const api = {
     updateAppearance: '/api/event/appearance',
     updateWelcomeScreen: '/api/event/welcome-screen',
     updateGeneral: '/api/event/general',
+  },
+  album: {
+    uploadImage: '/api/album/create-album',
+    listAlbum: '/api/album'
   }
 };

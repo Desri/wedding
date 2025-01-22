@@ -19,6 +19,16 @@ interface ListEvent {
   };
 }
 
+interface ListEvent {
+  _id: string;
+  userId: string;
+  eventId: string;
+  fileUrl: string;
+  originalFilename: string;
+  assetId: string;
+  publicId: string;
+}
+
 interface PopupPlan {
   Status: boolean;
   Plan: string;
@@ -34,6 +44,7 @@ interface AppState {
   showPopupBackgroundText: boolean;
   showPopupColorPlate: boolean;
   colorPlate: any;
+  listAlbum: ListAlbum[];
 }
 
 const initialState = {
@@ -45,7 +56,8 @@ const initialState = {
   showPopupWelcomeScreen: false,
   showPopupBackgroundText: false,
   showPopupColorPlate: false,
-  colorPlate: null
+  colorPlate: null,
+  listAlbum: []
 };
 
 type AppAction =
@@ -57,7 +69,8 @@ type AppAction =
   | { type: 'SET_POPUP_WELCOME_SCREEN'; value: boolean }
   | { type: 'SET_POPUP_BACKGROUND_TEXT'; value: boolean }
   | { type: 'SET_POPUP_COLOR_PLATE'; value: boolean }
-  | { type: 'SET_COLOR_PLATE'; value: any };
+  | { type: 'SET_COLOR_PLATE'; value: any }
+  | { type: 'SET_LIST_ALBUM'; value: any };
 
 const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -79,6 +92,8 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state, showPopupColorPlate: action.value };
     case 'SET_COLOR_PLATE':
       return { ...state, colorPlate: action.value };
+    case 'SET_LIST_ALBUM':
+      return { ...state, listAlbum: action.value };
     default:
       return state;
   }
