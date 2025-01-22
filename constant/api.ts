@@ -25,6 +25,7 @@ export const api = {
   },
   album: {
     uploadImage: '/api/album/create-album',
-    listAlbum: '/api/album'
+    listAlbum: '/api/album',
+    removeAlbum: '/api/album/remove'
   }
 };

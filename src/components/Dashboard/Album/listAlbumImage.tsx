@@ -8,10 +8,10 @@ import { usePathname } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import { AppContext } from '../../../../contexts/ContextProviders';
 import { uploadImage } from '../../../../services/client/event';
-import { getListAlbum, uploadAlbum } from '../../../../services/client/album';
+import { getListAlbum, removeAlbum, uploadAlbum } from '../../../../services/client/album';
 
 const ListAlbumImageDashboardComponent = () => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const pathname = usePathname();
   const lastSegment = pathname.split('/').filter(Boolean).pop();
 
@@ -39,9 +39,19 @@ const ListAlbumImageDashboardComponent = () => {
   };
 
   const handleRemoveImage = (index: any) => {
-    // Hapus gambar dari state
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-    setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
+    const payload = {
+      _id: index
+    }
+    removeAlbum({ payload })
+      .then((res: any) => {
+        fetchListAlbum()
+      })
+      .catch((err: any) => {
+        console.log('Error', err)
+      })
+    // Delete image from state
+    // setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    // setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
   };
 
   const handleUpload = async (file: any) => {
@@ -59,14 +69,26 @@ const ListAlbumImageDashboardComponent = () => {
       }
       uploadAlbum({ payload })
       .then((res: any) => {
-        getListAlbum({lastSegment})
-        console.log('Check', res)
+        fetchListAlbum()
       })
       .catch((err: any) => {
         console.log('Error', err)
       })
     })
   };
+
+  const fetchListAlbum = async () => {
+    getListAlbum({lastSegment})
+    .then((res: any) => {
+      dispatch({
+        type: 'SET_LIST_ALBUM',
+        value: res.data
+      });
+    })
+    .catch((err: any) => {
+      console.log('Check Error', err)
+    });
+  }
   /* eslint-enable */
   return (
     <>
@@ -132,7 +154,7 @@ const ListAlbumImageDashboardComponent = () => {
           </div>
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-8 gap-2 sm:gap-5">
-          {previewUrls.map((url, index) => (
+          {/* {previewUrls.map((url, index) => (
             <div key={index} className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg relative overflow-hidden">
               <img
                 src={url}
@@ -149,7 +171,7 @@ const ListAlbumImageDashboardComponent = () => {
                 </span>
               </button>
             </div>
-          ))}
+          ))} */}
 
           {state.listAlbum?.map((item) => (
             <div key={item._id} className="bg-[#F2F2F2] h-[100px] sm:h-[120px] rounded-lg relative overflow-hidden">
