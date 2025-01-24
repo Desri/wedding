@@ -44,7 +44,7 @@ export const getDetailEvent = (slug: any) => {
 export const updateSlideShow = ({ payload }: { payload: any }) => {
   return new Promise((resolve, reject) => {
     clientAPI
-      .put(api.event.updateSlideshow, payload.formData)
+      .put(api.event.updateSlideshow, payload)
       .then((res: any) => {
         resolve(res.data);
       })
