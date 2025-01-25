@@ -18,7 +18,7 @@ import { getProfile } from '../../../services/client/auth';
 const ModalAddEventComponent =  () => {
   const {onOpenChange} = useDisclosure();
   const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState(parseDate("2024-04-04"));
+  const [value, setValue] = useState(parseDate("2025-01-04"));
   const [title, setTitle] = useState('');
   const [eventType, setEventType] = useState('');
   const { state, dispatch } = useContext(AppContext);

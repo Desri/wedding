@@ -4,7 +4,6 @@ import { Input, DatePicker, Button } from "@nextui-org/react";
 import { parseDate } from "@internationalized/date";
 import { usePathname } from 'next/navigation';
 import { AppContext } from '../../../../contexts/ContextProviders';
-// import { useDateFormatter } from "@react-aria/i18n";
 import { getDetailEvent, updateGeneralEvent } from '../../../../services/client/event';
 
 const GeneralDashboardTabComponent = () => {
@@ -14,7 +13,6 @@ const GeneralDashboardTabComponent = () => {
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [eventType, setEventType] = useState('');
   const [loading, setLoading] = useState(false);
-  
   // const { year = 0, month = 0, day = 0 } = state.showDetailEvent?.date;
   // const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
   // const [value, setValue] = useState(parseDate(formattedDate));

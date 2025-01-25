@@ -22,11 +22,11 @@ const AlbumDashboardComponent = () => {
                       className='object-cover h-[135px] w-full rounded-lg mb-0.5'
                     />
                   ) : (
-                    <div className='h-[140px] w-[130px] bg-[#F7F7F7] rounded-lg'>
+                    <div className='h-[140px] w-full bg-[#F7F7F7] rounded-lg'>
                       <img
                         src="/no-image.png"
                         alt="Preview"
-                        className='object-cover relative top-4 mx-auto rounded-lg h-[40px] w-[40px]'
+                        className='object-cover relative top-11 mx-auto rounded-lg h-[40px] w-[40px]'
                       />
                     </div>
                   )}

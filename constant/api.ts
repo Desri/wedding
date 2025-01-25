@@ -5,10 +5,6 @@ export const api = {
     forgotPassword: '/api/auth/forgot-password',
     profile: '/api/profile',
     plan: 'api/add-plan',
-    // verifyOtp: '/patient/otp/auth/verify',
-    // resendOtp: '/patient/otp/auth/resend',
-    // connect: '/patient/connect',
-    // referralCode: '/referral/check',
   },
   upload: {
     image: 'https://api.cloudinary.com/v1_1/doebhykyu/image/upload',

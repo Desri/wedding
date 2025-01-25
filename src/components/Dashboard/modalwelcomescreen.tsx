@@ -25,10 +25,10 @@ const ModalWelcomeScreenComponent =  () => {
   const lastSegment = pathname.split('/').filter(Boolean).pop();
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
-  
-  const { year, month, day } = state.showDetailEvent.welcomeScreen.eventDate;
-  const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-  const [value, setValue] = useState(parseDate(formattedDate));
+  const [value, setValue] = useState(parseDate("2025-01-18"))
+  // const { year, month, day } = state.showDetailEvent.welcomeScreen.eventDate;
+  // const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  // const [value, setValue] = useState(parseDate(formattedDate));
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [preview, setPreview] = useState<any>(null);
   
@@ -296,9 +296,11 @@ const ModalWelcomeScreenComponent =  () => {
                           <h1 className='text-xl font-bold'>
                             {state.showDetailEvent.welcomeScreen?.title}
                           </h1>
-                          <span className='text-sm'>
-                          {state.showDetailEvent.welcomeScreen?.eventDate.day}/{state.showDetailEvent.welcomeScreen?.eventDate.month}/{state.showDetailEvent.welcomeScreen?.eventDate.year}
-                          </span>
+                          {state.showDetailEvent.welcomeScreen?.eventDate.day && (
+                            <span className='text-sm'>
+                              {state.showDetailEvent.welcomeScreen?.eventDate.day}/{state.showDetailEvent.welcomeScreen?.eventDate.month}/{state.showDetailEvent.welcomeScreen?.eventDate.year}
+                            </span>
+                          )}
                         </div>
                         <p className='text-center text-sm'>
                           230 Photos & Videos
