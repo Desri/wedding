@@ -21,25 +21,25 @@ const HeaderComponent = () => {
               <div className="hidden md:flex space-x-8">
                 <Link
                   href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-1"
                 >
                   How it works
                 </Link>
                 <Link
                   href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-1"
                 >
                   Pricing
                 </Link>
                 <Link
                   href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-1"
                 >
                   Whats included
                 </Link>
                 <Link
                   href='#'
-                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+                  className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-1"
                 >
                   FAQ
                 </Link>
@@ -51,7 +51,7 @@ const HeaderComponent = () => {
           <div className="flex items-center space-x-4">
             <Link
               href='/auth/login'
-              className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-2"
+              className="text-gray-700 hover:text-gray-900 font-bold text-sm mt-1"
             >
               Log in
             </Link>

@@ -55,6 +55,13 @@ const ModalAddEventComponent =  () => {
     // Hit API
   };
 
+  const closeModalCreateEvent = () => {
+    dispatch({
+      type: 'SET_POPUP_EVENT',
+      value: false
+    });
+  };
+
   const fetchProfile = () => {
     getProfile()
     .then((res: any) => {
@@ -190,18 +197,30 @@ const ModalAddEventComponent =  () => {
                         </div>
                       </div>
                     </div>
-                    <Button
-                      className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'
-                      isDisabled={loading}
-                      onPress={onClose}
-                      onClick={handleSubmit}
-                    >
-                      {loading ? (
-                        <span>Loading...</span>
-                      ) : (
-                        <span>Create Event</span>
-                      )}
-                    </Button>
+
+                    <div className='flex items-center gap-3'>
+                      <Button
+                        className='!text-black max-w-[125px] rounded-lg !h-[35px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B]'
+                        isDisabled={loading}
+                        onPress={onClose}
+                        onClick={handleSubmit}
+                      >
+                        {loading ? (
+                          <span>Loading...</span>
+                        ) : (
+                          <span>Create Event</span>
+                        )}
+                      </Button>
+
+                      <Button
+                        variant="bordered"
+                        className='!text-[#000000] w-[105px] rounded-lg !h-[36px] text-xs !font-semibold border-[#DDDDDD]'
+                        onClick={closeModalCreateEvent}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+
                   </div>
                 )}
               </ModalBody>
