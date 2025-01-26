@@ -51,7 +51,7 @@ const SlideShowDashboardComponent = () => {
               </p>
               <div className='table mx-auto'>
                 <Image
-                  text={'https://github.com/bunlong/next-qrcode'}
+                  text={'https://wedding-eight-pi.vercel.app/'}
                   options={{
                     type: 'image/jpeg',
                     quality: 0.3,

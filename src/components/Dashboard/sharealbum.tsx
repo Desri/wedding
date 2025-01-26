@@ -41,7 +41,7 @@ const ShareAlbumDashboardComponent = () => {
           <div className='mb-7 sm:mb-0'>
             <div className='table mx-auto'>
               <Image
-                text={'https://github.com/bunlong/next-qrcode'}
+                text={'https://wedding-eight-pi.vercel.app/'}
                 options={{
                   type: 'image/jpeg',
                   quality: 0.3,
@@ -64,7 +64,7 @@ const ShareAlbumDashboardComponent = () => {
           <div className="text-center">
             <div className='bg-[#f2f2f2] pt-[9px] p-2 w-[95px] mx-auto border border-solid border-[#dddddd]'>
               <Image
-                text={'https://github.com/bunlong/next-qrcode'}
+                text={'https://wedding-eight-pi.vercel.app/'}
                 options={{
                   type: 'image/jpeg',
                   quality: 0.3,
