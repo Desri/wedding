@@ -1,13 +1,18 @@
 'use client';
 import { Button, Input } from '@nextui-org/react';
+import { useQRCode } from 'next-qrcode';
 
 const ShareAlbumDashboardComponent = () => {
+
+  const { Image } = useQRCode();
+
   return (
     <>
       <div className="bg-white p-8 rounded-xl shadow-lg">
         <h2 className="text-lg text-black font-semibold mb-3">
           Shared Album
         </h2>
+        
         <div className="flex gap-4 mb-4">
           <div>
             <Input
@@ -34,17 +39,46 @@ const ShareAlbumDashboardComponent = () => {
         
         <div className="sm:flex items-center gap-8 mx-auto w-max">
           <div className='mb-7 sm:mb-0'>
-            <img alt="QR code for shared album" className="mx-auto mb-4 w-24 h-24" height="100" src="/barcode.png" width="100"/>
+            <div className='table mx-auto'>
+              <Image
+                text={'https://github.com/bunlong/next-qrcode'}
+                options={{
+                  type: 'image/jpeg',
+                  quality: 0.3,
+                  errorCorrectionLevel: 'M',
+                  margin: 3,
+                  scale: 4,
+                  width: 120,
+                  color: {
+                    dark: '#000000',
+                    light: '#FFFFFF',
+                  },
+                }}
+              />
+            </div>
             <Button className='!text-black rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
               DOWNLOAD QR CODE
             </Button>
           </div>
           
           <div className="text-center">
-            <div className='bg-[#f2f2f2] p-2 w-[95px] mx-auto border border-solid border-[#dddddd]'>
-              <img alt="QR card" className="mx-auto w-16 h-16 mb-2" height="60" src="/small-barcode.png" width="60"/>
+            <div className='bg-[#f2f2f2] pt-[9px] p-2 w-[95px] mx-auto border border-solid border-[#dddddd]'>
+              <Image
+                text={'https://github.com/bunlong/next-qrcode'}
+                options={{
+                  type: 'image/jpeg',
+                  quality: 0.3,
+                  errorCorrectionLevel: 'M',
+                  margin: 3,
+                  scale: 4,
+                  width: 600,
+                  color: {
+                    dark: '#000000',
+                    light: '#f2f2f2',
+                  },
+                }}
+              />
             </div>
-            
             <p className="text-gray-600 text-xs mt-2 mb-1.5 underline cursor-pointer">
               Edit Card
             </p>

@@ -1,7 +1,12 @@
 'use client';
-import { Button, Input } from '@nextui-org/react';
+import { Button, Input, Link } from '@nextui-org/react';
+import { useQRCode } from 'next-qrcode';
+import { Avatar } from "@heroui/avatar";
 
 const SlideShowDashboardComponent = () => {
+
+  const { Image } = useQRCode();
+
   return (
     <>
       <div className="bg-white p-8 rounded-xl shadow-lg">
@@ -21,7 +26,7 @@ const SlideShowDashboardComponent = () => {
               }
               type="text"
             />
-            <p className="text-xs text-[#909090] mb-8 mt-3 pr-8">
+            <p className="text-xs text-[#909090] mb-3 mt-3 pr-8">
               Every upload to your digital album automatically appears on your SlideShow. Connect it to video projectors, TVs, or anywhere your guests can easily find it.
             </p>
           </div>
@@ -32,25 +37,64 @@ const SlideShowDashboardComponent = () => {
           </div>
         </div>
         
-        <div className="sm:flex items-center gap-8 mx-auto w-max">
-          <div className='mb-7 sm:mb-0'>
-            <img alt="QR code for shared album" className="mx-auto mb-4 w-24 h-24" height="100" src="/barcode.png" width="100"/>
-            <Button className='!text-black rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
-              DOWNLOAD QR CODE
-            </Button>
+        <div className='bg-black rounded-xl px-8 pb-8 pt-4'>
+          <div>
+            <img src="/small-logo.png" className='mx-auto' alt="small logo" />
           </div>
-          
-          <div className="text-center">
-            <div className='bg-[#f2f2f2] p-2 w-[95px] mx-auto border border-solid border-[#dddddd]'>
-              <img alt="QR card" className="mx-auto w-16 h-16 mb-2" height="60" src="/small-barcode.png" width="60"/>
+          <div className='mb-2'>
+            <Avatar isDisabled src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
+          </div>
+          <div className="sm:flex items-center gap-8 mx-auto w-max">
+            <div className='mb-7 sm:mb-0'>
+              <p className='text-center mb-2 text-[#e8e8e8] text-[15px]'>
+                Scan to view or Add photos!
+              </p>
+              <div className='table mx-auto'>
+                <Image
+                  text={'https://github.com/bunlong/next-qrcode'}
+                  options={{
+                    type: 'image/jpeg',
+                    quality: 0.3,
+                    errorCorrectionLevel: 'M',
+                    margin: 1,
+                    scale: 4,
+                    width: 110,
+                    color: {
+                      dark: '#000000',
+                      light: '#FFFFFF',
+                    },
+                  }}
+                />
+              </div>
             </div>
-            
-            <p className="text-gray-600 text-xs mt-2 mb-1.5 underline cursor-pointer">
-              Edit Card
-            </p>
-            <Button variant="bordered" className='rounded-lg !font-semibold !h-[37px] text-xs !text-[#0BB90B] border-[#0BB90B]'>
-              DOWNLOAD QR CARD
-            </Button>
+          </div>
+        </div>
+        <div className='flex items-center justify-between mt-6'>
+          <div>
+            <div className='flex items-center'>
+              <div className='mr-7'>
+                <p className='text-[#909090] text-sm'>
+                  Display on
+                </p>
+              </div>
+              <div>
+                <img src="/projector.png" alt="projector" />
+              </div>
+              <div className='mx-4'>
+                <img src="/computer.png" alt="computer" />
+              </div>
+              <div>
+                <img src="/laptop.png" alt="laptop" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <Link
+              href='#'
+              className="text-[#0BB90B] font-semibold text-sm mt-1"
+            >
+              How to do it?
+            </Link>
           </div>
         </div>
       </div>
