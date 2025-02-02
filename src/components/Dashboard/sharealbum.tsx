@@ -1,5 +1,5 @@
 'use client';
-import { Button, Input } from '@nextui-org/react';
+import { Link, Button, Input } from '@nextui-org/react';
 import { useQRCode } from 'next-qrcode';
 
 const ShareAlbumDashboardComponent = ({
@@ -12,7 +12,7 @@ const ShareAlbumDashboardComponent = ({
     <>
       <div className="bg-white p-8 rounded-xl shadow-lg">
         <h2 className="text-lg text-black font-semibold mb-3">
-          Shared Album {data?.title}
+          Shared Album
         </h2>
         
         <div className="flex gap-4 mb-4">
@@ -20,7 +20,7 @@ const ShareAlbumDashboardComponent = ({
             <Input
               radius="sm"
               labelPlacement="outside"
-              placeholder="fotoslide.com/nu38hy"
+              placeholder={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`}
               endContent={
                 <p className='text-[#0BB90B] text-sm'>
                   Copy
@@ -33,7 +33,10 @@ const ShareAlbumDashboardComponent = ({
             </p>
           </div>
           <div>
-            <Button className='!text-white rounded-lg !h-[40px] text-xs !font-semibold bg-[#0BB90B]'>
+            <Button
+              className='!text-white rounded-lg !h-[40px] text-xs !font-semibold bg-[#0BB90B]'
+              as={Link} href={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`} target='_blank'
+            >
               OPEN
             </Button>
           </div>

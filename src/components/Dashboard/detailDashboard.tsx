@@ -40,20 +40,30 @@ const DetailDashboardComponent =  () => {
         <div className="sm:w-10/12 bg-[#f8fafd] h-screen">
           <div className="p-8">
             <div className="flex items-center gap-4 mb-8">
-              <Image 
-                src="/thumb.png"
-                alt="Thumb"
-                className="!relative !w-[64px]"
-                fill
-                priority
-              />
+              {state.showDetailEvent?.fileUrl ? (
+                <Image 
+                  src="/thumb.png"
+                  alt="Thumb"
+                  className="!relative !w-[64px]"
+                  fill
+                  priority
+                />
+              ) : (
+                <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
+                  <img
+                    src="/no-image.png"
+                    alt="Preview"
+                    className='object-cover relative top-3 mx-auto rounded-lg h-[40px] w-[40px]'
+                  />
+                </div>
+              )}
               <div>
                 <div className='text-black'>
                   <h2 className='text-xl sm:text-2xl mb-1 sm:mb-0'>
                     {state.showDetailEvent?.title}
                   </h2>
                   <p className='text-xs font-bold'>
-                    Event start: 13 Aug 2024 <span className='bg-[#CEFFCE] font-medium py-1 px-1.5 rounded ml-1 capitalize'>Plan: {state.profile?.Plan}</span>
+                    Event start: {state.showDetailEvent?.date.day}/{state.showDetailEvent?.date.month}/{state.showDetailEvent?.date.year} <span className='bg-[#CEFFCE] font-medium py-1 px-1.5 rounded ml-1 capitalize'>Plan: {state.profile?.Plan}</span>
                   </p>
                 </div>
               </div>
