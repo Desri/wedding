@@ -1,6 +1,8 @@
 'use client';
+import { useRef } from "react";
 import { Link, Button, Input } from '@nextui-org/react';
 import { useQRCode } from 'next-qrcode';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ShareAlbumDashboardComponent = ({
   data
@@ -8,9 +10,33 @@ const ShareAlbumDashboardComponent = ({
   data?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) => {
   const { Image } = useQRCode();
+  const { Canvas } = useQRCode();
+
+  const textToCopy = `${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`;
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const qrData = `${process.env.NEXT_PUBLIC_BASE_URL}/event/${data?._id}`;
+
+  /* eslint-disable */
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      toast("Share album copied!");
+    } catch (err) {
+      console.error("Gagal menyalin teks:", err);
+    }
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = canvasRef.current?.toDataURL("image/png") ?? "";
+    link.download = "qrcode.png";
+    link.click();
+  };
+  /* eslint-enable */
+
   return (
     <>
-      <div className="bg-white p-8 rounded-xl shadow-lg">
+      <div className="bg-white p-4 sm:p-8 rounded-xl shadow-lg">
         <h2 className="text-lg text-black font-semibold mb-3">
           Shared Album
         </h2>
@@ -20,9 +46,9 @@ const ShareAlbumDashboardComponent = ({
             <Input
               radius="sm"
               labelPlacement="outside"
-              placeholder={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`}
+              placeholder={`${process.env.NEXT_PUBLIC_BASE_URL}/event/${data?._id}`}
               endContent={
-                <p className='text-[#0BB90B] text-sm'>
+                <p className='text-[#0BB90B] text-sm cursor-pointer' onClick={onCopy}>
                   Copy
                 </p>
               }
@@ -45,23 +71,26 @@ const ShareAlbumDashboardComponent = ({
         <div className="sm:flex items-center gap-8 mx-auto w-max">
           <div className='mb-7 sm:mb-0'>
             <div className='table mx-auto'>
-              <Image
-                text={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`}
+              <Canvas
+                text={qrData}
                 options={{
-                  type: 'image/jpeg',
-                  quality: 0.3,
-                  errorCorrectionLevel: 'M',
+                  type: "image/png",
+                  quality: 0.8,
+                  errorCorrectionLevel: "M",
                   margin: 3,
                   scale: 4,
                   width: 120,
                   color: {
-                    dark: '#000000',
-                    light: '#FFFFFF',
+                    dark: "#000000",
+                    light: "#FFFFFF",
                   },
                 }}
               />
             </div>
-            <Button className='!text-black rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'>
+            <Button
+              className='!text-black rounded-lg !h-[37px] text-xs !font-semibold !text-white border-[#0BB90B] bg-[#0BB90B] mt-1.5'
+              onClick={handleDownload}
+            >
               DOWNLOAD QR CODE
             </Button>
           </div>
@@ -69,7 +98,7 @@ const ShareAlbumDashboardComponent = ({
           <div className="text-center">
             <div className='bg-[#f2f2f2] pt-[9px] p-2 w-[95px] mx-auto border border-solid border-[#dddddd]'>
               <Image
-                text={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`}
+                text={qrData}
                 options={{
                   type: 'image/jpeg',
                   quality: 0.3,
@@ -93,6 +122,7 @@ const ShareAlbumDashboardComponent = ({
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

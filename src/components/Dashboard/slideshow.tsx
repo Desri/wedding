@@ -9,7 +9,7 @@ const SlideShowDashboardComponent = () => {
 
   return (
     <>
-      <div className="bg-white p-8 rounded-xl shadow-lg">
+      <div className="bg-white p-4 sm:p-8 rounded-xl shadow-lg">
         <h2 className="text-lg text-black font-semibold mb-3">
           SlideShow
         </h2>

@@ -12,10 +12,10 @@ const LiteComponent = () => {
 
   return (
     <>
-      <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
+      {/* <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
         <div className="bg-cover h-screen bg-no-repeat bg-[url('/bg-1.jpg')]"></div>
-      </div>
-      <div className='relative h-screen z-10 px-5 text-white'>
+      </div> */}
+      <div className="relative h-screen z-10 px-5 text-white bg-cover h-screen bg-no-repeat bg-[url('/bg-1.jpg')]">
         <div className='pt-8'>
           <div className='flex items-center justify-between'>
             <div>
