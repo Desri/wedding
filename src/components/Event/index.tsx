@@ -1,15 +1,39 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import {Button} from "@nextui-org/react";
 import GalleryComponent from '../SmallWeb/gallery';
-const LiteComponent = () => {
+import { usePathname } from 'next/navigation';
+import { getDetailEvent } from '../../../services/client/event';
+import { AppContext } from '../../../contexts/ContextProviders';
 
+const EventComponent = () => {
+  const { state, dispatch } = useContext(AppContext);
   const bottomRef = useRef<HTMLDivElement>(null);
   const scrollToBottom = () => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const pathname = usePathname();
+  const lastSegment = pathname.split('/').filter(Boolean).pop();
+
+  /* eslint-disable */
+  useEffect(() => {
+    fetchDetailEvent();
+  }, []);
+  const fetchDetailEvent = () => {
+    getDetailEvent({lastSegment})
+      .then((res: any) => {
+        dispatch({
+          type: 'SET_DETAIL_EVENT',
+          value: res.data
+        });
+      })
+      .catch((err: any) => {
+        console.log('Check Error', err)
+      });
+  };
+  /* eslint-enable */
   return (
     <>
       {/* <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
@@ -19,6 +43,25 @@ const LiteComponent = () => {
         <div className='pt-8'>
           <div className='flex items-center justify-between'>
             <div>
+
+              {/* {state.showDetailEvent?.appearance.fileUrl ? (
+                <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
+                  <img
+                    src={state.showDetailEvent?.appearance.fileUrl}
+                    alt="Preview"
+                    className='object-cover mx-auto rounded-lg h-full w-full'
+                  />
+                </div>
+              ) : (
+                <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
+                  <img
+                    src="/no-image.png"
+                    alt="Preview"
+                    className='object-cover relative top-3 mx-auto rounded-lg h-[40px] w-[40px]'
+                  />
+                </div>
+              )} */}
+
               <Image 
                 src="/logo-white.png"
                 alt="logo-white"
@@ -54,10 +97,10 @@ const LiteComponent = () => {
           </div>
           <div className='mb-4 pb-4 border-b border-solid border-[#999999] mr-2.5'>
             <h1 className='text-2xl font-bold mb-1'>
-              Dara & Arifin Weddings
+              {state.showDetailEvent.title}
             </h1>
             <span>
-              13 Aug 2024
+              {state.showDetailEvent.date.day}/{state.showDetailEvent.date.month}/{state.showDetailEvent.date.year}
             </span>
           </div>
           <p className='text-center' onClick={scrollToBottom}>
@@ -85,4 +128,4 @@ const LiteComponent = () => {
   );
 };
 
-export default LiteComponent;
+export default EventComponent;

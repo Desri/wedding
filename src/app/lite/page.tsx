@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import LiteComponent from "@/components/Lite";
+import LiteComponent from "@/components/Event";
 
 export default function SmallWeb() {
   return (
