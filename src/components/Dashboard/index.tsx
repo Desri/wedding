@@ -1,15 +1,13 @@
 'use client';
 import React, { useContext } from 'react';
 import Image from 'next/image';
-import MenuDashboardComponent from "./menu";
-import ShareAlbumDashboardComponent from './sharealbum';
-import SlideShowDashboardComponent from './slideshow';
 import {
   Button
 } from "@nextui-org/react";
 import { AppContext } from '../../../contexts/ContextProviders';
 import ModalAddEventComponent from './modalAddEvent';
 import ModalPaymentComponent from './modalpayment';
+import DetailDashboardComponent from './detailDashboard';
 
 const DashboardComponent = ({
   data,
@@ -51,40 +49,7 @@ const DashboardComponent = ({
           </div>
         </div>
       ) : (
-        <div className="flex">
-          <MenuDashboardComponent />
-          <div className="sm:w-10/12 bg-[#f8fafd] h-screen">
-            <div className="p-8">
-              <div className="flex items-center gap-4 mb-8">
-                <Image 
-                  src="/thumb.png"
-                  alt="Thumb"
-                  className="!relative !w-[64px]"
-                  fill
-                  priority
-                />
-                <div>
-                  <div className='text-black'>
-                    <h2 className='text-xl sm:text-2xl mb-1 sm:mb-0'>
-                      Dara & Arifin Weddings
-                    </h2>
-                    <p className='text-xs font-bold'>
-                      Event start: 13 Aug 2024 <span className='bg-[#CEFFCE] font-medium py-1 px-1.5 rounded ml-1 capitalize'>Plan: {state.profile?.Plan}</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className='grid sm:grid-cols-2 gap-8'>
-                <div>
-                  <ShareAlbumDashboardComponent />
-                </div>
-                <div>
-                  <SlideShowDashboardComponent />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <DetailDashboardComponent />
       )}
       <ModalAddEventComponent />
       <ModalPaymentComponent />

@@ -2,15 +2,17 @@
 import { Button, Input } from '@nextui-org/react';
 import { useQRCode } from 'next-qrcode';
 
-const ShareAlbumDashboardComponent = () => {
-
+const ShareAlbumDashboardComponent = ({
+  data
+}: {
+  data?: any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+}) => {
   const { Image } = useQRCode();
-
   return (
     <>
       <div className="bg-white p-8 rounded-xl shadow-lg">
         <h2 className="text-lg text-black font-semibold mb-3">
-          Shared Album
+          Shared Album {data?.title}
         </h2>
         
         <div className="flex gap-4 mb-4">
@@ -41,7 +43,7 @@ const ShareAlbumDashboardComponent = () => {
           <div className='mb-7 sm:mb-0'>
             <div className='table mx-auto'>
               <Image
-                text={'https://wedding-eight-pi.vercel.app/'}
+                text={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`}
                 options={{
                   type: 'image/jpeg',
                   quality: 0.3,
@@ -64,7 +66,7 @@ const ShareAlbumDashboardComponent = () => {
           <div className="text-center">
             <div className='bg-[#f2f2f2] pt-[9px] p-2 w-[95px] mx-auto border border-solid border-[#dddddd]'>
               <Image
-                text={'https://wedding-eight-pi.vercel.app/'}
+                text={`${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`}
                 options={{
                   type: 'image/jpeg',
                   quality: 0.3,

@@ -1,13 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {Link, Input, Button} from "@nextui-org/react";
 import { login } from '../../../services/client/auth';
 import { setCookie } from 'cookies-next';
+import { getEvent } from '../../../services/client/event';
+import { AppContext } from '../../../contexts/ContextProviders';
 
 const LoginComponent = () => {
   const router = useRouter();
+  const { dispatch } = useContext(AppContext);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,7 +46,7 @@ const LoginComponent = () => {
           setLoading(false);
           setCookie('isAuth', true);
           setCookie('_FotoSlideToken', res.token);
-          router.push('/dashboard');
+          fetchEvent()
         }
       })
       .catch((err: any) => {
@@ -52,6 +55,25 @@ const LoginComponent = () => {
       })
     }
   };
+
+  const fetchEvent = () => {
+    getEvent()
+      .then((res: any) => {
+        dispatch({
+          type: 'SET_LIST_EVENT',
+          value: res.data
+        });
+        if (res.data.length === 0) {
+          router.push('/dashboard');
+        } else {
+          router.push(`/dashboard/${res.data[0]._id}`);
+        }
+      })
+      .catch((err: any) => {
+        console.log('Check Error', err)
+      });
+  };
+
   /* eslint-enable */
   return (
     <>
