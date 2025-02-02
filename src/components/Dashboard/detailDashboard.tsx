@@ -40,14 +40,14 @@ const DetailDashboardComponent =  () => {
         <div className="sm:w-10/12 bg-[#f8fafd] h-screen">
           <div className="p-8">
             <div className="flex items-center gap-4 mb-8">
-              {state.showDetailEvent?.fileUrl ? (
-                <Image 
-                  src="/thumb.png"
-                  alt="Thumb"
-                  className="!relative !w-[64px]"
-                  fill
-                  priority
-                />
+              {state.showDetailEvent?.appearance.fileUrl ? (
+                <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
+                  <img
+                    src={state.showDetailEvent?.appearance.fileUrl}
+                    alt="Preview"
+                    className='object-cover mx-auto rounded-lg h-full w-full'
+                  />
+                </div>
               ) : (
                 <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
                   <img
