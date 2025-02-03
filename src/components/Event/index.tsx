@@ -36,32 +36,10 @@ const EventComponent = () => {
   /* eslint-enable */
   return (
     <>
-      {/* <div className='absolute w-full mix-blend-multiply bg-[#909090]'>
-        <div className="bg-cover h-screen bg-no-repeat bg-[url('/bg-1.jpg')]"></div>
-      </div> */}
       <div className="relative h-screen z-10 px-5 text-white bg-cover h-screen bg-no-repeat bg-[url('/bg-1.jpg')]">
         <div className='pt-8'>
           <div className='flex items-center justify-between'>
             <div>
-
-              {/* {state.showDetailEvent?.appearance.fileUrl ? (
-                <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
-                  <img
-                    src={state.showDetailEvent?.appearance.fileUrl}
-                    alt="Preview"
-                    className='object-cover mx-auto rounded-lg h-full w-full'
-                  />
-                </div>
-              ) : (
-                <div className='h-[66px] w-[66px] bg-[#f0f0f0] rounded-lg'>
-                  <img
-                    src="/no-image.png"
-                    alt="Preview"
-                    className='object-cover relative top-3 mx-auto rounded-lg h-[40px] w-[40px]'
-                  />
-                </div>
-              )} */}
-
               <Image 
                 src="/logo-white.png"
                 alt="logo-white"
@@ -81,13 +59,23 @@ const EventComponent = () => {
         <div className='absolute bottom-5 w-11/12 mb-6'>
           <div className="flex items-center justify-between mb-4">
             <div className='rounded-lg overflow-hidden'>
-              <Image 
-                src="/thumb.png"
-                alt="Background"
-                width={90}
-                height={50}
-                priority
-              />
+              {state.showDetailEvent?.appearance.fileUrl ? (
+                <div className='h-[75px] w-[90px] bg-[#f0f0f0] rounded-lg'>
+                  <img
+                    src={state.showDetailEvent?.appearance.fileUrl}
+                    alt="Preview"
+                    className='object-cover mx-auto rounded-lg h-full w-full'
+                  />
+                </div>
+              ) : (
+                <div className='h-[75px] w-[90px] bg-[#f0f0f0] rounded-lg'>
+                  <img
+                    src="/no-image.png"
+                    alt="Preview"
+                    className='object-cover relative top-3 mx-auto rounded-lg h-[40px] w-[40px]'
+                  />
+                </div>
+              )}
             </div>
             <div>
               <Button color="danger" variant="bordered" className='bg-[#0BB90B] text-white border-[#0BB90B] !mr-2.5'>
@@ -97,10 +85,10 @@ const EventComponent = () => {
           </div>
           <div className='mb-4 pb-4 border-b border-solid border-[#999999] mr-2.5'>
             <h1 className='text-2xl font-bold mb-1'>
-              {state.showDetailEvent.title}
+              {state.showDetailEvent?.title}
             </h1>
             <span>
-              {state.showDetailEvent.date.day}/{state.showDetailEvent.date.month}/{state.showDetailEvent.date.year}
+              {state.showDetailEvent?.date.day}/{state.showDetailEvent?.date.month}/{state.showDetailEvent?.date.year}
             </span>
           </div>
           <p className='text-center' onClick={scrollToBottom}>

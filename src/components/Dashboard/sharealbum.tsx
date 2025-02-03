@@ -12,7 +12,7 @@ const ShareAlbumDashboardComponent = ({
   const { Image } = useQRCode();
   const { Canvas } = useQRCode();
 
-  const textToCopy = `${process.env.NEXT_PUBLIC_BASE_URL}/${data?._id}`;
+  const textToCopy = `${process.env.NEXT_PUBLIC_BASE_URL}/event/${data?._id}`;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const qrData = `${process.env.NEXT_PUBLIC_BASE_URL}/event/${data?._id}`;
 
