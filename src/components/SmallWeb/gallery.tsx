@@ -1,9 +1,10 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
+import React, { useContext } from 'react';
 import {Button} from "@nextui-org/react";
 import Link from 'next/link';
+import { AppContext } from '../../../contexts/ContextProviders';
 const GalleryComponent = () => {
+  const { state } = useContext(AppContext);
   return (
     <>
       <div className='bg-white flex items-center justify-between mb-1 p-4 border-b-2 border-solid border-[#dddddd]'>
@@ -12,7 +13,7 @@ const GalleryComponent = () => {
             Wedding Day
           </h2>
           <span className='font-bold text-sm text-[#B1B1B1]'>
-            98 Photos & Videos
+            {state.listAlbum?.length} Photos & Videos
           </span>
         </div>
         <div>
@@ -21,170 +22,32 @@ const GalleryComponent = () => {
           </Button>
         </div>
       </div>
-      <div className="p-4 columns-3 sm:columns-4 gap-x-2.5">
-        <figure>
-          <Image 
-            src="/album1.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album2.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album3.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album4.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album5.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album6.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album7.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album8.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album9.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album10.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album11.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album12.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album13.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album14.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album15.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album16.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album17.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
-        <figure>
-          <Image 
-            src="/album18.jpg"
-            alt="Background"
-            className="imgAlbum !relative w-auto"
-            fill
-            priority
-          />
-        </figure>
+      <div className={`p-4  gap-x-2.5 ${state.listAlbum.length <= 0 ? "" : "columns-3 sm:columns-4"}`}>
+        {state.listAlbum?.map((item) => (
+          <figure key={item._id}>
+            <img
+              src={item.fileUrl}
+              alt={item.originalFilename}
+              style={{ objectFit: "cover" }}
+              className='h-full w-full'
+            />
+          </figure>
+        ))}
       </div>
+      {state.listAlbum.length <= 0 && (
+        <>
+          <div className='text-center py-12 sm:py-16'>
+            <img
+              src="/no-image.png"
+              alt="Preview"
+              className='object-cover mx-auto h-[60px] w-[60px] mb-3'
+            />
+            <p className="font-semibold">
+              No album!
+            </p>
+          </div>
+        </>
+      )}
     </>
   );
 };

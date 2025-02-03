@@ -6,6 +6,7 @@ import GalleryComponent from '../SmallWeb/gallery';
 import { usePathname } from 'next/navigation';
 import { getDetailEvent } from '../../../services/client/event';
 import { AppContext } from '../../../contexts/ContextProviders';
+import { getListAlbum } from '../../../services/client/album';
 
 const EventComponent = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -24,8 +25,21 @@ const EventComponent = () => {
   const fetchDetailEvent = () => {
     getDetailEvent({lastSegment})
       .then((res: any) => {
+        fetchListAlbum()
         dispatch({
           type: 'SET_DETAIL_EVENT',
+          value: res.data
+        });
+      })
+      .catch((err: any) => {
+        console.log('Check Error', err)
+      });
+  };
+  const fetchListAlbum = () => {
+    getListAlbum({lastSegment})
+      .then((res: any) => {
+        dispatch({
+          type: 'SET_LIST_ALBUM',
           value: res.data
         });
       })
